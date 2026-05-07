@@ -1041,9 +1041,8 @@
                 href="#education">Education</a>
             <a class="text-stone-500 font-medium hover:text-foreground transition-colors duration-300"
                 href="#skills">Skills</a>
-            <label class="bb8-toggle">
-                <input class="bb8-toggle__checkbox hidden" style="display: none !important;" type="checkbox"
-                    id="theme-toggle">
+            <label class="bb8-toggle hidden md:block">
+                <input class="bb8-toggle__checkbox hidden theme-toggle-input" style="display: none !important;" type="checkbox">
                 <div class="bb8-toggle__container">
                     <div class="bb8-toggle__scenery">
                         <div class="bb8-toggle__star"></div>
@@ -1076,8 +1075,43 @@
                 </div>
             </label>
         </div>
-        <a href="#direct-contact"
+        <div class="flex items-center gap-4">
+            <label class="bb8-toggle md:hidden">
+                <input class="bb8-toggle__checkbox hidden theme-toggle-input" style="display: none !important;" type="checkbox">
+                <div class="bb8-toggle__container">
+                    <div class="bb8-toggle__scenery">
+                        <div class="bb8-toggle__star"></div>
+                        <div class="bb8-toggle__star"></div>
+                        <div class="bb8-toggle__star"></div>
+                        <div class="bb8-toggle__star"></div>
+                        <div class="bb8-toggle__star"></div>
+                        <div class="bb8-toggle__star"></div>
+                        <div class="bb8-toggle__star"></div>
+                        <div class="tatto-1"></div>
+                        <div class="tatto-2"></div>
+                        <div class="gomrassen"></div>
+                        <div class="hermes"></div>
+                        <div class="chenini"></div>
+                        <div class="bb8-toggle__cloud"></div>
+                        <div class="bb8-toggle__cloud"></div>
+                        <div class="bb8-toggle__cloud"></div>
+                    </div>
+                    <div class="bb8">
+                        <div class="bb8__head-container">
+                            <div class="bb8__antenna"></div>
+                            <div class="bb8__antenna"></div>
+                            <div class="bb8__head"></div>
+                        </div>
+                        <div class="bb8__body"></div>
+                    </div>
+                    <div class="artificial__hidden">
+                        <div class="bb8__shadow"></div>
+                    </div>
+                </div>
+            </label>
+            <a href="#direct-contact"
             class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md hover:opacity-80 transition-all duration-200">Connect</a>
+        </div>
     </nav>
     <main class="max-w-screen-2xl mx-auto px-8">
         <!-- Hero Section -->
@@ -1797,7 +1831,7 @@
                             y: 100, opacity: 0, rotationZ: 3, duration: 1.2, stagger: 0.05, ease: "power4.out"
                         });
                     }
-                } else {
+                    } else {
                     heroTimeline.from('.hero-title', { y: 50, opacity: 0, duration: 1.2, ease: "power4.out" });
                 }
 
@@ -1946,7 +1980,7 @@
                                 submitBtn.querySelector('span').innerText = 'Sent!';
                                 successMsg.classList.remove('hidden');
                                 // Keep it disabled to prevent spam until refresh
-                            } else {
+                    } else {
                                 throw new Error('Submission failed');
                             }
                         } catch (err) {
@@ -1964,25 +1998,29 @@
             }
         });
         // Theme Toggle Logic
-        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggles = document.querySelectorAll('.theme-toggle-input');
         const html = document.documentElement;
 
-        if (themeToggle) {
+        if (themeToggles.length > 0) {
             if (html.classList.contains('dark')) {
-                themeToggle.checked = true;
+                themeToggles.forEach(t => t.checked = true);
             }
 
-            themeToggle.addEventListener('change', (e) => {
-                if (e.target.checked) {
-                    html.classList.add('dark');
-                    html.classList.remove('light');
-                } else {
-                    html.classList.add('light');
-                    html.classList.remove('dark');
-                }
+            themeToggles.forEach(toggle => {
+                toggle.addEventListener('change', (e) => {
+                    const isChecked = e.target.checked;
+                    themeToggles.forEach(t => t.checked = isChecked);
+                    if (isChecked) {
+                        html.classList.add('dark');
+                        html.classList.remove('light');
+                    } else {
+                        html.classList.add('light');
+                        html.classList.remove('dark');
+                    }
+                });
             });
         }
-    </script>
+        </script>
 </body>
 
 </html>
