@@ -1535,17 +1535,43 @@
             </div>
         </section>
         <!-- Philosophy / About -->
-        <section class="py-16 bg-surface-container luxury-border px-12 md:px-24" id="about">
-            <div class="max-w-4xl reveal reveal-fade-up">
-                <span class="font-label-sm uppercase tracking-widest text-text-muted mb-8 block">Philosophy</span>
-                <p class="font-playfair text-3xl md:text-5xl leading-relaxed text-foreground">
-                    "My approach to development is rooted in <span class="italic">performance, scalability, and clean
-                        code</span>. As a Full Stack Developer, I believe that great digital experiences are built at
-                    the intersection of logical rigor and aesthetic simplicity."
-                </p>
-                <div class="mt-12 flex items-center gap-4">
-                    <div class="w-12 h-[1px] bg-primary"></div>
-                    <span class="font-label-md uppercase tracking-widest">Vedansh Harish Ail</span>
+        <section class="py-16 bg-surface-container luxury-border px-8 md:px-16" id="about">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal reveal-fade-up">
+                <!-- Image Column -->
+                <div class="lg:col-span-5 flex justify-center w-full">
+                    <div class="spotlight-image-container relative w-full aspect-[4/5] max-w-sm rounded-luxury overflow-hidden shadow-lg border border-border-subtle cursor-none select-none bg-surface-container-lowest">
+                        <!-- Cartoon Image (Base layer - always visible) -->
+                        <img src="assets/ChatGPT Image Jul 29, 2026, 01_25_56 PM.png" 
+                             alt="Vedansh Harish Ail (Animated)" 
+                             class="absolute inset-0 w-full h-full object-cover pointer-events-none" />
+                        
+                        <!-- Real Image Wrapper (Revealed layer - clipped with circular mask) -->
+                        <div class="spotlight-reveal-wrapper absolute inset-0 w-full h-full pointer-events-none" 
+                             style="clip-path: circle(0px at 50% 50%);">
+                            <!-- Real Image (Aligned perfectly with transform) -->
+                            <img src="assets/WhatsApp Image 2026-05-17 at 11.08.43 AM.jpeg" 
+                                 alt="Vedansh Harish Ail" 
+                                 class="absolute inset-0 w-full h-full object-cover origin-center" 
+                                 style="transform: scale(1.22) translate(15px, 36px);" />
+                        </div>
+
+                        <!-- Custom Spotlight Cursor (Stylized ring following the mouse) -->
+                        <div class="spotlight-cursor absolute w-24 h-24 border-2 border-white rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-0 shadow-[0_0_15px_rgba(255,255,255,0.4)] z-30 transition-opacity duration-300"
+                             style="left: 50%; top: 50%;"></div>
+                    </div>
+                </div>
+                <!-- Text Column -->
+                <div class="lg:col-span-7 flex flex-col justify-center">
+                    <span class="font-label-sm uppercase tracking-widest text-text-muted mb-6 block">Philosophy</span>
+                    <p class="font-playfair text-3xl md:text-4xl lg:text-5xl leading-relaxed text-foreground mb-8">
+                        "My approach to development is rooted in <span class="italic">performance, scalability, and clean
+                            code</span>. As a Full Stack Developer, I believe that great digital experiences are built at
+                        the intersection of logical rigor and aesthetic simplicity."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-[1px] bg-primary"></div>
+                        <span class="font-label-md uppercase tracking-widest">Vedansh Harish Ail</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2024,6 +2050,47 @@
                             submitBtn.disabled = false;
                             submitBtn.style.opacity = '1';
                         }
+                    });
+                }
+
+                // Spotlight Hover Reveal Logic
+                const spotlightContainer = document.querySelector('.spotlight-image-container');
+                const revealWrapper = document.querySelector('.spotlight-reveal-wrapper');
+                const spotlightCursor = document.querySelector('.spotlight-cursor');
+
+                if (spotlightContainer && revealWrapper && spotlightCursor) {
+                    let lastX = '50%';
+                    let lastY = '50%';
+
+                    spotlightContainer.addEventListener('mouseenter', () => {
+                        spotlightCursor.style.opacity = '1';
+                    });
+
+                    spotlightContainer.addEventListener('mousemove', (e) => {
+                        const rect = spotlightContainer.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        
+                        lastX = `${x}px`;
+                        lastY = `${y}px`;
+
+                        // Disable transitions for latency-free cursor tracking
+                        revealWrapper.style.transition = 'none';
+                        
+                        // Set circle position and radius (e.g., 120px)
+                        revealWrapper.style.clipPath = `circle(120px at ${lastX} ${lastY})`;
+                        
+                        // Position custom cursor ring
+                        spotlightCursor.style.left = lastX;
+                        spotlightCursor.style.top = lastY;
+                    });
+
+                    spotlightContainer.addEventListener('mouseleave', () => {
+                        spotlightCursor.style.opacity = '0';
+                        
+                        // Smoothly contract spotlight circle back to 0px
+                        revealWrapper.style.transition = 'clip-path 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+                        revealWrapper.style.clipPath = `circle(0px at ${lastX} ${lastY})`;
                     });
                 }
 
