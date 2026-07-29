@@ -199,17 +199,17 @@
             position: fixed;
             width: 20px;
             height: 20px;
-            background: var(--foreground);
+            background: var(--primary);
+            opacity: 0.4;
             border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
-            mix-blend-mode: difference;
-            transition: transform 0.1s ease;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease;
         }
 
         .cursor-follower.active {
-            transform: scale(4);
-            background: #fff;
+            transform: scale(3.5);
+            opacity: 0.15;
         }
 
         /* Grain Overlay */
@@ -1549,15 +1549,11 @@
                         <div class="spotlight-reveal-wrapper absolute inset-0 w-full h-full pointer-events-none" 
                              style="clip-path: circle(0px at 50% 50%);">
                             <!-- Real Image (Aligned perfectly with transform) -->
-                            <img src="assets/WhatsApp Image 2026-05-17 at 11.08.43 AM.jpeg" 
+                            <img src="assets/real_pic_nobg.png" 
                                  alt="Vedansh Harish Ail" 
                                  class="absolute inset-0 w-full h-full object-cover origin-center" 
-                                 style="transform: scale(1.22) translate(15px, 36px);" />
+                                 style="transform: scale(1.03) translate(0px, -48px);" />
                         </div>
-
-                        <!-- Custom Spotlight Cursor (Stylized ring following the mouse) -->
-                        <div class="spotlight-cursor absolute w-24 h-24 border-2 border-white rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-0 shadow-[0_0_15px_rgba(255,255,255,0.4)] z-30 transition-opacity duration-300"
-                             style="left: 50%; top: 50%;"></div>
                     </div>
                 </div>
                 <!-- Text Column -->
@@ -2056,14 +2052,16 @@
                 // Spotlight Hover Reveal Logic
                 const spotlightContainer = document.querySelector('.spotlight-image-container');
                 const revealWrapper = document.querySelector('.spotlight-reveal-wrapper');
-                const spotlightCursor = document.querySelector('.spotlight-cursor');
+                const globalCursor = document.querySelector('.cursor-follower');
 
-                if (spotlightContainer && revealWrapper && spotlightCursor) {
+                if (spotlightContainer && revealWrapper) {
                     let lastX = '50%';
                     let lastY = '50%';
 
                     spotlightContainer.addEventListener('mouseenter', () => {
-                        spotlightCursor.style.opacity = '1';
+                        if (globalCursor) {
+                            globalCursor.style.opacity = '0';
+                        }
                     });
 
                     spotlightContainer.addEventListener('mousemove', (e) => {
@@ -2079,14 +2077,12 @@
                         
                         // Set circle position and radius (e.g., 120px)
                         revealWrapper.style.clipPath = `circle(120px at ${lastX} ${lastY})`;
-                        
-                        // Position custom cursor ring
-                        spotlightCursor.style.left = lastX;
-                        spotlightCursor.style.top = lastY;
                     });
 
                     spotlightContainer.addEventListener('mouseleave', () => {
-                        spotlightCursor.style.opacity = '0';
+                        if (globalCursor) {
+                            globalCursor.style.opacity = '';
+                        }
                         
                         // Smoothly contract spotlight circle back to 0px
                         revealWrapper.style.transition = 'clip-path 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
