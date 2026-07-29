@@ -1545,9 +1545,16 @@
                              alt="Vedansh Harish Ail (Animated)" 
                              class="absolute inset-0 w-full h-full object-cover pointer-events-none" />
                         
-                        <!-- Real Image Wrapper (Revealed layer - clipped with circular mask) -->
+                        <!-- Real Image Wrapper (Revealed layer - masked with brush stroke) -->
                         <div class="spotlight-reveal-wrapper absolute inset-0 w-full h-full pointer-events-none" 
-                             style="clip-path: circle(0px at 50% 50%);">
+                             style="
+                               -webkit-mask-image: url('assets/brush_stroke_mask.png');
+                               -webkit-mask-repeat: no-repeat;
+                               -webkit-mask-size: 0px 0px;
+                               mask-image: url('assets/brush_stroke_mask.png');
+                               mask-repeat: no-repeat;
+                               mask-size: 0px 0px;
+                             ">
                             <!-- Real Image (Aligned perfectly with transform) -->
                             <img src="assets/real_pic_nobg.png" 
                                  alt="Vedansh Harish Ail" 
