@@ -1116,23 +1116,34 @@
     </nav>
     <main class="max-w-screen-2xl mx-auto px-8">
         <!-- Hero Section -->
-        <section class="py-16 md:py-32 flex flex-col items-center text-center">
-            <h1 class="hero-title font-playfair text-6xl md:text-8xl lg:text-9xl tracking-tight leading-tight mb-8">
-                Vedansh Harish Ail.<br />
-                <span class="italic font-light">Full Stack Developer.</span>
-            </h1>
-            <p class="hero-description font-body-lg text-text-muted max-w-2xl mx-auto mb-12 text-lg">
-                Detail-oriented MCA student and aspiring software engineer with hands-on experience building web
-                applications and data-driven solutions. Focused on writing clean, maintainable, and high-performance
-                code.
-            </p>
-            <div class="flex flex-col md:flex-row gap-4 hero-buttons">
-                <a href="#work"
-                    class="bg-primary-container text-on-primary px-10 py-4 rounded-luxury font-label-md text-lg hover:scale-105 transition-transform duration-300 flex items-center justify-center">View
-                    Projects</a>
-                <a href="https://raw.githubusercontent.com/Vedansh-Harish-Ail/Vedansh-Resume/main/Vedansh-Resume.pdf" target="_blank"
-                    class="border border-border-subtle text-primary px-10 py-4 rounded-luxury font-label-md text-lg hover:bg-surface-container transition-colors hover:scale-105 transition-transform duration-300 flex items-center justify-center">Download
-                    Resume</a>
+        <section class="py-16 md:py-24" id="hero">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Column -->
+                <div class="lg:col-span-7 flex flex-col items-start text-left hero-text-col">
+                    <h1 class="hero-title font-playfair text-5xl md:text-7xl lg:text-8xl tracking-tight leading-tight mb-8">
+                        Vedansh Harish Ail.<br />
+                        <span class="italic font-light">Full Stack Developer.</span>
+                    </h1>
+                    <p class="hero-description font-body-lg text-text-muted max-w-xl mb-12 text-lg">
+                        Detail-oriented MCA student and aspiring software engineer with hands-on experience building web
+                        applications and data-driven solutions. Focused on writing clean, maintainable, and high-performance
+                        code.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 hero-buttons">
+                        <a href="#work"
+                            class="bg-primary-container text-on-primary px-10 py-4 rounded-luxury font-label-md text-lg hover:scale-105 transition-transform duration-300 flex items-center justify-center">View
+                            Projects</a>
+                        <a href="https://raw.githubusercontent.com/Vedansh-Harish-Ail/Vedansh-Resume/main/Vedansh-Resume.pdf" target="_blank"
+                            class="border border-border-subtle text-primary px-10 py-4 rounded-luxury font-label-md text-lg hover:bg-surface-container transition-colors hover:scale-105 transition-transform duration-300 flex items-center justify-center">Download
+                            Resume</a>
+                    </div>
+                </div>
+                <!-- Image Column (Static Cartoon Image Only - No Box/Container) -->
+                <div class="lg:col-span-5 flex justify-center w-full hero-image-col">
+                    <img src="assets/ChatGPT Image Jul 29, 2026, 01_25_56 PM.png" 
+                         alt="Vedansh Harish Ail" 
+                         class="w-full aspect-[4/5] max-w-sm object-contain select-none" />
+                </div>
             </div>
         </section>
         <!-- Selected Projects List -->
@@ -1537,28 +1548,28 @@
         <!-- Philosophy / About -->
         <section class="py-16 bg-surface-container luxury-border px-8 md:px-16" id="about">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal reveal-fade-up">
-                <!-- Image Column -->
+                <!-- Image Column (Interactive Spotlight Reveal Card - No Box/Container) -->
                 <div class="lg:col-span-5 flex justify-center w-full">
-                    <div class="spotlight-image-container relative w-full aspect-[4/5] max-w-sm rounded-luxury overflow-hidden shadow-lg border border-border-subtle cursor-pointer select-none bg-surface-container-lowest">
+                    <div class="spotlight-image-container relative w-full aspect-[4/5] max-w-sm select-none cursor-pointer">
                         <!-- Cartoon Image (Base layer - always visible) -->
                         <img src="assets/ChatGPT Image Jul 29, 2026, 01_25_56 PM.png" 
                              alt="Vedansh Harish Ail (Animated)" 
-                             class="absolute inset-0 w-full h-full object-cover pointer-events-none" />
+                             class="absolute inset-0 w-full h-full object-contain pointer-events-none" />
                         
                         <!-- Real Image Wrapper (Revealed layer - masked with brush stroke) -->
                         <div class="spotlight-reveal-wrapper absolute inset-0 w-full h-full pointer-events-none" 
                              style="
-                               -webkit-mask-image: url('assets/brush_stroke_mask.png');
+                               -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAR0AAACnCAYAAAAsTIjcAAAFcElEQVR4Ae3BCXYrR4IEQQ8IBxdPHj3T1GuInxtQqCWz4GZIkiSdVpCWK/cJ78pjwvPKu6AhBJ1F+V74WYHwszK+cFM+Czpc0GzKMgGK/i1od0GjKzpC0CaCRlSWCR8VbS3oIUGjKcuEj4r2FvSroNEUnVHQfwWNpujMwosLGk3RqwovIGhv5Sa8K9K7cHJBayvScuHkgtZQpPWFEwp6RpH2FyYWtFSR1hPelceEyQQtUaT7hOXKfcJErkjaSnhO+KicwBVJswgfFQiTCXpGkb4W9KWgpYp0n6D/CXpEkZ4XXljQT4q0vfBCgv5UpGOFEwsq0tjCiYTXVKS5hJO48lqKpEOF11GkOYUTuXA+BcpHRdIQwvyKdE7hhMKcivRawkmEeRTptYUTCGMqkn4SJhXGUSQtESYSxlAkrSEMLhyvSNpKGEw4XpG0hzCAcLwiaW/hIGEMRdIRws7COIqkI4UdhHEUSaMIGwnHKpJGF1YU9lUkzSqs4IIk3aes4MJ+iqSXd2E/QdLLC+MpkkYRoLwLKwhjKJJGFlYS9lEkzS6sIGyrSDqT8KQLknS/8qQL2ymS9IcLkrSjsJ0i6czCAmFbRdLZhQeEYxRJZxR+EY5TJJ1V+EZYX/kofK1IOrPwhSvbK5L0j7COIkmfhT9cWaZsJ3xWJJ1CeFxZT7hfkTSb8Icr+wuPK5KOElZ0ZR9huSLpNMJy5Sasq0gaVXhCOF6RNKvwoHCcIukswp3CMYqkswl3CPsqks4s/OKCJK2n/OKCJO3ogiStq/wgHKNIOrvwhQuStI3yhQuStKMLYwuSZhW+EI5TvhY+K5JmE74Q5lEkzSb84cqxiqSXEvZRJM0m3JTnhH9cWU+RNLuwsfCcImlGAcpn4XvlOeH/XJH0qsJjwrvyhAvLFUmvKDwu/CM8p0iaUVhP+Vn4lyuS9JzwgL94zhvwBvyNpJm8cZCwviJpdOEg4XlF0kzCgS5IejXlQBckvaJykDCeImlPYUdhf0XSaMJOwr6KpJGFjV2QpB2F/RRJewvvyv3ChsI2iqSRhJvyvbCxsI0iaTZhBxckCcJOwjaKpLWE75X1hB2EYxRJS4XHlfuFDYVxFEmPCMuVn4WNhPEUSUuFx5XvhZWFMRVJS4VlytfCisKYiqRnhOXKZ2ElfzGeIulZbyz3BrwBf/MurOiKJH0tbOCCJO0o7KdI2kMYWFhXkXSUMIGwjiJpFGFgYR1F0mjCgMI6iqRRhYGE5xRJswgDCM8pkmYTDnRhuSJJD7ryuCJJC4XHFEkzCwe7IOlVhAGEx5Vlws+KpK2Fg4WxFUlrCgcLxyqS9hYOFLZTJI0qHOTKckWSHnRhmSJJC1x4XJGkhS5I0o4uPC5I0kJhPUXSLMJBrjymSJpBgDKgcJ8iaRbho/JROFC4T1lPWKZIry3clK+FwYX7lMeE9RVJ/y/clHdhEuE+5Xthe0XSv4VJhbEVSV8JkwpjKpJ+EyYUxlKk1xDeleeFiYRxFK0pLFO0l/BRWS5MIoyhaA9hHUVrCp+Vx4UJhDEU7Slsp2iJ8LVyvzCBMIaiI4VtFf0m/Kz8LEwijKOMKSxX5hS2VfSd8LvyUZhIGFMZTxhH2U/YR7kJjynnFE4ozKkcI8ytPCeMr5xPOJEwp3KMcE7leWFM5TzCCYR5lf2E11IeF8ZXziFMLMytPC/oN+V3YR7lo/CufBZuyljChML8yjJBS5XPwnzKTViuHCdMJkivrdyEdZV9hIkESeUmbKNsK0ziLyS9AX8DYTtvwBvwN9t4YxJB0hHKZ+GmPCZMIkg6UnkX7lM+C5IkSZIkSZIkSZIkSZIkSZIkSZKkqQXpeeUmSD+4IK2rSD/4Dy6h2Ogvi2ctAAAAAElFTkSuQmCC');
                                -webkit-mask-repeat: no-repeat;
                                -webkit-mask-size: 0px 0px;
-                               mask-image: url('assets/brush_stroke_mask.png');
-                               mask-repeat: no-repeat;
-                               mask-size: 0px 0px;
+                               mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAR0AAACnCAYAAAAsTIjcAAAFcElEQVR4Ae3BCXYrR4IEQQ8IBxdPHj3T1GuInxtQqCWz4GZIkiSdVpCWK/cJ78pjwvPKu6AhBJ1F+V74WYHwszK+cFM+Czpc0GzKMgGK/i1od0GjKzpC0CaCRlSWCR8VbS3oIUGjKcuEj4r2FvSroNEUnVHQfwWNpujMwosLGk3RqwovIGhv5Sa8K9K7cHJBayvScuHkgtZQpPWFEwp6RpH2FyYWtFSR1hPelceEyQQtUaT7hOXKfcJErkjaSnhO+KicwBVJswgfFQiTCXpGkb4W9KWgpYp0n6D/CXpEkZ4XXljQT4q0vfBCgv5UpGOFEwsq0tjCiYTXVKS5hJO48lqKpEOF11GkOYUTuXA+BcpHRdIQwvyKdE7hhMKcivRawkmEeRTptYUTCGMqkn4SJhXGUSQtESYSxlAkrSEMLhyvSNpKGEw4XpG0hzCAcLwiaW/hIGEMRdIRws7COIqkI4UdhHEUSaMIGwnHKpJGF1YU9lUkzSqs4IIk3aes4MJ+iqSXd2E/QdLLC+MpkkYRoLwLKwhjKJJGFlYS9lEkzS6sIGyrSDqT8KQLknS/8qQL2ymS9IcLkrSjsJ0i6czCAmFbRdLZhQeEYxRJZxR+EY5TJJ1V+EZYX/kofK1IOrPwhSvbK5L0j7COIkmfhT9cWaZsJ3xWJJ1CeFxZT7hfkTSb8Icr+wuPK5KOElZ0ZR9huSLpNMJy5Sasq0gaVXhCOF6RNKvwoHCcIukswp3CMYqkswl3CPsqks4s/OKCJK2n/OKCJO3ogiStq/wgHKNIOrvwhQuStI3yhQuStKMLYwuSZhW+EI5TvhY+K5JmE74Q5lEkzSb84cqxiqSXEvZRJM0m3JTnhH9cWU+RNLuwsfCcImlGAcpn4XvlOeH/XJH0qsJjwrvyhAvLFUmvKDwu/CM8p0iaUVhP+Vn4lyuS9JzwgL94zhvwBvyNpJm8cZCwviJpdOEg4XlF0kzCgS5IejXlQBckvaJykDCeImlPYUdhf0XSaMJOwr6KpJGFjV2QpB2F/RRJewvvyv3ChsI2iqSRhJvyvbCxsI0iaTZhBxckCcJOwjaKpLWE75X1hB2EYxRJS4XHlfuFDYVxFEmPCMuVn4WNhPEUSUuFx5XvhZWFMRVJS4VlytfCisKYiqRnhOXKZ2ElfzGeIulZbyz3BrwBf/MurOiKJH0tbOCCJO0o7KdI2kMYWFhXkXSUMIGwjiJpFGFgYR1F0mjCgMI6iqRRhYGE5xRJswgDCM8pkmYTDnRhuSJJD7ryuCJJC4XHFEkzCwe7IOlVhAGEx5Vlws+KpK2Fg4WxFUlrCgcLxyqS9hYOFLZTJI0qHOTKckWSHnRhmSJJC1x4XJGkhS5I0o4uPC5I0kJhPUXSLMJBrjymSJpBgDKgcJ8iaRbho/JROFC4T1lPWKZIry3clK+FwYX7lMeE9RVJ/y/clHdhEuE+5Xthe0XSv4VJhbEVSV8JkwpjKpJ+EyYUxlKk1xDeleeFiYRxFK0pLFO0l/BRWS5MIoyhaA9hHUVrCp+Vx4UJhDEU7Slsp2iJ8LVyvzCBMIaiI4VtFf0m/Kz8LEwijKOMKSxX5hS2VfSd8LvyUZhIGFMZTxhH2U/YR7kJjynnFE4ozKkcI8ytPCeMr5xPOJEwp3KMcE7leWFM5TzCCYR5lf2E11IeF8ZXziFMLMytPC/oN+V3YR7lo/CufBZuyljChML8yjJBS5XPwnzKTViuHCdMJkivrdyEdZV9hIkESeUmbKNsK0ziLyS9AX8DYTtvwBvwN9t4YxJB0hHKZ+GmPCZMIkg6UnkX7lM+C5IkSZIkSZIkSZIkSZIkSZIkSZKkqQXpeeUmSD+4IK2rSD/4Dy6h2Ogvi2ctAAAAAElFTkSuQmCC');
+                               -webkit-mask-repeat: no-repeat;
+                               -webkit-mask-size: 0px 0px;
                              ">
                             <!-- Real Image (Aligned perfectly with transform) -->
                             <img src="assets/real_pic_nobg.png" 
                                  alt="Vedansh Harish Ail" 
-                                 class="absolute inset-0 w-full h-full object-cover origin-center" 
+                                 class="absolute inset-0 w-full h-full object-contain origin-center" 
                                  style="transform: scale(1.03) translate(0px, -48px);" />
                         </div>
                     </div>
@@ -2059,17 +2070,10 @@
                 // Spotlight Hover Reveal Logic
                 const spotlightContainer = document.querySelector('.spotlight-image-container');
                 const revealWrapper = document.querySelector('.spotlight-reveal-wrapper');
-                const globalCursor = document.querySelector('.cursor-follower');
 
                 if (spotlightContainer && revealWrapper) {
                     const maskW = 160;
                     const maskH = 94;
-
-                    spotlightContainer.addEventListener('mouseenter', () => {
-                        if (globalCursor) {
-                            globalCursor.style.opacity = '0';
-                        }
-                    });
 
                     spotlightContainer.addEventListener('mousemove', (e) => {
                         const rect = spotlightContainer.getBoundingClientRect();
@@ -2091,10 +2095,6 @@
                     });
 
                     spotlightContainer.addEventListener('mouseleave', (e) => {
-                        if (globalCursor) {
-                            globalCursor.style.opacity = '';
-                        }
-                        
                         const rect = spotlightContainer.getBoundingClientRect();
                         const x = e.clientX - rect.left;
                         const y = e.clientY - rect.top;
