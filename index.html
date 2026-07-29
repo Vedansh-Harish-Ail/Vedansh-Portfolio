@@ -2062,8 +2062,8 @@
                 const globalCursor = document.querySelector('.cursor-follower');
 
                 if (spotlightContainer && revealWrapper) {
-                    let lastX = '50%';
-                    let lastY = '50%';
+                    const maskW = 160;
+                    const maskH = 94;
 
                     spotlightContainer.addEventListener('mouseenter', () => {
                         if (globalCursor) {
@@ -2075,25 +2075,37 @@
                         const rect = spotlightContainer.getBoundingClientRect();
                         const x = e.clientX - rect.left;
                         const y = e.clientY - rect.top;
-                        
-                        lastX = `${x}px`;
-                        lastY = `${y}px`;
 
                         // Disable transitions for latency-free cursor tracking
                         revealWrapper.style.transition = 'none';
                         
-                        // Set circle position and radius (e.g., 120px)
-                        revealWrapper.style.clipPath = `circle(120px at ${lastX} ${lastY})`;
+                        // Set active mask size
+                        revealWrapper.style.webkitMaskSize = `${maskW}px ${maskH}px`;
+                        revealWrapper.style.maskSize = `${maskW}px ${maskH}px`;
+                        
+                        // Position mask centered under cursor
+                        const maskX = x - maskW / 2;
+                        const maskY = y - maskH / 2;
+                        revealWrapper.style.webkitMaskPosition = `${maskX}px ${maskY}px`;
+                        revealWrapper.style.maskPosition = `${maskX}px ${maskY}px`;
                     });
 
-                    spotlightContainer.addEventListener('mouseleave', () => {
+                    spotlightContainer.addEventListener('mouseleave', (e) => {
                         if (globalCursor) {
                             globalCursor.style.opacity = '';
                         }
                         
-                        // Smoothly contract spotlight circle back to 0px
-                        revealWrapper.style.transition = 'clip-path 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-                        revealWrapper.style.clipPath = `circle(0px at ${lastX} ${lastY})`;
+                        const rect = spotlightContainer.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+
+                        // Smoothly shrink mask centered on the last cursor position
+                        revealWrapper.style.transition = 'mask-size 0.5s cubic-bezier(0.25, 1, 0.5, 1), -webkit-mask-size 0.5s cubic-bezier(0.25, 1, 0.5, 1), mask-position 0.5s cubic-bezier(0.25, 1, 0.5, 1), -webkit-mask-position 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+                        
+                        revealWrapper.style.webkitMaskPosition = `${x}px ${y}px`;
+                        revealWrapper.style.maskPosition = `${x}px ${y}px`;
+                        revealWrapper.style.webkitMaskSize = '0px 0px';
+                        revealWrapper.style.maskSize = '0px 0px';
                     });
                 }
 
