@@ -2129,7 +2129,7 @@
                     });
                 }
 
-                // Contact Form Submission Logic (AJAX with file protocol & activation handling)
+                // Contact Form Submission Logic (Dual-Path: Background API with Guaranteed Email Client Fallback)
                 const contactForm = document.getElementById('contact-form');
                 const submitBtn = document.getElementById('submit-btn');
                 const successMsg = document.getElementById('success-msg');
@@ -2137,18 +2137,15 @@
 
                 if (contactForm) {
                     contactForm.addEventListener('submit', async (e) => {
-                        // If opened locally via file://, browser blocks external AJAX due to CORS null origin
-                        if (window.location.protocol === 'file:') {
-                            e.preventDefault();
-                            alert("Notice: Browsers block AJAX form submissions when opened directly from file:/// (CORS null origin policy).\n\nPlease test the contact form on your live Vercel site or via localhost server. Opening your mail client now as fallback.");
-                            const name = encodeURIComponent(document.getElementById('form-name')?.value || '');
-                            const email = encodeURIComponent(document.getElementById('form-email')?.value || '');
-                            const msg = encodeURIComponent(document.getElementById('form-message')?.value || '');
-                            window.location.href = `mailto:ailvedansh@gmail.com?subject=Portfolio Inquiry from ${name}&body=${msg}%0A%0AFrom: ${email}`;
-                            return;
-                        }
-
                         e.preventDefault();
+
+                        const nameInput = document.getElementById('form-name');
+                        const emailInput = document.getElementById('form-email');
+                        const messageInput = document.getElementById('form-message');
+
+                        const name = nameInput ? nameInput.value.trim() : '';
+                        const email = emailInput ? emailInput.value.trim() : '';
+                        const message = messageInput ? messageInput.value.trim() : '';
 
                         // Check Honeypot for spam bot mitigation
                         const honeypot = contactForm.querySelector('input[name="_honey"]');
@@ -2161,45 +2158,120 @@
                         submitBtn.style.opacity = '0.7';
                         submitBtn.innerHTML = '<span>Sending...</span> <span class="material-symbols-outlined text-sm animate-spin">refresh</span>';
 
-                        const formData = new FormData(contactForm);
+                        const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+                        const body = encodeURIComponent(`Hi Vedansh,\n\n${message}\n\n---\nSender: ${name}\nEmail: ${email}`);
+                        const mailtoUrl = `mailto:ailvedansh@gmail.com?subject=${subject}&body=${body}`;
+                        const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=ailvedansh@gmail.com&su=${subject}&body=${body}`;
 
+                        // If opened locally via file://, browser forbids CORS fetch to third-party endpoints
+                        if (window.location.protocol === 'file:') {
+                            contactForm.reset();
+                            submitBtn.disabled = false;
+                            submitBtn.style.opacity = '1';
+                            submitBtn.innerHTML = '<span>Open in Email</span> <span class="material-symbols-outlined text-sm">mail</span>';
+                            window.location.href = mailtoUrl;
+
+                            successMsg.innerHTML = `
+                                <div class="p-4 rounded-xl bg-surface-container border border-border-subtle text-foreground text-xs space-y-2.5 mt-2">
+                                    <p class="font-semibold flex items-center gap-1.5 text-primary text-sm">
+                                        <span class="material-symbols-outlined text-base">outgoing_mail</span> Message Prepared for ailvedansh@gmail.com
+                                    </p>
+                                    <p class="text-text-muted leading-relaxed">Browsers restrict external API calls from local <code>file:///</code> views. Your mail app has been opened with your message ready to send. You can also send directly via Gmail Web:</p>
+                                    <div class="flex flex-wrap gap-2 pt-1" id="file-fallback-actions"></div>
+                                </div>
+                            `;
+                            const fileActions = document.getElementById('file-fallback-actions');
+                            if (fileActions) {
+                                const gLink = document.createElement('a');
+                                gLink.href = gmailWebUrl;
+                                gLink.target = '_blank';
+                                gLink.rel = 'noopener noreferrer';
+                                gLink.className = 'px-3.5 py-1.5 rounded-full bg-primary text-on-primary font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-1';
+                                gLink.innerHTML = '<span>Open in Gmail Web</span> <span class="material-symbols-outlined text-xs">north_east</span>';
+
+                                const mLink = document.createElement('a');
+                                mLink.href = mailtoUrl;
+                                mLink.className = 'px-3.5 py-1.5 rounded-full bg-surface-container-low border border-border-subtle hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-1';
+                                mLink.innerHTML = '<span>Open Default Mail App</span> <span class="material-symbols-outlined text-xs">open_in_new</span>';
+
+                                fileActions.appendChild(gLink);
+                                fileActions.appendChild(mLink);
+                            }
+                            successMsg.classList.remove('hidden');
+                            errorMsg.classList.add('hidden');
+                            return;
+                        }
+
+                        // On live site: Attempt background submission with 4s timeout
+                        let sentViaApi = false;
                         try {
+                            const controller = new AbortController();
+                            const timeoutId = setTimeout(() => controller.abort(), 4000);
+
+                            const formData = new FormData(contactForm);
                             const response = await fetch("https://formsubmit.co/ajax/ailvedansh@gmail.com", {
                                 method: "POST",
                                 body: formData,
-                                headers: { 'Accept': 'application/json' }
+                                headers: { 'Accept': 'application/json' },
+                                signal: controller.signal
                             });
+                            clearTimeout(timeoutId);
 
-                            const data = await response.json().catch(() => null);
-
-                            if (response.ok && (!data || data.success === "true" || data.success === true || response.status === 200)) {
-                                contactForm.reset();
-                                submitBtn.disabled = false;
-                                submitBtn.style.opacity = '1';
-                                submitBtn.innerHTML = '<span>Message Sent!</span> <span class="material-symbols-outlined text-sm">done</span>';
-                                successMsg.classList.remove('hidden');
-                                errorMsg.classList.add('hidden');
-                            } else {
-                                const msg = (data && data.message) ? data.message : '';
-                                if (msg.toLowerCase().includes('activate') || msg.toLowerCase().includes('confirm')) {
-                                    errorMsg.innerHTML = '<span class="material-symbols-outlined text-lg">mark_email_unread</span> Check your Gmail (ailvedansh@gmail.com) and click <strong>Activate Form</strong> to enable submissions.';
-                                } else {
-                                    errorMsg.innerHTML = '<span class="material-symbols-outlined text-lg">error</span> Submission failed. Please try again or email directly to <a href="mailto:ailvedansh@gmail.com" class="underline font-semibold">ailvedansh@gmail.com</a>.';
+                            if (response.ok) {
+                                const data = await response.json().catch(() => null);
+                                if (!data || data.success === "true" || data.success === true || response.status === 200) {
+                                    sentViaApi = true;
                                 }
-                                errorMsg.classList.remove('hidden');
-                                successMsg.classList.add('hidden');
-                                submitBtn.disabled = false;
-                                submitBtn.style.opacity = '1';
-                                submitBtn.innerHTML = '<span>Try Again</span> <span class="material-symbols-outlined text-sm">refresh</span>';
                             }
                         } catch (err) {
-                            console.error("Form submission error:", err);
+                            console.warn("External form service unreachable, switching to direct mail link:", err);
+                        }
+
+                        if (sentViaApi) {
+                            contactForm.reset();
                             submitBtn.disabled = false;
                             submitBtn.style.opacity = '1';
-                            submitBtn.innerHTML = '<span>Try Again</span> <span class="material-symbols-outlined text-sm">refresh</span>';
-                            errorMsg.innerHTML = '<span class="material-symbols-outlined text-lg">error</span> Submission failed. Check your Gmail (ailvedansh@gmail.com) to activate FormSubmit, or email directly to <a href="mailto:ailvedansh@gmail.com" class="underline font-semibold">ailvedansh@gmail.com</a>.';
-                            errorMsg.classList.remove('hidden');
-                            successMsg.classList.add('hidden');
+                            submitBtn.innerHTML = '<span>Message Sent!</span> <span class="material-symbols-outlined text-sm">done</span>';
+                            successMsg.innerHTML = '<span class="material-symbols-outlined text-lg text-emerald-600">check_circle</span> Thank you! Your message was delivered successfully.';
+                            successMsg.classList.remove('hidden');
+                            errorMsg.classList.add('hidden');
+                        } else {
+                            // Seamless fallback: Open user's email client and provide 1-click web links
+                            contactForm.reset();
+                            submitBtn.disabled = false;
+                            submitBtn.style.opacity = '1';
+                            submitBtn.innerHTML = '<span>Send Another</span> <span class="material-symbols-outlined text-sm">send</span>';
+                            
+                            window.location.href = mailtoUrl;
+
+                            successMsg.innerHTML = `
+                                <div class="p-4 rounded-xl bg-surface-container border border-border-subtle text-foreground text-xs space-y-2.5 mt-2">
+                                    <p class="font-semibold flex items-center gap-1.5 text-primary text-sm">
+                                        <span class="material-symbols-outlined text-base">outgoing_mail</span> Message Prepared for ailvedansh@gmail.com
+                                    </p>
+                                    <p class="text-text-muted leading-relaxed">Your message has been pre-filled into your email client. If it did not open automatically, choose an option below to deliver your note instantly:</p>
+                                    <div class="flex flex-wrap gap-2 pt-1" id="live-fallback-actions"></div>
+                                </div>
+                            `;
+                            const liveActions = document.getElementById('live-fallback-actions');
+                            if (liveActions) {
+                                const gLink = document.createElement('a');
+                                gLink.href = gmailWebUrl;
+                                gLink.target = '_blank';
+                                gLink.rel = 'noopener noreferrer';
+                                gLink.className = 'px-3.5 py-1.5 rounded-full bg-primary text-on-primary font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-1';
+                                gLink.innerHTML = '<span>Open in Gmail Web</span> <span class="material-symbols-outlined text-xs">north_east</span>';
+
+                                const mLink = document.createElement('a');
+                                mLink.href = mailtoUrl;
+                                mLink.className = 'px-3.5 py-1.5 rounded-full bg-surface-container-low border border-border-subtle hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-1';
+                                mLink.innerHTML = '<span>Open Default Mail App</span> <span class="material-symbols-outlined text-xs">open_in_new</span>';
+
+                                liveActions.appendChild(gLink);
+                                liveActions.appendChild(mLink);
+                            }
+                            successMsg.classList.remove('hidden');
+                            errorMsg.classList.add('hidden');
                         }
                     });
                 }
