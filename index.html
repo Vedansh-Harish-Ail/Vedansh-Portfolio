@@ -581,6 +581,16 @@
       ]
     }
     </script>
+    <!-- Immediate Theme Initialization (Defaults to Light Mode) -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+        } else {
+            document.documentElement.classList.add('light');
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 </head>
 
 <body class="font-body-md text-on-surface selection:bg-stone-300 dark:selection:bg-stone-700">
@@ -1788,7 +1798,7 @@
                     </div>
 
                     <div class="flex-1 w-full">
-                        <form id="contact-form" class="space-y-6">
+                        <form id="contact-form" class="space-y-6" action="https://formsubmit.co/ailvedansh@gmail.com" method="POST">
                             <!-- FormSubmit Configuration & Anti-Spam Honeypot -->
                             <input type="hidden" name="_subject" value="New Portfolio Inquiry for Vedansh Harish Ail" />
                             <input type="hidden" name="_template" value="table" />
@@ -2119,7 +2129,7 @@
                     });
                 }
 
-                // Contact Form AJAX Submission Logic
+                // Contact Form Submission Logic (AJAX with file protocol & activation handling)
                 const contactForm = document.getElementById('contact-form');
                 const submitBtn = document.getElementById('submit-btn');
                 const successMsg = document.getElementById('success-msg');
@@ -2127,6 +2137,17 @@
 
                 if (contactForm) {
                     contactForm.addEventListener('submit', async (e) => {
+                        // If opened locally via file://, browser blocks external AJAX due to CORS null origin
+                        if (window.location.protocol === 'file:') {
+                            e.preventDefault();
+                            alert("Notice: Browsers block AJAX form submissions when opened directly from file:/// (CORS null origin policy).\n\nPlease test the contact form on your live Vercel site or via localhost server. Opening your mail client now as fallback.");
+                            const name = encodeURIComponent(document.getElementById('form-name')?.value || '');
+                            const email = encodeURIComponent(document.getElementById('form-email')?.value || '');
+                            const msg = encodeURIComponent(document.getElementById('form-message')?.value || '');
+                            window.location.href = `mailto:ailvedansh@gmail.com?subject=Portfolio Inquiry from ${name}&body=${msg}%0A%0AFrom: ${email}`;
+                            return;
+                        }
+
                         e.preventDefault();
 
                         // Check Honeypot for spam bot mitigation
@@ -2138,7 +2159,6 @@
 
                         submitBtn.disabled = true;
                         submitBtn.style.opacity = '0.7';
-                        const originalBtnHtml = submitBtn.innerHTML;
                         submitBtn.innerHTML = '<span>Sending...</span> <span class="material-symbols-outlined text-sm animate-spin">refresh</span>';
 
                         const formData = new FormData(contactForm);
@@ -2150,19 +2170,34 @@
                                 headers: { 'Accept': 'application/json' }
                             });
 
-                            if (response.ok) {
+                            const data = await response.json().catch(() => null);
+
+                            if (response.ok && (!data || data.success === "true" || data.success === true || response.status === 200)) {
                                 contactForm.reset();
+                                submitBtn.disabled = false;
+                                submitBtn.style.opacity = '1';
                                 submitBtn.innerHTML = '<span>Message Sent!</span> <span class="material-symbols-outlined text-sm">done</span>';
                                 successMsg.classList.remove('hidden');
                                 errorMsg.classList.add('hidden');
                             } else {
-                                throw new Error('Submission response was not ok');
+                                const msg = (data && data.message) ? data.message : '';
+                                if (msg.toLowerCase().includes('activate') || msg.toLowerCase().includes('confirm')) {
+                                    errorMsg.innerHTML = '<span class="material-symbols-outlined text-lg">mark_email_unread</span> Check your Gmail (ailvedansh@gmail.com) and click <strong>Activate Form</strong> to enable submissions.';
+                                } else {
+                                    errorMsg.innerHTML = '<span class="material-symbols-outlined text-lg">error</span> Submission failed. Please try again or email directly to <a href="mailto:ailvedansh@gmail.com" class="underline font-semibold">ailvedansh@gmail.com</a>.';
+                                }
+                                errorMsg.classList.remove('hidden');
+                                successMsg.classList.add('hidden');
+                                submitBtn.disabled = false;
+                                submitBtn.style.opacity = '1';
+                                submitBtn.innerHTML = '<span>Try Again</span> <span class="material-symbols-outlined text-sm">refresh</span>';
                             }
                         } catch (err) {
                             console.error("Form submission error:", err);
                             submitBtn.disabled = false;
                             submitBtn.style.opacity = '1';
                             submitBtn.innerHTML = '<span>Try Again</span> <span class="material-symbols-outlined text-sm">refresh</span>';
+                            errorMsg.innerHTML = '<span class="material-symbols-outlined text-lg">error</span> Submission failed. Check your Gmail (ailvedansh@gmail.com) to activate FormSubmit, or email directly to <a href="mailto:ailvedansh@gmail.com" class="underline font-semibold">ailvedansh@gmail.com</a>.';
                             errorMsg.classList.remove('hidden');
                             successMsg.classList.add('hidden');
                         }
@@ -2175,13 +2210,13 @@
             }
         });
 
-        // Theme Toggle Persistence & State Synchronization
+        // Theme Toggle Persistence & State Synchronization (Light mode is DEFAULT)
         const themeToggles = document.querySelectorAll('.theme-toggle-input');
         const rootHtml = document.documentElement;
 
-        // Check stored theme or prefers-color-scheme
+        // Light mode is default unless explicitly set to 'dark' by the user
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (savedTheme === 'dark') {
             rootHtml.classList.add('dark');
             rootHtml.classList.remove('light');
             themeToggles.forEach(t => t.checked = true);
