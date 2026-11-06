@@ -1,4 +1,26 @@
 {
+  "name": "vedansh-harish-ail-portfolio",
+  "version": "2.0.0",
+  "description": "Personal Portfolio & Technical Case Studies for Vedansh Harish Ail — Software Engineer, Full Stack Developer, and Quality Engineer.",
+  "scripts": {
+    "test": "node validate-seo.js && node test-links.js",
+    "test:seo": "node validate-seo.js",
+    "test:links": "node test-links.js"
+  },
+  "keywords": [
+    "portfolio",
+    "software-engineer",
+    "full-stack",
+    "quality-engineering",
+    "selenium",
+    "python",
+    "react",
+    "flask",
+    "postgresql",
+    "seo"
+  ],
+  "author": "Vedansh Harish Ail <ailvedansh@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "jimp": "^1.6.1"
   }

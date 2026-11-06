@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Wedding Invitation Platform — Interactive RSVP &amp; Celebration Experience | Vedansh Harish Ail</title>
+    <meta name="description" content="Technical case study of Wedding Invitation Platform: An interactive digital celebration platform engineered with React, real-time RSVP database sync, itinerary schedules, and Maps integration." />
+    <meta name="author" content="Vedansh Harish Ail" />
+    <link rel="canonical" href="https://vedansh-portfolio-beta.vercel.app/projects/wedding-invitation" />
+    <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+
+    <!-- Open Graph Metadata -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Wedding Invitation Platform Case Study — Vedansh Harish Ail" />
+    <meta property="og:description" content="An interactive wedding celebration platform with real-time RSVP synchronization, event itinerary, and guest management." />
+    <meta property="og:url" content="https://vedansh-portfolio-beta.vercel.app/projects/wedding-invitation" />
+    <meta property="og:image" content="https://vedansh-portfolio-beta.vercel.app/assets/project-wedding.svg" />
+    <meta property="og:site_name" content="Vedansh Harish Ail Portfolio" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Wedding Platform Case Study | Vedansh Harish Ail" />
+    <meta name="twitter:description" content="Interactive digital wedding invitation with real-time RSVP database sync and mobile-first design." />
+    <meta name="twitter:image" content="https://vedansh-portfolio-beta.vercel.app/assets/project-wedding.svg" />
+
+    <!-- Tailwind & Google Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "text-muted": "var(--muted-foreground)",
+                        "surface-primary": "var(--background)",
+                        "background": "var(--background)",
+                        "on-surface": "var(--foreground)",
+                        "primary": "var(--primary)",
+                        "on-primary": "var(--primary-foreground)",
+                        "surface-container": "var(--card)",
+                        "surface-container-low": "var(--muted)",
+                        "border-subtle": "var(--border)"
+                    },
+                    borderRadius: { "luxury": "2.5rem" },
+                    fontFamily: {
+                        "playfair": ["Playfair Display", "serif"],
+                        "headline": ["Newsreader", "serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        :root {
+            --card: #fcfcfc;
+            --muted: #efefef;
+            --border: #d8d8d8;
+            --primary: #644a40;
+            --background: #f9f9f9;
+            --foreground: #202020;
+            --muted-foreground: #646464;
+            --primary-foreground: #ffffff;
+        }
+        .dark {
+            --card: #222222;
+            --muted: #2c2c2c;
+            --border: #333333;
+            --primary: #ffe0c2;
+            --background: #111111;
+            --foreground: #eeeeee;
+            --muted-foreground: #b4b4b4;
+            --primary-foreground: #081a1b;
+        }
+        .luxury-border { border-radius: 40px; }
+        body { background-color: var(--background); color: var(--foreground); }
+    </style>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://vedansh-portfolio-beta.vercel.app/" },
+            { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://vedansh-portfolio-beta.vercel.app/#work" },
+            { "@type": "ListItem", "position": 3, "name": "Wedding Invitation Platform", "item": "https://vedansh-portfolio-beta.vercel.app/projects/wedding-invitation" }
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Wedding Invitation Platform",
+          "description": "Interactive celebration platform with real-time RSVP database synchronization and event itinerary.",
+          "applicationCategory": "LifestyleApplication",
+          "operatingSystem": "Web",
+          "author": {
+            "@type": "Person",
+            "name": "Vedansh Harish Ail",
+            "url": "https://vedansh-portfolio-beta.vercel.app/"
+          }
+        }
+      ]
+    }
+    </script>
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+        } else {
+            document.documentElement.classList.add('light');
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="font-sans selection:bg-stone-300 dark:selection:bg-stone-700">
+    <nav class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md border-b border-border-subtle py-4 px-6 md:px-12 flex justify-between items-center max-w-screen-2xl mx-auto">
+        <a href="../../index.html" class="text-xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm">arrow_back</span>
+            <span>Vedansh Harish Ail</span>
+        </a>
+        <div class="flex items-center gap-3 md:gap-6">
+            <button id="theme-toggle-btn" aria-label="Toggle dark mode" class="w-9 h-9 rounded-full border border-border-subtle bg-surface-container flex items-center justify-center text-foreground hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+                <span class="material-symbols-outlined text-sm dark:hidden">dark_mode</span>
+                <span class="material-symbols-outlined text-sm hidden dark:inline">light_mode</span>
+            </button>
+            <a href="../../index.html#work" class="text-sm text-text-muted hover:text-foreground transition-colors font-medium hidden sm:inline">All Projects</a>
+            <a href="../../index.html#contact" class="bg-primary text-on-primary px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity">Contact</a>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-12 md:py-20">
+        <nav aria-label="Breadcrumb" class="mb-8">
+            <ol class="flex items-center gap-2 text-sm text-text-muted">
+                <li><a href="../../index.html" class="hover:text-foreground transition-colors">Home</a></li>
+                <li><span>/</span></li>
+                <li><a href="../../index.html#work" class="hover:text-foreground transition-colors">Projects</a></li>
+                <li><span>/</span></li>
+                <li class="text-foreground font-medium" aria-current="page">Wedding Platform</li>
+            </ol>
+        </nav>
+
+        <header class="mb-12">
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+                <span class="px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Interactive Web Experience</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium border border-border-subtle text-primary font-semibold">vha.lokh Client Initiative</span>
+            </div>
+            <h1 class="font-playfair text-4xl md:text-6xl text-foreground font-bold mb-6 leading-tight">
+                Digital Wedding Invitation &amp; RSVP Platform
+            </h1>
+            <p class="text-lg md:text-xl text-text-muted leading-relaxed max-w-3xl mb-8">
+                An interactive celebration platform designed to replace paper wedding cards with responsive, animated event schedules, 1-click Google Maps navigation, dietary preference collection, and real-time RSVP database sync.
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank" rel="noopener noreferrer" class="bg-primary text-on-primary px-8 py-3.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-sm">
+                    View on GitHub <span class="material-symbols-outlined text-sm">code</span>
+                </a>
+                <a href="../../index.html#work" class="border border-border-subtle bg-surface-container text-foreground px-8 py-3.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-sm">
+                    Explore All Works <span class="material-symbols-outlined text-sm">grid_view</span>
+                </a>
+            </div>
+        </header>
+
+        <div class="mb-16 rounded-3xl overflow-hidden border border-border-subtle shadow-xl bg-surface-container">
+            <img src="../../assets/project-wedding.svg" alt="Digital wedding invitation platform visual and RSVP interface" class="w-full h-auto object-cover" width="1024" height="640" />
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl bg-surface-container border border-border-subtle mb-16 text-sm">
+            <div>
+                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Frontend</span>
+                <span class="font-semibold text-foreground">React / Tailwind CSS</span>
+            </div>
+            <div>
+                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">State Sync</span>
+                <span class="font-semibold text-foreground">REST API &amp; Webhooks</span>
+            </div>
+            <div>
+                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Integrations</span>
+                <span class="font-semibold text-foreground">Google Maps &amp; Calendars</span>
+            </div>
+            <div>
+                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Performance</span>
+                <span class="font-semibold text-foreground">Mobile-First 60fps</span>
+            </div>
+        </div>
+
+        <article class="space-y-16">
+            <section>
+                <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Concept &amp; Implementation</h2>
+                <div class="prose max-w-none text-text-muted leading-relaxed space-y-4">
+                    <p>
+                        Traditional printed invitations lack interactive event updates, force hosts to manually track guest counts by phone, and make venue navigation difficult for out-of-town guests.
+                    </p>
+                    <p>
+                        Developed under the <strong>vha.lokh</strong> freelance digital umbrella, this platform unites bespoke aesthetic design (warm gold accents, elegant typography, fluid micro-interactions) with an asynchronous RSVP collector that instantly logs guest headcounts, meal preferences, and song requests into an administrative spreadsheet.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Technologies Employed</h2>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">React</span>
+                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">JavaScript</span>
+                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Tailwind CSS</span>
+                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Google Maps API</span>
+                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">REST API</span>
+                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Responsive Design</span>
+                </div>
+            </section>
+        </article>
+
+        <div class="mt-20 pt-8 border-t border-border-subtle flex justify-between items-center">
+            <a href="../resume-builder/index.html" class="text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">arrow_back</span> Previous: Resume Builder
+            </a>
+            <a href="../news-scraper/index.html" class="text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
+                Next Case Study: News Scraper <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </a>
+        </div>
+    </main>
+
+    <footer class="mt-20 border-t border-border-subtle py-8 text-center text-sm text-text-muted">
+        <p>&copy; 2026 Vedansh Harish Ail. All rights reserved.</p>
+    </footer>
+    <script>
+        const themeBtn = document.getElementById('theme-toggle-btn');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.toggle('dark');
+                document.documentElement.classList.toggle('light', !isDark);
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        }
+    </script>
+</body>
+</html>
+

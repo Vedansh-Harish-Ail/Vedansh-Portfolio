@@ -1,0 +1,70 @@
+# Vedansh Harish Ail
+
+> Software Engineer | Full Stack Development | Quality Engineering
+
+Vedansh Harish Ail is a Software Engineer and MCA (Master of Computer Applications) graduate from St. Agnes College (Autonomous), Mangaluru, with hands-on experience in full-stack web development, backend engineering, RESTful API design, database architecture, and quality engineering.
+
+## Summary & Positioning
+- Professional Focus: Full Stack Software Engineering, Backend Architecture, Quality Engineering & Test Automation.
+- Educational Credentials: MCA from St. Agnes College (Autonomous), Mangaluru (Completed, CGPA: 8.33); BCA from Dr. P.D.P. - P.S.P. Government First Grade College (Completed 2024, CGPA: 7.87).
+- Key Strengths: Scalable web architecture, automated test pipelines, relational data modeling, API integration, and clean code principles.
+
+## Core Technical Skills
+- Programming Languages: Python, Java, JavaScript (ES6+), SQL
+- Frontend Technologies: React, Next.js, HTML5, CSS3, Tailwind CSS
+- Backend & APIs: Flask, FastAPI, REST APIs, JSON APIs, Authentication & RBAC
+- Databases: PostgreSQL, SQLite
+- Quality Engineering & Testing: Selenium WebDriver, Manual Testing, Automation Testing, Postman API Testing, Test Case Design
+- DevOps & Developer Tools: Git, GitHub, Jenkins CI/CD, Jira Defect Tracking, VS Code, PyCharm
+- Emerging & Web3: Solidity, Ethereum, Hardhat, Ethers.js
+
+## Professional Experience
+- Software Developer Intern | PrimeSophic Technologies (April 2026 – Aug 2026)
+  - Developed responsive, data-driven web applications using React, Flask, and PostgreSQL.
+  - Designed secure RESTful APIs, optimized SQL queries, and integrated frontend UI with backend microservices.
+  - Improved application usability with reusable component architecture and responsive design.
+  - Collaborated within Git-based team workflows and Agile development practices.
+
+- Web Development Intern | Oasis Infobyte (OIBSIP) (Oct 2025 – Nov 2025)
+  - Engineered modular, accessible web interfaces using HTML5, CSS3, and JavaScript.
+  - Optimized DOM updates and frontend load performance.
+  - Automated repetitive regression testing tasks using Python scripts.
+
+- Freelance Developer & Digital Solutions Provider | vha.lokh (2023 – Present)
+  - Founded and operates vha.lokh, an independent freelance practice providing bespoke digital services.
+  - Developed and launched custom, responsive websites for small businesses and local entrepreneurs.
+  - Engineered interactive digital wedding invitation platforms with real-time RSVP sync, venue maps, and custom digital cards.
+  - Designed marketing collateral, promotional posters, and social media creative assets.
+  - Provided hands-on IT support, domain configuration, website maintenance, and digital marketing consulting.
+
+- Quality Engineering & Testing Competencies
+  - Designed and executed automated end-to-end regression test suites with Selenium.
+  - Defect reproduction, severity analysis, and lifecycle tracking using Jira.
+  - Integrated automated testing within continuous integration pipelines via Jenkins.
+  - Performed SQL backend verification and cross-endpoint data synchronization testing.
+
+## Featured Projects
+- [AgroChain](https://vedansh-portfolio-beta.vercel.app/projects/agrochain): Hybrid Web2/Web3 agricultural supply chain platform with Solidity smart contracts for crop traceability, decentralized ratings, and peer-to-peer microfinance. (React, Flask, Solidity, Ethers.js, Hardhat).
+- [Meri Panchayat](https://vedansh-portfolio-beta.vercel.app/projects/meri-panchayat): Scalable public issue reporting portal for rural governance with secure Email OTP, Role-Based Access Control (RBAC), and Kannada localization engine. (Flask, SQLite, Python, HTML/CSS).
+- [Helio - Personal Document Vault](https://vedansh-portfolio-beta.vercel.app/projects/helio): Zero-knowledge encrypted personal document storage system featuring client-side cryptographic hashing, categorized record vaults, and verified access control. (Python, Flask, SQLite/PostgreSQL, Cryptography).
+- [PrintFlow Agent](https://vedansh-portfolio-beta.vercel.app/projects/printflow): Intelligent workflow automation agent managing document spooling, SLA-based priority queue routing, preflight parsing, and printer hardware dispatch. (Python, REST APIs, Queue Orchestration).
+- [Smart Recipe Generator](https://vedansh-portfolio-beta.vercel.app/projects/smart-recipe-generator): Responsive recipe recommendation platform utilizing the Spoonacular API with an offline-first fallback database of 60+ recipes. (HTML5, CSS3, JavaScript).
+- [Resume Builder](https://vedansh-portfolio-beta.vercel.app/projects/resume-builder): Privacy-first ATS resume generator with real-time dynamic preview, client-side PDF parsing via PDF.js, and instant Harvard template export. (HTML5, Tailwind CSS, JavaScript).
+- [Wedding Invitation Platform](https://vedansh-portfolio-beta.vercel.app/projects/wedding-invitation): Bespoke digital wedding celebration platform featuring dynamic ceremony schedules, 1-click maps navigation, and real-time RSVP tracking. (React, Tailwind CSS, JavaScript).
+- [News Scraper](https://vedansh-portfolio-beta.vercel.app/projects/news-scraper): Automated multi-source news aggregator and curation tool that extracts, categorizes, and summarizes headlines in real time. (Python, BeautifulSoup, Flask).
+
+## Education & Certifications
+- Master of Computer Applications (MCA) | St. Agnes College (Autonomous), Mangaluru (Completed, CGPA: 8.33)
+- Bachelor of Computer Applications (BCA) | Dr. P.D.P. - P.S.P. Government First Grade College (Completed 2024, CGPA: 7.87)
+- AWS Solutions Architecture Job Simulation (Forage)
+- Electronic Arts (EA) Software Engineering Job Simulation (Forage)
+- Data Structures & Algorithms Training (ExcelR)
+- Advanced Microsoft Excel (Udemy)
+- Internet of Things (IoT) Workshop
+
+## Verified Links
+- Portfolio Website: https://vedansh-portfolio-beta.vercel.app/
+- GitHub Profile: https://github.com/Vedansh-Harish-Ail
+- LinkedIn Profile: https://linkedin.com/in/vedansh-harish-ail
+- Email: ailvedansh@gmail.com
+- Resume Download: https://vedansh-portfolio-beta.vercel.app/assets/Resume_Vedansh_Harish_Ail_22.pdf
