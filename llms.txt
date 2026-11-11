@@ -31,7 +31,7 @@ Vedansh Harish Ail is a Software Engineer and MCA (Master of Computer Applicatio
   - Automated repetitive regression testing tasks using Python scripts.
 
 - Freelance Developer & Digital Solutions Provider | vha.lokh (2023 – Present)
-  - Founded and operates vha.lokh, an independent freelance practice providing bespoke digital services.
+  - Founded and operates vha.lokh, an independent freelance practice providing bespoke digital services (Live Portfolio: https://vhalokh.vercel.app).
   - Developed and launched custom, responsive websites for small businesses and local entrepreneurs.
   - Engineered interactive digital wedding invitation platforms with real-time RSVP sync, venue maps, and custom digital cards.
   - Designed marketing collateral, promotional posters, and social media creative assets.
@@ -64,6 +64,7 @@ Vedansh Harish Ail is a Software Engineer and MCA (Master of Computer Applicatio
 
 ## Verified Links
 - Portfolio Website: https://vedansh-portfolio-beta.vercel.app/
+- Freelance Practice (vha.lokh): https://vhalokh.vercel.app
 - GitHub Profile: https://github.com/Vedansh-Harish-Ail
 - LinkedIn Profile: https://linkedin.com/in/vedansh-harish-ail
 - Email: ailvedansh@gmail.com
