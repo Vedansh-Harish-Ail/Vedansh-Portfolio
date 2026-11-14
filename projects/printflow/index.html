@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>PrintFlow Agent — Automated Workflow &amp; Print Queue Orchestration | Vedansh Harish Ail</title>
-    <meta name="description" content="Technical case study of PrintFlow Agent: An automated print spooling, SLA-based priority routing, and hardware dispatch orchestration system by Vedansh Harish Ail." />
+    <meta name="description"
+        content="Technical case study of PrintFlow Agent: An automated print spooling, SLA-based priority routing, and hardware dispatch orchestration system by Vedansh Harish Ail." />
     <meta name="author" content="Vedansh Harish Ail" />
     <link rel="canonical" href="https://vedansh-portfolio-beta.vercel.app/projects/printflow" />
     <link rel="icon" type="image/png" href="../../assets/favicon.png" />
@@ -12,7 +14,8 @@
     <!-- Open Graph Metadata -->
     <meta property="og:type" content="article" />
     <meta property="og:title" content="PrintFlow Agent Case Study — Vedansh Harish Ail" />
-    <meta property="og:description" content="Intelligent workflow management and automated print job queue orchestration system." />
+    <meta property="og:description"
+        content="Intelligent workflow management and automated print job queue orchestration system." />
     <meta property="og:url" content="https://vedansh-portfolio-beta.vercel.app/projects/printflow" />
     <meta property="og:image" content="https://vedansh-portfolio-beta.vercel.app/assets/project-printflow.svg" />
     <meta property="og:site_name" content="Vedansh Harish Ail Portfolio" />
@@ -20,13 +23,18 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="PrintFlow Agent Case Study | Vedansh Harish Ail" />
-    <meta name="twitter:description" content="Python workflow automation agent for print queues, preflight validation, and hardware telemetry." />
+    <meta name="twitter:description"
+        content="Python workflow automation agent for print queues, preflight validation, and hardware telemetry." />
     <meta name="twitter:image" content="https://vedansh-portfolio-beta.vercel.app/assets/project-printflow.svg" />
 
     <!-- Tailwind & Google Fonts -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
 
     <script id="tailwind-config">
         tailwind.config = {
@@ -66,6 +74,7 @@
             --muted-foreground: #646464;
             --primary-foreground: #ffffff;
         }
+
         .dark {
             --card: #222222;
             --muted: #2c2c2c;
@@ -76,8 +85,15 @@
             --muted-foreground: #b4b4b4;
             --primary-foreground: #081a1b;
         }
-        .luxury-border { border-radius: 40px; }
-        body { background-color: var(--background); color: var(--foreground); }
+
+        .luxury-border {
+            border-radius: 40px;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+        }
     </style>
 
     <!-- Schema.org JSON-LD -->
@@ -118,20 +134,27 @@
         }
     </script>
 </head>
+
 <body class="font-sans selection:bg-stone-300 dark:selection:bg-stone-700">
     <!-- Navigation -->
-    <nav class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md border-b border-border-subtle py-4 px-6 md:px-12 flex justify-between items-center max-w-screen-2xl mx-auto">
-        <a href="../../index.html" class="text-xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity flex items-center gap-2">
+    <nav
+        class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md border-b border-border-subtle py-4 px-6 md:px-12 flex justify-between items-center max-w-screen-2xl mx-auto">
+        <a href="../../index.html"
+            class="text-xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity flex items-center gap-2">
             <span class="material-symbols-outlined text-sm">arrow_back</span>
             <span>Vedansh Harish Ail</span>
         </a>
         <div class="flex items-center gap-3 md:gap-6">
-            <button id="theme-toggle-btn" aria-label="Toggle dark mode" class="w-9 h-9 rounded-full border border-border-subtle bg-surface-container flex items-center justify-center text-foreground hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+            <button id="theme-toggle-btn" aria-label="Toggle dark mode"
+                class="w-9 h-9 rounded-full border border-border-subtle bg-surface-container flex items-center justify-center text-foreground hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
                 <span class="material-symbols-outlined text-sm dark:hidden">dark_mode</span>
                 <span class="material-symbols-outlined text-sm hidden dark:inline">light_mode</span>
             </button>
-            <a href="../../index.html#work" class="text-sm text-text-muted hover:text-foreground transition-colors font-medium hidden sm:inline">All Projects</a>
-            <a href="../../index.html#contact" class="bg-primary text-on-primary px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity">Contact</a>
+            <a href="../../index.html#work"
+                class="text-sm text-text-muted hover:text-foreground transition-colors font-medium hidden sm:inline">All
+                Projects</a>
+            <a href="../../index.html#contact"
+                class="bg-primary text-on-primary px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity">Contact</a>
         </div>
     </nav>
 
@@ -151,93 +174,376 @@
         <!-- Project Hero Header -->
         <header class="mb-12">
             <div class="flex flex-wrap items-center gap-3 mb-4">
-                <span class="px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Automation &amp; Orchestration</span>
-                <span class="px-3 py-1 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Active Project</span>
+                <span
+                    class="px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Automation
+                    &amp; Orchestration</span>
+                <span
+                    class="px-3 py-1 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Active
+                    Project</span>
             </div>
             <h1 class="font-playfair text-4xl md:text-6xl text-foreground font-bold mb-6 leading-tight">
                 PrintFlow Agent: Intelligent Workflow &amp; Print Orchestrator
             </h1>
             <p class="text-lg md:text-xl text-text-muted leading-relaxed max-w-3xl mb-8">
-                An asynchronous Python daemon engineered to handle document preflight validation, dynamically re-rank queue priorities based on SLAs, balance workload across network print hardware, and provide real-time telemetry.
+                An asynchronous Python daemon engineered to handle document preflight validation, dynamically re-rank
+                queue priorities based on SLAs, balance workload across network print hardware, and provide real-time
+                telemetry.
             </p>
 
             <div class="flex flex-wrap gap-4">
-                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank" rel="noopener noreferrer" class="bg-primary text-on-primary px-8 py-3.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-sm">
+                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank" rel="noopener noreferrer"
+                    class="bg-primary text-on-primary px-8 py-3.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-sm">
                     View on GitHub <span class="material-symbols-outlined text-sm">code</span>
-                </a>
-                <a href="../../index.html#work" class="border border-border-subtle bg-surface-container text-foreground px-8 py-3.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-sm">
-                    Explore Architecture <span class="material-symbols-outlined text-sm">account_tree</span>
-                </a>
-            </div>
+                    <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-8">
+                        <!-- Top Bar: Breadcrumb & Quick Actions -->
+                        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                            <nav aria-label="Breadcrumb">
+                                <ol class="flex items-center gap-2 text-xs sm:text-sm text-text-muted">
+                                    <li><a href="../../index.html"
+                                            class="hover:text-foreground transition-colors">Home</a></li>
+                                    <li><span>/</span></li>
+                                    <li><a href="../../index.html#work"
+                                            class="hover:text-foreground transition-colors">Projects</a></li>
+                                    <li><span>/</span></li>
+                                    <li class="text-foreground font-medium" aria-current="page">PrintFlow Agent</li>
+                                </ol>
+                            </nav>
+                            <div class="flex items-center gap-3">
+                                <a href="../helio/index.html"
+                                    class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                                    <span class="material-symbols-outlined text-sm">arrow_back</span> Previous
+                                </a>
+                                <a href="../../index.html#work"
+                                    class="border border-border-subtle bg-surface-container text-foreground px-8 py-3.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-sm">
+                                    Explore Architecture <span
+                                        class="material-symbols-outlined text-sm">account_tree</span>
+                                    <a href="../smart-recipe-generator/index.html"
+                                        class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                                        Next Project <span
+                                            class="material-symbols-outlined text-sm">arrow_forward</span>
+                                    </a>
+                            </div>
         </header>
 
         <!-- Graphic -->
         <div class="mb-16 rounded-3xl overflow-hidden border border-border-subtle shadow-xl bg-surface-container">
-            <img src="../../assets/project-printflow.svg" alt="PrintFlow agent queue orchestrator pipeline diagram" class="w-full h-auto object-cover" width="1024" height="640" />
+            <img src="../../assets/project-printflow.svg" alt="PrintFlow agent queue orchestrator pipeline diagram"
+                class="w-full h-auto object-cover" width="1024" height="640" />
         </div>
 
         <!-- Project Metadata Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl bg-surface-container border border-border-subtle mb-16 text-sm">
+        <div
+            class="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl bg-surface-container border border-border-subtle mb-16 text-sm">
             <div>
                 <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Architecture</span>
                 <span class="font-semibold text-foreground">Asynchronous Worker Pipeline</span>
-            </div>
-            <div>
-                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Language</span>
-                <span class="font-semibold text-foreground">Python 3.11+</span>
-            </div>
-            <div>
-                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Protocols</span>
-                <span class="font-semibold text-foreground">TCP / IPP / RAW Socket</span>
-            </div>
-            <div>
-                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Queue Model</span>
-                <span class="font-semibold text-foreground">SLA-Weighted Priority</span>
-            </div>
-        </div>
+                <!-- Upper Bento Deck: Executive Overview & Pipeline Visual -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+                    <!-- Left Bento: Executive Overview (7 Cols) -->
+                    <div
+                        class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— PROJECT
+                                    OVERVIEW</span>
+                                <div class="flex items-center gap-2">
+                                    <span
+                                        class="px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Automation
+                                        &amp; Orchestration</span>
+                                    <span
+                                        class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Active
+                                        Project</span>
+                                </div>
+                            </div>
+                            <h1
+                                class="font-playfair text-3xl sm:text-4xl lg:text-5xl text-foreground font-bold mb-4 leading-tight">
+                                PrintFlow Agent: Intelligent Workflow &amp; Print Orchestrator
+                            </h1>
+                            <p class="text-sm sm:text-base text-text-muted leading-relaxed mb-6">
+                                An asynchronous Python daemon engineered to handle document preflight validation,
+                                dynamically re-rank queue priorities based on SLAs, balance workload across network
+                                print hardware, and provide real-time telemetry.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mb-6">
+                                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-xs sm:text-sm shadow-sm">
+                                    View on GitHub <span class="material-symbols-outlined text-xs">code</span>
+                                </a>
+                                <a href="../../index.html#work"
+                                    class="border border-border-subtle bg-surface-container-low text-foreground px-6 py-2.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-xs sm:text-sm">
+                                    Explore Architecture <span
+                                        class="material-symbols-outlined text-xs">account_tree</span>
+                                </a>
+                            </div>
+                        </div>
 
-        <!-- Article Body -->
-        <article class="space-y-16">
-            <section>
-                <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">System Design &amp; Pipeline</h2>
-                <div class="prose max-w-none text-text-muted leading-relaxed space-y-4">
-                    <p>
-                        In high-throughput environments like university documentation centers or logistics dispatch offices, print jobs routinely fail due to corrupted PostScript formatting, paper tray mismatches, or blocking FIFO queues where a 500-page job stalls critical 1-page receipts.
-                    </p>
-                    <p>
-                        PrintFlow Agent was designed with a decoupled four-stage lifecycle:
-                    </p>
-                    <ol class="list-decimal list-inside space-y-2">
-                        <li><strong>Preflight Sanitization:</strong> Inspects inbound PDF/PostScript bytes for structural validity, font embedding, and dimension bounds.</li>
-                        <li><strong>Dynamic Priority Scheduler:</strong> Uses a weighted algorithm factoring in job size, client tier, and deadline SLA to re-rank the dispatch queue within 15 milliseconds.</li>
-                        <li><strong>Hardware Dispatcher:</strong> Streams chunks via raw TCP port 9100 or IPP to available cluster devices, failing over seamlessly if a device reports paper jams or low toner.</li>
-                        <li><strong>Telemetry Daemon:</strong> Emits structured JSON events into an audit log for monitoring throughput, device duty cycles, and turnaround times.</li>
-                    </ol>
+                        <!-- Integrated 4-Metric Grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-border-subtle">
+                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                    ARCHITECTURE</span>
+                                <span class="font-semibold text-foreground text-xs sm:text-sm">Async Worker
+                                    Pipeline</span>
+                            </div>
+                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                    ENGINE</span>
+                                <span class="font-semibold text-foreground text-xs sm:text-sm">Python 3.11+ /
+                                    Asyncio</span>
+                            </div>
+                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                    PROTOCOLS</span>
+                                <span class="font-semibold text-foreground text-xs sm:text-sm">TCP / IPP / RAW
+                                    Socket</span>
+                            </div>
+                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">— QUEUE
+                                    MODEL</span>
+                                <span class="font-semibold text-foreground text-xs sm:text-sm">SLA-Weighted
+                                    Priority</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Language</span>
+                        <span class="font-semibold text-foreground">Python 3.11+</span>
+
+                        <!-- Right Bento: Live Preview & Diagram (5 Cols) -->
+                        <div
+                            class="lg:col-span-5 p-6 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— PIPELINE
+                                    ARCHITECTURE</span>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    <span>Async Engine</span>
+                                </span>
+                            </div>
+                            <div
+                                class="rounded-2xl overflow-hidden border border-border-subtle shadow-inner bg-surface-container-low aspect-[16/10] flex items-center justify-center p-2">
+                                <img src="../../assets/project-printflow.svg"
+                                    alt="PrintFlow agent queue orchestrator pipeline diagram"
+                                    class="w-full h-full object-contain" width="1024" height="640" />
+                            </div>
+                            <div class="pt-3 flex items-center justify-between text-xs text-text-muted">
+                                <span>Decoupled 4-stage document ingestion &amp; hardware spooler</span>
+                                <a href="../../index.html#work"
+                                    class="text-primary hover:underline font-medium inline-flex items-center gap-0.5">
+                                    Details <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Protocols</span>
+                            <span class="font-semibold text-foreground">TCP / IPP / RAW Socket</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Queue Model</span>
+                            <span class="font-semibold text-foreground">SLA-Weighted Priority</span>
+                        </div>
+                    </div>
+
+                    <!-- Article Body -->
+                    <article class="space-y-16">
+                        <section>
+                            <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">System Design &amp;
+                                Pipeline</h2>
+                            <div class="prose max-w-none text-text-muted leading-relaxed space-y-4">
+                                <p>
+                                    In high-throughput environments like university documentation centers or logistics
+                                    dispatch offices, print jobs routinely fail due to corrupted PostScript formatting,
+                                    paper tray mismatches, or blocking FIFO queues where a 500-page job stalls critical
+                                    1-page receipts.
+                                </p>
+                                <p>
+                                    PrintFlow Agent was designed with a decoupled four-stage lifecycle:
+                                </p>
+                                <ol class="list-decimal list-inside space-y-2">
+                                    <li><strong>Preflight Sanitization:</strong> Inspects inbound PDF/PostScript bytes
+                                        for structural validity, font embedding, and dimension bounds.</li>
+                                    <li><strong>Dynamic Priority Scheduler:</strong> Uses a weighted algorithm factoring
+                                        in job size, client tier, and deadline SLA to re-rank the dispatch queue within
+                                        15 milliseconds.</li>
+                                    <li><strong>Hardware Dispatcher:</strong> Streams chunks via raw TCP port 9100 or
+                                        IPP to available cluster devices, failing over seamlessly if a device reports
+                                        paper jams or low toner.</li>
+                                    <li><strong>Telemetry Daemon:</strong> Emits structured JSON events into an audit
+                                        log for monitoring throughput, device duty cycles, and turnaround times.</li>
+                                </ol>
+                                <!-- Lower Bento Deck: Deep Dive Modules -->
+                                <div class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5">
+                                    <!-- Card 1: Problem & System Design (7 Cols) -->
+                                    <div
+                                        class="md:col-span-12 lg:col-span-7 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                                        <div>
+                                            <span
+                                                class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                                                PROBLEM STATEMENT &amp; PIPELINE DESIGN</span>
+                                            <div class="space-y-3.5 text-xs sm:text-sm">
+                                                <div
+                                                    class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                    <strong
+                                                        class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
+                                                        <span
+                                                            class="material-symbols-outlined text-sm text-amber-700 dark:text-amber-400">warning</span>
+                                                        The Bottleneck
+                                                    </strong>
+                                                    <p class="text-text-muted leading-relaxed">
+                                                        In high-throughput documentation and dispatch centers, print
+                                                        jobs routinely fail from corrupted PostScript formats, paper
+                                                        tray mismatches, or blocking FIFO queues where a 500-page batch
+                                                        stalls critical single-page urgent receipts.
+                                                    </p>
+                                                </div>
+                                                <div
+                                                    class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                    <strong
+                                                        class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
+                                                        <span
+                                                            class="material-symbols-outlined text-sm text-emerald-600 dark:text-emerald-400">verified</span>
+                                                        Dynamic Dispatch Architecture
+                                                    </strong>
+                                                    <p class="text-text-muted leading-relaxed">
+                                                        A weighted dynamic scheduling algorithm re-ranks dispatch order
+                                                        within 15ms factoring in job size, client tier, and deadline
+                                                        SLA, with automatic hardware failover when devices report low
+                                                        toner or paper jams.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                        </section>
                 </div>
-            </section>
 
-            <section>
-                <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Technologies Employed</h2>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Python</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Asyncio</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Socket Programming</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">PyPDF</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">REST APIs</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">JSON Logging</span>
+                <section>
+                    <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Technologies Employed</h2>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Python</span>
+                        <span
+                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Asyncio</span>
+                        <span
+                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Socket
+                            Programming</span>
+                        <span
+                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">PyPDF</span>
+                        <span
+                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">REST
+                            APIs</span>
+                        <span
+                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">JSON
+                            Logging</span>
+                        <!-- Card 2: Tech Stack (5 Cols) -->
+                        <div
+                            class="md:col-span-12 lg:col-span-5 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                            <div>
+                                <span
+                                    class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                                    TECHNOLOGIES EMPLOYED</span>
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span
+                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Python
+                                        3.11</span>
+                                    <span
+                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Asyncio</span>
+                                    <span
+                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Raw
+                                        Socket (Port 9100)</span>
+                                    <span
+                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">IPP
+                                        Protocol</span>
+                                    <span
+                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">PyPDF
+                                        Sanitizer</span>
+                                    <span
+                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">REST
+                                        APIs</span>
+                                    <span
+                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">JSON
+                                        Telemetry</span>
+                                    <span
+                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Tailwind
+                                        CSS</span>
+                                </div>
+                            </div>
+                </section>
+                </article>
+                <div
+                    class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/50 text-xs text-text-muted">
+                    <strong class="text-foreground block mb-1">Robust Audit Telemetry</strong>
+                    Emits structured events to track device duty cycles, throughput velocity, and turnaround SLAs.
                 </div>
-            </section>
-        </article>
+            </div>
 
-        <!-- Navigation -->
-        <div class="mt-20 pt-8 border-t border-border-subtle flex justify-between items-center">
-            <a href="../helio/index.html" class="text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-2">
-                <span class="material-symbols-outlined text-sm">arrow_back</span> Previous: Helio Vault
-            </a>
-            <a href="../smart-recipe-generator/index.html" class="text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
-                Next Case Study: Smart Recipe Generator <span class="material-symbols-outlined text-sm">arrow_forward</span>
-            </a>
-        </div>
+            <!-- Navigation -->
+            <div class="mt-20 pt-8 border-t border-border-subtle flex justify-between items-center">
+                <a href="../helio/index.html"
+                    class="text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-2">
+                    <!-- Card 3: 4-Stage Lifecycle Stages (12 Cols) -->
+                    <div
+                        class="col-span-12 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle shadow-sm">
+                        <span class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                            FOUR-STAGE WORKFLOW PIPELINE</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                <div
+                                    class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
+                                    <span class="material-symbols-outlined text-base">rule</span>
+                                </div>
+                                <h4 class="font-bold text-xs sm:text-sm text-foreground mb-1">1. Preflight Sanitization
+                                </h4>
+                                <p class="text-xs text-text-muted leading-relaxed">Inspects inbound PDF/PostScript bytes
+                                    for structural validity, font embedding, and dimension bounds.</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                <div
+                                    class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
+                                    <span class="material-symbols-outlined text-base">low_priority</span>
+                                </div>
+                                <h4 class="font-bold text-xs sm:text-sm text-foreground mb-1">2. Priority Scheduler</h4>
+                                <p class="text-xs text-text-muted leading-relaxed">Dynamic weighted algorithm factoring
+                                    in job page count, client tier, and deadline SLA within 15ms.</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                <div
+                                    class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
+                                    <span class="material-symbols-outlined text-base">print</span>
+                                </div>
+                                <h4 class="font-bold text-xs sm:text-sm text-foreground mb-1">3. Hardware Dispatcher
+                                </h4>
+                                <p class="text-xs text-text-muted leading-relaxed">Streams chunks via raw TCP port
+                                    9100/IPP with automatic failover upon hardware jams or low supplies.</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                <div
+                                    class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
+                                    <span class="material-symbols-outlined text-base">analytics</span>
+                                </div>
+                                <h4 class="font-bold text-xs sm:text-sm text-foreground mb-1">4. Telemetry Daemon</h4>
+                                <p class="text-xs text-text-muted leading-relaxed">Emits structured JSON events into an
+                                    audit log to monitor duty cycles, queue velocity, and turnaround times.</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            <!-- Compact Bottom Navigation -->
+            <div class="mt-8 pt-6 border-t border-border-subtle flex flex-wrap justify-between items-center gap-4">
+                <a href="../helio/index.html"
+                    class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span> Previous: Helio Vault
+                </a>
+                <a href="../smart-recipe-generator/index.html"
+                    class="text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
+                    <a href="../smart-recipe-generator/index.html"
+                        class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-1.5">
+                        Next Case Study: Smart Recipe Generator <span
+                            class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+            </div>
     </main>
 
     <!-- Footer -->
@@ -255,5 +561,5 @@
         }
     </script>
 </body>
-</html>
 
+</html>

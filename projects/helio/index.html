@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Helio — Zero-Knowledge Encrypted Personal Document Vault | Vedansh Harish Ail</title>
-    <meta name="description" content="Technical case study of Helio: A zero-knowledge personal document vault engineered with AES-256-GCM encryption, cryptographic hashing, RBAC, and immutable audit logging by Vedansh Harish Ail." />
+    <meta name="description"
+        content="Technical case study of Helio: A zero-knowledge personal document vault engineered with AES-256-GCM encryption, cryptographic hashing, RBAC, and immutable audit logging by Vedansh Harish Ail." />
     <meta name="author" content="Vedansh Harish Ail" />
     <link rel="canonical" href="https://vedansh-portfolio-beta.vercel.app/projects/helio" />
     <link rel="icon" type="image/png" href="../../assets/favicon.png" />
@@ -12,7 +14,8 @@
     <!-- Open Graph Metadata -->
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Helio Document Vault Case Study — Vedansh Harish Ail" />
-    <meta property="og:description" content="Zero-knowledge encrypted personal document storage system featuring client-side cryptographic hashing and verified access control." />
+    <meta property="og:description"
+        content="Zero-knowledge encrypted personal document storage system featuring client-side cryptographic hashing and verified access control." />
     <meta property="og:url" content="https://vedansh-portfolio-beta.vercel.app/projects/helio" />
     <meta property="og:image" content="https://vedansh-portfolio-beta.vercel.app/assets/project-helio.svg" />
     <meta property="og:site_name" content="Vedansh Harish Ail Portfolio" />
@@ -20,13 +23,18 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Helio Document Vault Case Study | Vedansh Harish Ail" />
-    <meta name="twitter:description" content="Encrypted personal document storage system built with Python, Cryptography, and verified RBAC." />
+    <meta name="twitter:description"
+        content="Encrypted personal document storage system built with Python, Cryptography, and verified RBAC." />
     <meta name="twitter:image" content="https://vedansh-portfolio-beta.vercel.app/assets/project-helio.svg" />
 
     <!-- Tailwind & Google Fonts -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
 
     <script id="tailwind-config">
         tailwind.config = {
@@ -66,6 +74,7 @@
             --muted-foreground: #646464;
             --primary-foreground: #ffffff;
         }
+
         .dark {
             --card: #222222;
             --muted: #2c2c2c;
@@ -76,8 +85,15 @@
             --muted-foreground: #b4b4b4;
             --primary-foreground: #081a1b;
         }
-        .luxury-border { border-radius: 40px; }
-        body { background-color: var(--background); color: var(--foreground); }
+
+        .luxury-border {
+            border-radius: 40px;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+        }
     </style>
 
     <!-- Schema.org JSON-LD -->
@@ -118,20 +134,27 @@
         }
     </script>
 </head>
+
 <body class="font-sans selection:bg-stone-300 dark:selection:bg-stone-700">
     <!-- Navigation -->
-    <nav class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md border-b border-border-subtle py-4 px-6 md:px-12 flex justify-between items-center max-w-screen-2xl mx-auto">
-        <a href="../../index.html" class="text-xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity flex items-center gap-2">
+    <nav
+        class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md border-b border-border-subtle py-4 px-6 md:px-12 flex justify-between items-center max-w-screen-2xl mx-auto">
+        <a href="../../index.html"
+            class="text-xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity flex items-center gap-2">
             <span class="material-symbols-outlined text-sm">arrow_back</span>
             <span>Vedansh Harish Ail</span>
         </a>
         <div class="flex items-center gap-3 md:gap-6">
-            <button id="theme-toggle-btn" aria-label="Toggle dark mode" class="w-9 h-9 rounded-full border border-border-subtle bg-surface-container flex items-center justify-center text-foreground hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+            <button id="theme-toggle-btn" aria-label="Toggle dark mode"
+                class="w-9 h-9 rounded-full border border-border-subtle bg-surface-container flex items-center justify-center text-foreground hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
                 <span class="material-symbols-outlined text-sm dark:hidden">dark_mode</span>
                 <span class="material-symbols-outlined text-sm hidden dark:inline">light_mode</span>
             </button>
-            <a href="../../index.html#work" class="text-sm text-text-muted hover:text-foreground transition-colors font-medium hidden sm:inline">All Projects</a>
-            <a href="../../index.html#contact" class="bg-primary text-on-primary px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity">Contact</a>
+            <a href="../../index.html#work"
+                class="text-sm text-text-muted hover:text-foreground transition-colors font-medium hidden sm:inline">All
+                Projects</a>
+            <a href="../../index.html#contact"
+                class="bg-primary text-on-primary px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity">Contact</a>
         </div>
     </nav>
 
@@ -151,115 +174,400 @@
         <!-- Project Hero Header -->
         <header class="mb-12">
             <div class="flex flex-wrap items-center gap-3 mb-4">
-                <span class="px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Cybersecurity &amp; Storage</span>
-                <span class="px-3 py-1 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Active Project</span>
+                <span
+                    class="px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Cybersecurity
+                    &amp; Storage</span>
+                <span
+                    class="px-3 py-1 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Active
+                    Project</span>
             </div>
             <h1 class="font-playfair text-4xl md:text-6xl text-foreground font-bold mb-6 leading-tight">
                 Helio: Encrypted Personal Document Vault
             </h1>
             <p class="text-lg md:text-xl text-text-muted leading-relaxed max-w-3xl mb-8">
-                An authenticated, zero-knowledge digital document repository designed to protect sensitive personal records with AES-256-GCM encryption, tamper-proof SHA-256 integrity verification, and granular role-based permissions.
+                An authenticated, zero-knowledge digital document repository designed to protect sensitive personal
+                records with AES-256-GCM encryption, tamper-proof SHA-256 integrity verification, and granular
+                role-based permissions.
             </p>
 
             <div class="flex flex-wrap gap-4">
-                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank" rel="noopener noreferrer" class="bg-primary text-on-primary px-8 py-3.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-sm">
+                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank" rel="noopener noreferrer"
+                    class="bg-primary text-on-primary px-8 py-3.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-sm">
                     View on GitHub <span class="material-symbols-outlined text-sm">code</span>
-                </a>
-                <a href="../../index.html#work" class="border border-border-subtle bg-surface-container text-foreground px-8 py-3.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-sm">
-                    Explore Architecture <span class="material-symbols-outlined text-sm">account_tree</span>
-                </a>
-            </div>
+                    <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-8">
+                        <!-- Top Bar: Breadcrumb & Quick Actions -->
+                        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                            <nav aria-label="Breadcrumb">
+                                <ol class="flex items-center gap-2 text-xs sm:text-sm text-text-muted">
+                                    <li><a href="../../index.html"
+                                            class="hover:text-foreground transition-colors">Home</a></li>
+                                    <li><span>/</span></li>
+                                    <li><a href="../../index.html#work"
+                                            class="hover:text-foreground transition-colors">Projects</a></li>
+                                    <li><span>/</span></li>
+                                    <li class="text-foreground font-medium" aria-current="page">Helio Vault</li>
+                                </ol>
+                            </nav>
+                            <div class="flex items-center gap-3">
+                                <a href="../meri-panchayat/index.html"
+                                    class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                                    <span class="material-symbols-outlined text-sm">arrow_back</span> Previous
+                                </a>
+                                <a href="../../index.html#work"
+                                    class="border border-border-subtle bg-surface-container text-foreground px-8 py-3.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-sm">
+                                    Explore Architecture <span
+                                        class="material-symbols-outlined text-sm">account_tree</span>
+                                    <a href="../printflow/index.html"
+                                        class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                                        Next Project <span
+                                            class="material-symbols-outlined text-sm">arrow_forward</span>
+                                    </a>
+                            </div>
         </header>
 
         <!-- Graphic -->
         <div class="mb-16 rounded-3xl overflow-hidden border border-border-subtle shadow-xl bg-surface-container">
-            <img src="../../assets/project-helio.svg" alt="Helio personal document vault dashboard interface" class="w-full h-auto object-cover" width="1024" height="640" />
+            <img src="../../assets/project-helio.svg" alt="Helio personal document vault dashboard interface"
+                class="w-full h-auto object-cover" width="1024" height="640" />
         </div>
 
         <!-- Project Metadata Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl bg-surface-container border border-border-subtle mb-16 text-sm">
+        <div
+            class="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl bg-surface-container border border-border-subtle mb-16 text-sm">
             <div>
                 <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Security Model</span>
                 <span class="font-semibold text-foreground">AES-256-GCM / PBKDF2</span>
-            </div>
-            <div>
-                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Backend</span>
-                <span class="font-semibold text-foreground">Python / FastAPI</span>
-            </div>
-            <div>
-                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Data Store</span>
-                <span class="font-semibold text-foreground">PostgreSQL / SQLite</span>
-            </div>
-            <div>
-                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Status</span>
-                <span class="font-semibold text-foreground">Active Development</span>
+                <!-- Upper Bento Deck: Executive Overview & Live Preview -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+                    <!-- Left Bento: Executive Overview (7 Cols) -->
+                    <div
+                        class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— PROJECT
+                                    OVERVIEW</span>
+                                <div class="flex items-center gap-2">
+                                    <span
+                                        class="px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Cybersecurity
+                                        &amp; Storage</span>
+                                    <span
+                                        class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Active
+                                        Project</span>
+                                </div>
+                            </div>
+                            <h1
+                                class="font-playfair text-3xl sm:text-4xl lg:text-5xl text-foreground font-bold mb-4 leading-tight">
+                                Helio: Encrypted Personal Document Vault
+                            </h1>
+                            <p class="text-sm sm:text-base text-text-muted leading-relaxed mb-6">
+                                An authenticated, zero-knowledge digital document repository designed to protect
+                                sensitive personal records with AES-256-GCM encryption, tamper-proof SHA-256 integrity
+                                verification, and granular role-based permissions.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mb-6">
+                                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-xs sm:text-sm shadow-sm">
+                                    View on GitHub <span class="material-symbols-outlined text-xs">code</span>
+                                </a>
+                                <a href="../../index.html#work"
+                                    class="border border-border-subtle bg-surface-container-low text-foreground px-6 py-2.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-xs sm:text-sm">
+                                    Explore Architecture <span
+                                        class="material-symbols-outlined text-xs">account_tree</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Integrated 4-Metric Grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-border-subtle">
+                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">— CRYPTO
+                                    MODEL</span>
+                                <span class="font-semibold text-foreground text-xs sm:text-sm">AES-256-GCM /
+                                    PBKDF2</span>
+                            </div>
+                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                    BACKEND</span>
+                                <span class="font-semibold text-foreground text-xs sm:text-sm">Python / FastAPI</span>
+                            </div>
+                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                    STORAGE</span>
+                                <span class="font-semibold text-foreground text-xs sm:text-sm">PostgreSQL /
+                                    Encrypted</span>
+                            </div>
+                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                    INTEGRITY</span>
+                                <span class="font-semibold text-foreground text-xs sm:text-sm">Zero-Knowledge
+                                    Vault</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Backend</span>
+                        <span class="font-semibold text-foreground">Python / FastAPI</span>
+
+                        <!-- Right Bento: Live Preview & Showcase (5 Cols) -->
+                        <div
+                            class="lg:col-span-5 p-6 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— SYSTEM
+                                    INTERFACE</span>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    <span>Encrypted Store</span>
+                                </span>
+                            </div>
+                            <div
+                                class="rounded-2xl overflow-hidden border border-border-subtle shadow-inner bg-surface-container-low aspect-[16/10] flex items-center justify-center p-2">
+                                <img src="../../assets/project-helio.svg"
+                                    alt="Helio personal document vault dashboard interface"
+                                    class="w-full h-full object-contain" width="1024" height="640" />
+                            </div>
+                            <div class="pt-3 flex items-center justify-between text-xs text-text-muted">
+                                <span>Client-side key derivation &amp; authenticated ciphertext streaming</span>
+                                <a href="../../index.html#work"
+                                    class="text-primary hover:underline font-medium inline-flex items-center gap-0.5">
+                                    Docs <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Data Store</span>
+                            <span class="font-semibold text-foreground">PostgreSQL / SQLite</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Status</span>
+                            <span class="font-semibold text-foreground">Active Development</span>
+                        </div>
+                    </div>
+
+                    <!-- Article Body -->
+                    <article class="space-y-16">
+                        <section>
+                            <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Architecture Overview</h2>
+                            <div class="prose max-w-none text-text-muted leading-relaxed space-y-4">
+                                <p>
+                                    Consumer cloud storage platforms often retain server-side keys to index and scan
+                                    user documents. Helio introduces a zero-knowledge architecture where document
+                                    payloads are encrypted on the client or during authenticated ingestion using keys
+                                    derived directly from user passphrases via PBKDF2-HMAC-SHA512.
+                                </p>
+                                <p>
+                                    The backend database stores only metadata, access permissions, and encrypted
+                                    ciphertext payloads with authentication tags, ensuring that even in the event of an
+                                    infrastructure breach, raw documents remain mathematically indecipherable.
+                                </p>
+                                <!-- Lower Bento Deck: Deep Dive Modules -->
+                                <div class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5">
+                                    <!-- Card 1: Architecture Overview (7 Cols) -->
+                                    <div
+                                        class="md:col-span-12 lg:col-span-7 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                                        <div>
+                                            <span
+                                                class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                                                ARCHITECTURE &amp; ZERO-KNOWLEDGE MODEL</span>
+                                            <div class="space-y-3.5 text-xs sm:text-sm">
+                                                <div
+                                                    class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                    <strong
+                                                        class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
+                                                        <span
+                                                            class="material-symbols-outlined text-sm text-primary">vpn_key</span>
+                                                        Zero-Knowledge Key Derivation
+                                                    </strong>
+                                                    <p class="text-text-muted leading-relaxed">
+                                                        Consumer cloud storage platforms often retain server-side keys
+                                                        to index and scan user documents. Helio introduces a
+                                                        zero-knowledge architecture where document payloads are
+                                                        encrypted on the client or during authenticated ingestion using
+                                                        keys derived directly from user passphrases via
+                                                        PBKDF2-HMAC-SHA512.
+                                                    </p>
+                                                </div>
+                                                <div
+                                                    class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                    <strong
+                                                        class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
+                                                        <span
+                                                            class="material-symbols-outlined text-sm text-emerald-600 dark:text-emerald-400">shield</span>
+                                                        Cryptographic Immunity
+                                                    </strong>
+                                                    <p class="text-text-muted leading-relaxed">
+                                                        The backend database stores only metadata, access permissions,
+                                                        and encrypted ciphertext payloads with authentication tags,
+                                                        ensuring that even in the event of an infrastructure breach, raw
+                                                        documents remain mathematically indecipherable.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                        </section>
+                </div>
+
+                <section>
+                    <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Key Security Pillars</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="p-6 rounded-2xl bg-surface-container border border-border-subtle">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
+                                <span class="material-symbols-outlined">lock</span>
+                                <!-- Card 2: Tech Stack (5 Cols) -->
+                                <div
+                                    class="md:col-span-12 lg:col-span-5 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                                    <div>
+                                        <span
+                                            class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                                            TECHNOLOGIES EMPLOYED</span>
+                                        <div class="flex flex-wrap gap-1.5 mb-4">
+                                            <span
+                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Python</span>
+                                            <span
+                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">FastAPI</span>
+                                            <span
+                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Flask</span>
+                                            <span
+                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">PyCA
+                                                Cryptography</span>
+                                            <span
+                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">PostgreSQL</span>
+                                            <span
+                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">PBKDF2-SHA512</span>
+                                            <span
+                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">REST
+                                                APIs</span>
+                                            <span
+                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Tailwind
+                                                CSS</span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/50 text-xs text-text-muted">
+                                        <strong class="text-foreground block mb-1">Defense-in-Depth Pipeline</strong>
+                                        Constant-time token comparisons to eliminate timing attacks, paired with secure
+                                        session cookie policies.
+                                    </div>
+                                </div>
+
+                                <!-- Card 3: Key Security Pillars (12 Cols) -->
+                                <div
+                                    class="col-span-12 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle shadow-sm">
+                                    <span
+                                        class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                                        KEY SECURITY PILLARS</span>
+                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                        <div
+                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                            <div
+                                                class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
+                                                <span class="material-symbols-outlined text-base">lock</span>
+                                            </div>
+                                            <h4 class="font-bold text-foreground mb-2">Authenticated Encryption</h4>
+                                            <p class="text-sm text-text-muted">AES-256-GCM ensures both strict
+                                                confidentiality and ciphertext integrity detection, alerting against
+                                                unauthorized file tampering.</p>
+                                            <h4 class="font-bold text-xs sm:text-sm text-foreground mb-1">Authenticated
+                                                Encryption</h4>
+                                            <p class="text-xs text-text-muted leading-relaxed">AES-256-GCM ensures both
+                                                strict confidentiality and ciphertext integrity detection, alerting
+                                                against unauthorized file tampering.</p>
+                                        </div>
+                                        <div class="p-6 rounded-2xl bg-surface-container border border-border-subtle">
+                                            <div
+                                                class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
+                                                <span class="material-symbols-outlined">history</span>
+                                                <div
+                                                    class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                    <div
+                                                        class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
+                                                        <span class="material-symbols-outlined text-base">history</span>
+                                                    </div>
+                                                    <h4 class="font-bold text-foreground mb-2">Immutable Audit Logging
+                                                    </h4>
+                                                    <p class="text-sm text-text-muted">Every file decryption, download,
+                                                        or sharing access event is logged with cryptographic hashes and
+                                                        timestamps.</p>
+                                                    <h4 class="font-bold text-xs sm:text-sm text-foreground mb-1">
+                                                        Immutable Audit Logging</h4>
+                                                    <p class="text-xs text-text-muted leading-relaxed">Every file
+                                                        decryption, download, or sharing access event is logged with
+                                                        cryptographic hashes and timestamps.</p>
+                                                </div>
+                                                <div
+                                                    class="p-6 rounded-2xl bg-surface-container border border-border-subtle">
+                                                    <div
+                                                        class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
+                                                        <span class="material-symbols-outlined">badge</span>
+                                                        <div
+                                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                            <div
+                                                                class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
+                                                                <span
+                                                                    class="material-symbols-outlined text-base">badge</span>
+                                                            </div>
+                                                            <h4 class="font-bold text-foreground mb-2">Scoped RBAC</h4>
+                                                            <p class="text-sm text-text-muted">Time-bound temporary
+                                                                sharing links with optional password challenge and
+                                                                single-view self-destruct capabilities.</p>
+                                                            <h4
+                                                                class="font-bold text-xs sm:text-sm text-foreground mb-1">
+                                                                Scoped RBAC</h4>
+                                                            <p class="text-xs text-text-muted leading-relaxed">
+                                                                Time-bound temporary sharing links with optional
+                                                                password challenge and single-view self-destruct
+                                                                capabilities.</p>
+                                                        </div>
+                                                    </div>
+                </section>
             </div>
         </div>
 
-        <!-- Article Body -->
-        <article class="space-y-16">
-            <section>
-                <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Architecture Overview</h2>
-                <div class="prose max-w-none text-text-muted leading-relaxed space-y-4">
-                    <p>
-                        Consumer cloud storage platforms often retain server-side keys to index and scan user documents. Helio introduces a zero-knowledge architecture where document payloads are encrypted on the client or during authenticated ingestion using keys derived directly from user passphrases via PBKDF2-HMAC-SHA512.
-                    </p>
-                    <p>
-                        The backend database stores only metadata, access permissions, and encrypted ciphertext payloads with authentication tags, ensuring that even in the event of an infrastructure breach, raw documents remain mathematically indecipherable.
-                    </p>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Key Security Pillars</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="p-6 rounded-2xl bg-surface-container border border-border-subtle">
-                        <div class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
-                            <span class="material-symbols-outlined">lock</span>
-                        </div>
-                        <h4 class="font-bold text-foreground mb-2">Authenticated Encryption</h4>
-                        <p class="text-sm text-text-muted">AES-256-GCM ensures both strict confidentiality and ciphertext integrity detection, alerting against unauthorized file tampering.</p>
-                    </div>
-                    <div class="p-6 rounded-2xl bg-surface-container border border-border-subtle">
-                        <div class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
-                            <span class="material-symbols-outlined">history</span>
-                        </div>
-                        <h4 class="font-bold text-foreground mb-2">Immutable Audit Logging</h4>
-                        <p class="text-sm text-text-muted">Every file decryption, download, or sharing access event is logged with cryptographic hashes and timestamps.</p>
-                    </div>
-                    <div class="p-6 rounded-2xl bg-surface-container border border-border-subtle">
-                        <div class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
-                            <span class="material-symbols-outlined">badge</span>
-                        </div>
-                        <h4 class="font-bold text-foreground mb-2">Scoped RBAC</h4>
-                        <p class="text-sm text-text-muted">Time-bound temporary sharing links with optional password challenge and single-view self-destruct capabilities.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Technologies Employed</h2>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Python</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">FastAPI / Flask</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Cryptography (PyCA)</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">PostgreSQL</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">PBKDF2</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">REST APIs</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Tailwind CSS</span>
-                </div>
-            </section>
+        <section>
+            <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Technologies Employed</h2>
+            <div class="flex flex-wrap gap-2">
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Python</span>
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">FastAPI
+                    / Flask</span>
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Cryptography
+                    (PyCA)</span>
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">PostgreSQL</span>
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">PBKDF2</span>
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">REST
+                    APIs</span>
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Tailwind
+                    CSS</span>
+            </div>
+        </section>
         </article>
 
         <!-- Navigation to Next Project -->
         <div class="mt-20 pt-8 border-t border-border-subtle flex justify-between items-center">
-            <a href="../meri-panchayat/index.html" class="text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-2">
-                <span class="material-symbols-outlined text-sm">arrow_back</span> Previous: Meri Panchayat
-            </a>
-            <a href="../printflow/index.html" class="text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
-                Next Case Study: PrintFlow Agent <span class="material-symbols-outlined text-sm">arrow_forward</span>
-            </a>
-        </div>
+            <a href="../meri-panchayat/index.html"
+                class="text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-2">
+                <!-- Compact Bottom Navigation -->
+                <div class="mt-8 pt-6 border-t border-border-subtle flex flex-wrap justify-between items-center gap-4">
+                    <a href="../meri-panchayat/index.html"
+                        class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm">arrow_back</span> Previous: Meri Panchayat
+                    </a>
+                    <a href="../printflow/index.html"
+                        class="text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
+                        <a href="../printflow/index.html"
+                            class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-1.5">
+                            Next Case Study: PrintFlow Agent <span
+                                class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                </div>
     </main>
 
     <!-- Footer -->
@@ -277,5 +585,5 @@
         }
     </script>
 </body>
-</html>
 
+</html>

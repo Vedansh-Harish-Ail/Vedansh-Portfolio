@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Meri Panchayat — E-Governance &amp; Civic Issue Reporting Portal | Vedansh Harish Ail</title>
-    <meta name="description" content="Technical case study of Meri Panchayat: A scalable civic issue reporting portal engineered with Flask, SQLite, Email OTP authentication, Role-Based Access Control, and a custom Kannada localization engine." />
+    <meta name="description"
+        content="Technical case study of Meri Panchayat: A scalable civic issue reporting portal engineered with Flask, SQLite, Email OTP authentication, Role-Based Access Control, and a custom Kannada localization engine." />
     <meta name="author" content="Vedansh Harish Ail" />
     <link rel="canonical" href="https://vedansh-portfolio-beta.vercel.app/projects/meri-panchayat" />
     <link rel="icon" type="image/png" href="../../assets/favicon.png" />
@@ -12,7 +14,8 @@
     <!-- Open Graph Metadata -->
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Meri Panchayat Case Study — Vedansh Harish Ail" />
-    <meta property="og:description" content="A scalable public issue reporting portal with secure Email OTP, RBAC, and Kannada i18n localization engine for rural governance." />
+    <meta property="og:description"
+        content="A scalable public issue reporting portal with secure Email OTP, RBAC, and Kannada i18n localization engine for rural governance." />
     <meta property="og:url" content="https://vedansh-portfolio-beta.vercel.app/projects/meri-panchayat" />
     <meta property="og:image" content="https://vedansh-portfolio-beta.vercel.app/assets/project1.png" />
     <meta property="og:site_name" content="Vedansh Harish Ail Portfolio" />
@@ -20,13 +23,18 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Meri Panchayat Case Study | Vedansh Harish Ail" />
-    <meta name="twitter:description" content="Flask, SQLite, Email OTP, and RBAC civic governance portal designed for high reliability and multi-language support." />
+    <meta name="twitter:description"
+        content="Flask, SQLite, Email OTP, and RBAC civic governance portal designed for high reliability and multi-language support." />
     <meta name="twitter:image" content="https://vedansh-portfolio-beta.vercel.app/assets/project1.png" />
 
     <!-- Tailwind & Google Fonts -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
 
     <script id="tailwind-config">
         tailwind.config = {
@@ -66,6 +74,7 @@
             --muted-foreground: #646464;
             --primary-foreground: #ffffff;
         }
+
         .dark {
             --card: #222222;
             --muted: #2c2c2c;
@@ -76,8 +85,15 @@
             --muted-foreground: #b4b4b4;
             --primary-foreground: #081a1b;
         }
-        .luxury-border { border-radius: 40px; }
-        body { background-color: var(--background); color: var(--foreground); }
+
+        .luxury-border {
+            border-radius: 40px;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+        }
     </style>
 
     <!-- Schema.org JSON-LD -->
@@ -119,20 +135,27 @@
         }
     </script>
 </head>
+
 <body class="font-sans selection:bg-stone-300 dark:selection:bg-stone-700">
     <!-- Navigation -->
-    <nav class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md border-b border-border-subtle py-4 px-6 md:px-12 flex justify-between items-center max-w-screen-2xl mx-auto">
-        <a href="../../index.html" class="text-xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity flex items-center gap-2">
+    <nav
+        class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md border-b border-border-subtle py-4 px-6 md:px-12 flex justify-between items-center max-w-screen-2xl mx-auto">
+        <a href="../../index.html"
+            class="text-xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity flex items-center gap-2">
             <span class="material-symbols-outlined text-sm">arrow_back</span>
             <span>Vedansh Harish Ail</span>
         </a>
         <div class="flex items-center gap-3 md:gap-6">
-            <button id="theme-toggle-btn" aria-label="Toggle dark mode" class="w-9 h-9 rounded-full border border-border-subtle bg-surface-container flex items-center justify-center text-foreground hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+            <button id="theme-toggle-btn" aria-label="Toggle dark mode"
+                class="w-9 h-9 rounded-full border border-border-subtle bg-surface-container flex items-center justify-center text-foreground hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
                 <span class="material-symbols-outlined text-sm dark:hidden">dark_mode</span>
                 <span class="material-symbols-outlined text-sm hidden dark:inline">light_mode</span>
             </button>
-            <a href="../../index.html#work" class="text-sm text-text-muted hover:text-foreground transition-colors font-medium hidden sm:inline">All Projects</a>
-            <a href="../../index.html#contact" class="bg-primary text-on-primary px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity">Contact</a>
+            <a href="../../index.html#work"
+                class="text-sm text-text-muted hover:text-foreground transition-colors font-medium hidden sm:inline">All
+                Projects</a>
+            <a href="../../index.html#contact"
+                class="bg-primary text-on-primary px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity">Contact</a>
         </div>
     </nav>
 
@@ -152,157 +175,499 @@
         <!-- Project Hero Header -->
         <header class="mb-12">
             <div class="flex flex-wrap items-center gap-3 mb-4">
-                <span class="px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Civic Tech &amp; E-Governance</span>
-                <span class="px-3 py-1 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Production Architecture</span>
+                <span
+                    class="px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Civic
+                    Tech &amp; E-Governance</span>
+                <span
+                    class="px-3 py-1 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Production
+                    Architecture</span>
             </div>
             <h1 class="font-playfair text-4xl md:text-6xl text-foreground font-bold mb-6 leading-tight">
                 Meri Panchayat: Public Issue Reporting Portal
             </h1>
             <p class="text-lg md:text-xl text-text-muted leading-relaxed max-w-3xl mb-8">
-                A localized civic grievance reporting portal engineered to bridge the divide between citizens and panchayat administrators, featuring passwordless Email OTP verification, granular role-based access control, and a custom Kannada translation engine.
+                A localized civic grievance reporting portal engineered to bridge the divide between citizens and
+                panchayat administrators, featuring passwordless Email OTP verification, granular role-based access
+                control, and a custom Kannada translation engine.
             </p>
 
             <div class="flex flex-wrap gap-4">
-                <a href="https://public-issue-reporting-portal.vercel.app/" target="_blank" rel="noopener noreferrer" class="bg-primary text-on-primary px-8 py-3.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-sm">
+                <a href="https://public-issue-reporting-portal.vercel.app/" target="_blank" rel="noopener noreferrer"
+                    class="bg-primary text-on-primary px-8 py-3.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-sm">
                     Open Live Portal <span class="material-symbols-outlined text-sm">north_east</span>
-                </a>
-                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank" rel="noopener noreferrer" class="border border-border-subtle bg-surface-container text-foreground px-8 py-3.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-sm">
-                    GitHub Repository <span class="material-symbols-outlined text-sm">code</span>
-                </a>
-            </div>
+                    <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-8">
+                        <!-- Top Bar: Breadcrumb & Quick Actions -->
+                        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                            <nav aria-label="Breadcrumb">
+                                <ol class="flex items-center gap-2 text-xs sm:text-sm text-text-muted">
+                                    <li><a href="../../index.html"
+                                            class="hover:text-foreground transition-colors">Home</a></li>
+                                    <li><span>/</span></li>
+                                    <li><a href="../../index.html#work"
+                                            class="hover:text-foreground transition-colors">Projects</a></li>
+                                    <li><span>/</span></li>
+                                    <li class="text-foreground font-medium" aria-current="page">Meri Panchayat</li>
+                                </ol>
+                            </nav>
+                            <div class="flex items-center gap-3">
+                                <a href="../agrochain/index.html"
+                                    class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                                    <span class="material-symbols-outlined text-sm">arrow_back</span> Previous
+                                </a>
+                                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="border border-border-subtle bg-surface-container text-foreground px-8 py-3.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-sm">
+                                    GitHub Repository <span class="material-symbols-outlined text-sm">code</span>
+                                    <a href="../smart-recipe-generator/index.html"
+                                        class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                                        Next Project <span
+                                            class="material-symbols-outlined text-sm">arrow_forward</span>
+                                    </a>
+                            </div>
         </header>
 
         <!-- Project Screenshot -->
         <div class="mb-16 rounded-3xl overflow-hidden border border-border-subtle shadow-xl bg-surface-container">
-            <img src="../../assets/project1.png" alt="Meri Panchayat civic issue reporting portal interface" class="w-full h-auto object-cover" width="1024" height="473" />
+            <img src="../../assets/project1.png" alt="Meri Panchayat civic issue reporting portal interface"
+                class="w-full h-auto object-cover" width="1024" height="473" />
         </div>
 
         <!-- Project Metadata Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl bg-surface-container border border-border-subtle mb-16 text-sm">
+        <div
+            class="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl bg-surface-container border border-border-subtle mb-16 text-sm">
             <div>
                 <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Architecture</span>
                 <span class="font-semibold text-foreground">MVC via Python / Flask</span>
-            </div>
-            <div>
-                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Security</span>
-                <span class="font-semibold text-foreground">Email OTP &amp; Granular RBAC</span>
-            </div>
-            <div>
-                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Localization</span>
-                <span class="font-semibold text-foreground">English &amp; Kannada (i18n)</span>
-            </div>
-            <div>
-                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Data Layer</span>
-                <span class="font-semibold text-foreground">SQLite / Relational Schema</span>
-            </div>
-        </div>
+                <!-- Upper Bento Deck: Executive Overview & Live Preview -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+                    <!-- Left Bento: Executive Overview (7 Cols) -->
+                    <div
+                        class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— PROJECT
+                                    OVERVIEW</span>
+                                <div class="flex items-center gap-2">
+                                    <span
+                                        class="px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Civic
+                                        Tech &amp; E-Governance</span>
+                                    <span
+                                        class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Production
+                                        Architecture</span>
+                                </div>
+                            </div>
+                            <h1
+                                class="font-playfair text-3xl sm:text-4xl lg:text-5xl text-foreground font-bold mb-4 leading-tight">
+                                Meri Panchayat: Public Issue Reporting Portal
+                            </h1>
+                            <p class="text-sm sm:text-base text-text-muted leading-relaxed mb-6">
+                                A localized civic grievance reporting portal engineered to bridge the divide between
+                                citizens and panchayat administrators, featuring passwordless Email OTP verification,
+                                granular role-based access control, and a custom Kannada translation engine.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mb-6">
+                                <a href="https://public-issue-reporting-portal.vercel.app/" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-xs sm:text-sm shadow-sm">
+                                    Open Live Portal <span class="material-symbols-outlined text-xs">north_east</span>
+                                </a>
+                                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="border border-border-subtle bg-surface-container-low text-foreground px-6 py-2.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-xs sm:text-sm">
+                                    GitHub Repository <span class="material-symbols-outlined text-xs">code</span>
+                                </a>
+                            </div>
+                        </div>
 
-        <!-- Article Body -->
-        <article class="space-y-16">
-            <!-- Problem Statement -->
-            <section>
-                <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">The Challenge</h2>
-                <div class="prose max-w-none text-text-muted leading-relaxed space-y-4">
-                    <p>
-                        In many regional communities, citizens encounter significant friction when reporting urgent municipal breakdowns—such as contaminated water lines, road hazards, or electricity failures. Complaints made in person are frequently lost in physical registers, lack accountability, and offer no tracking mechanism.
-                    </p>
-                    <p>
-                        Furthermore, existing municipal software platforms often mandate complex password accounts and are published exclusively in English, isolating regional residents who speak Kannada.
-                    </p>
-                </div>
-            </section>
+                        <!-- Integrated 4-Metric Grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-border-subtle">
+                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                    ARCHITECTURE</span>
+                                <span class="font-semibold text-foreground text-xs sm:text-sm">MVC via Python /
+                                    Flask</span>
+                            </div>
+                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                    SECURITY</span>
+                                <span class="font-semibold text-foreground text-xs sm:text-sm">Email OTP &amp;
+                                    RBAC</span>
+                            </div>
+                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                    LOCALIZATION</span>
+                                <span class="font-semibold text-foreground text-xs sm:text-sm">English &amp; Kannada
+                                    (i18n)</span>
+                            </div>
+                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">— DATA
+                                    STORE</span>
+                                <span class="font-semibold text-foreground text-xs sm:text-sm">SQLite / Relational
+                                    Schema</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Security</span>
+                        <span class="font-semibold text-foreground">Email OTP &amp; Granular RBAC</span>
 
-            <!-- Solution & Architecture -->
-            <section>
-                <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Solution &amp; Engineering Details</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="p-8 rounded-3xl bg-surface-container border border-border-subtle">
-                        <h3 class="font-bold text-lg mb-3 text-foreground flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary">mark_email_read</span> Passwordless OTP Authentication
-                        </h3>
-                        <p class="text-sm text-text-muted leading-relaxed">
-                            Engineered a secure 6-digit Email OTP verification workflow with time-limited tokens and rate limiting. This eliminates password fatigue for rural users while ensuring verified citizen identities.
-                        </p>
+                        <!-- Right Bento: Live Preview & Showcase (5 Cols) -->
+                        <div
+                            class="lg:col-span-5 p-6 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— PORTAL
+                                    INTERFACE</span>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    <span>Live E-Gov Portal</span>
+                                </span>
+                            </div>
+                            <div
+                                class="rounded-2xl overflow-hidden border border-border-subtle shadow-inner bg-surface-container-low aspect-[16/10] flex items-center justify-center">
+                                <img src="../../assets/project1.png"
+                                    alt="Meri Panchayat civic issue reporting portal interface"
+                                    class="w-full h-full object-cover" width="1024" height="473" />
+                            </div>
+                            <div class="pt-3 flex items-center justify-between text-xs text-text-muted">
+                                <span>Citizen grievance intake, ticket lifecycle &amp; panchayat triage</span>
+                                <a href="https://public-issue-reporting-portal.vercel.app/" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-primary hover:underline font-medium inline-flex items-center gap-0.5">
+                                    Visit <span class="material-symbols-outlined text-xs">north_east</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <span
+                                class="block text-xs uppercase tracking-wider text-text-muted mb-1">Localization</span>
+                            <span class="font-semibold text-foreground">English &amp; Kannada (i18n)</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Data Layer</span>
+                            <span class="font-semibold text-foreground">SQLite / Relational Schema</span>
+                        </div>
                     </div>
-                    <div class="p-8 rounded-3xl bg-surface-container border border-border-subtle">
-                        <h3 class="font-bold text-lg mb-3 text-foreground flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary">translate</span> Custom i18n Localization Engine
-                        </h3>
-                        <p class="text-sm text-text-muted leading-relaxed">
-                            Implemented a lightweight JSON-backed internationalization engine that enables instantaneous client and server language switching between English and Kannada without page reload lag.
-                        </p>
-                    </div>
+
+                    <!-- Article Body -->
+                    <article class="space-y-16">
+                        <!-- Problem Statement -->
+                        <section>
+                            <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">The Challenge</h2>
+                            <div class="prose max-w-none text-text-muted leading-relaxed space-y-4">
+                                <p>
+                                    In many regional communities, citizens encounter significant friction when reporting
+                                    urgent municipal breakdowns—such as contaminated water lines, road hazards, or
+                                    electricity failures. Complaints made in person are frequently lost in physical
+                                    registers, lack accountability, and offer no tracking mechanism.
+                                </p>
+                                <p>
+                                    Furthermore, existing municipal software platforms often mandate complex password
+                                    accounts and are published exclusively in English, isolating regional residents who
+                                    speak Kannada.
+                                </p>
+                                <!-- Lower Bento Deck: Deep Dive Modules -->
+                                <div class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5">
+                                    <!-- Card 1: Problem & Solution (6 Cols) -->
+                                    <div
+                                        class="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                                        <div>
+                                            <span
+                                                class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                                                PROBLEM &amp; SOLUTION</span>
+                                            <div class="space-y-3.5 text-xs sm:text-sm">
+                                                <div
+                                                    class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                    <strong
+                                                        class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
+                                                        <span
+                                                            class="material-symbols-outlined text-sm text-amber-700 dark:text-amber-400">warning</span>
+                                                        The Challenge
+                                                    </strong>
+                                                    <p class="text-text-muted leading-relaxed">
+                                                        In regional communities, citizens encounter friction reporting
+                                                        urgent municipal breakdowns. Physical registers lose complaints,
+                                                        lack accountability, and existing platforms mandate complex
+                                                        passwords while isolating Kannada-speaking citizens.
+                                                    </p>
+                                                </div>
+                                                <div
+                                                    class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                    <strong
+                                                        class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
+                                                        <span
+                                                            class="material-symbols-outlined text-sm text-emerald-600 dark:text-emerald-400">verified</span>
+                                                        Technical Resolution
+                                                    </strong>
+                                                    <p class="text-text-muted leading-relaxed">
+                                                        Passwordless 6-digit Email OTP workflow with rate limiting
+                                                        eliminates credential fatigue for rural users, while a custom
+                                                        JSON-backed i18n engine enables instantaneous client/server
+                                                        English &amp; Kannada language switching.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                        </section>
                 </div>
-            </section>
+
+                <!-- Solution & Architecture -->
+                <section>
+                    <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Solution &amp; Engineering Details
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="p-8 rounded-3xl bg-surface-container border border-border-subtle">
+                            <h3 class="font-bold text-lg mb-3 text-foreground flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">mark_email_read</span> Passwordless
+                                OTP Authentication
+                            </h3>
+                            <p class="text-sm text-text-muted leading-relaxed">
+                                Engineered a secure 6-digit Email OTP verification workflow with time-limited tokens and
+                                rate limiting. This eliminates password fatigue for rural users while ensuring verified
+                                citizen identities.
+                            </p>
+                            <!-- Card 2: Quality Engineering & Testing (6 Cols) -->
+                            <div
+                                class="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                                <div>
+                                    <span
+                                        class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                                        QUALITY ENGINEERING &amp; TESTING</span>
+                                    <div class="space-y-3 text-xs sm:text-sm">
+                                        <div
+                                            class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                            <strong
+                                                class="text-foreground block mb-1 font-semibold flex items-center gap-1.5">
+                                                <span
+                                                    class="material-symbols-outlined text-primary text-base">timer</span>
+                                                OTP Expiry &amp; Replay Prevention
+                                            </strong>
+                                            <p class="text-xs text-text-muted leading-relaxed">
+                                                Boundary testing ensuring single-use token invalidation within 300
+                                                seconds and rate limiting against brute force attempts.
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                            <strong
+                                                class="text-foreground block mb-1 font-semibold flex items-center gap-1.5">
+                                                <span
+                                                    class="material-symbols-outlined text-primary text-base">security</span>
+                                                SQL Query Sanitization
+                                            </strong>
+                                            <p class="text-xs text-text-muted leading-relaxed">
+                                                Parametric query validation preventing SQL injection attempts across
+                                                complaint title and description fields.
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                            <strong
+                                                class="text-foreground block mb-1 font-semibold flex items-center gap-1.5">
+                                                <span
+                                                    class="material-symbols-outlined text-primary text-base">speed</span>
+                                                Concurrent Load Verification
+                                            </strong>
+                                            <p class="text-xs text-text-muted leading-relaxed">
+                                                Simulated 100+ concurrent sessions confirming SQLite transaction locking
+                                                stability and response latency under 120ms.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="p-8 rounded-3xl bg-surface-container border border-border-subtle">
+                                        <h3 class="font-bold text-lg mb-3 text-foreground flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-primary">translate</span> Custom
+                                            i18n Localization Engine
+                                        </h3>
+                                        <p class="text-sm text-text-muted leading-relaxed">
+                                            Implemented a lightweight JSON-backed internationalization engine that
+                                            enables instantaneous client and server language switching between English
+                                            and Kannada without page reload lag.
+                                        </p>
+                                    </div>
+                                </div>
+                </section>
+            </div>
 
             <!-- Key Features -->
             <section>
                 <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Core Capabilities</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="p-6 rounded-2xl bg-surface-container border border-border-subtle">
-                        <div class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
                             <span class="material-symbols-outlined">track_changes</span>
-                        </div>
-                        <h4 class="font-bold text-foreground mb-2">Complaint Lifecycle Tracking</h4>
-                        <p class="text-sm text-text-muted">Unique tracking IDs with real-time status transitions: Submitted &rarr; In Review &rarr; Work Dispatched &rarr; Resolved.</p>
-                    </div>
-                    <div class="p-6 rounded-2xl bg-surface-container border border-border-subtle">
-                        <div class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
-                            <span class="material-symbols-outlined">admin_panel_settings</span>
-                        </div>
-                        <h4 class="font-bold text-foreground mb-2">Role-Based Access Control</h4>
-                        <p class="text-sm text-text-muted">Strict session isolation separating citizen grievance submission views from administrative triage and resolution dashboards.</p>
-                    </div>
-                    <div class="p-6 rounded-2xl bg-surface-container border border-border-subtle">
-                        <div class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
-                            <span class="material-symbols-outlined">query_stats</span>
-                        </div>
-                        <h4 class="font-bold text-foreground mb-2">Administrative Analytics</h4>
-                        <p class="text-sm text-text-muted">Built-in aggregation metrics tracking resolution velocity, category-wise breakdown, and open municipal backlog.</p>
-                    </div>
-                </div>
+                            <!-- Card 3: Key Features (8 Cols) -->
+                            <div
+                                class="md:col-span-12 lg:col-span-8 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle shadow-sm">
+                                <span
+                                    class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                                    CORE CAPABILITIES</span>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                    <div
+                                        class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                        <div
+                                            class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
+                                            <span class="material-symbols-outlined text-base">track_changes</span>
+                                        </div>
+                                        <h4 class="font-bold text-foreground mb-2">Complaint Lifecycle Tracking</h4>
+                                        <p class="text-sm text-text-muted">Unique tracking IDs with real-time status
+                                            transitions: Submitted &rarr; In Review &rarr; Work Dispatched &rarr;
+                                            Resolved.</p>
+                                        <h4 class="font-bold text-xs sm:text-sm text-foreground mb-1">Complaint
+                                            Lifecycle Tracking</h4>
+                                        <p class="text-xs text-text-muted leading-relaxed">Unique tracking IDs with
+                                            real-time status transitions: Submitted &rarr; In Review &rarr; Work
+                                            Dispatched &rarr; Resolved.</p>
+                                    </div>
+                                    <div class="p-6 rounded-2xl bg-surface-container border border-border-subtle">
+                                        <div
+                                            class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
+                                            <span class="material-symbols-outlined">admin_panel_settings</span>
+                                            <div
+                                                class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                <div
+                                                    class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
+                                                    <span
+                                                        class="material-symbols-outlined text-base">admin_panel_settings</span>
+                                                </div>
+                                                <h4 class="font-bold text-foreground mb-2">Role-Based Access Control
+                                                </h4>
+                                                <p class="text-sm text-text-muted">Strict session isolation separating
+                                                    citizen grievance submission views from administrative triage and
+                                                    resolution dashboards.</p>
+                                                <h4 class="font-bold text-xs sm:text-sm text-foreground mb-1">Role-Based
+                                                    Access Control</h4>
+                                                <p class="text-xs text-text-muted leading-relaxed">Strict session
+                                                    isolation separating citizen grievance submission views from
+                                                    administrative triage dashboards.</p>
+                                            </div>
+                                            <div
+                                                class="p-6 rounded-2xl bg-surface-container border border-border-subtle">
+                                                <div
+                                                    class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
+                                                    <span class="material-symbols-outlined">query_stats</span>
+                                                    <div
+                                                        class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                        <div
+                                                            class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
+                                                            <span
+                                                                class="material-symbols-outlined text-base">query_stats</span>
+                                                        </div>
+                                                        <h4 class="font-bold text-foreground mb-2">Administrative
+                                                            Analytics</h4>
+                                                        <p class="text-sm text-text-muted">Built-in aggregation metrics
+                                                            tracking resolution velocity, category-wise breakdown, and
+                                                            open municipal backlog.</p>
+                                                        <h4 class="font-bold text-xs sm:text-sm text-foreground mb-1">
+                                                            Administrative Analytics</h4>
+                                                        <p class="text-xs text-text-muted leading-relaxed">Built-in
+                                                            aggregation metrics tracking resolution velocity,
+                                                            category-wise breakdown, and open municipal backlog.</p>
+                                                    </div>
+                                                </div>
             </section>
+        </div>
 
-            <!-- Testing & QA Focus -->
-            <section>
-                <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Quality Engineering &amp; Testing</h2>
-                <div class="p-8 rounded-3xl bg-surface-container border border-border-subtle space-y-4">
-                    <p class="text-sm text-text-muted leading-relaxed">
-                        To guarantee system resilience under concurrent usage, automated test scripts were written in Python to validate:
-                    </p>
-                    <ul class="list-disc list-inside text-sm text-text-muted space-y-2">
-                        <li><strong class="text-foreground">OTP Expiry &amp; Replay Prevention:</strong> Rigorous boundary testing ensuring single-use token invalidation within 300 seconds.</li>
-                        <li><strong class="text-foreground">SQL Query Sanitization:</strong> Parametric query validation preventing SQL injection attempts across complaint title and description fields.</li>
-                        <li><strong class="text-foreground">Concurrent Load Verification:</strong> Simulated 100+ concurrent reporting sessions to confirm SQLite transaction locking stability and response latency under 120ms.</li>
-                    </ul>
-                </div>
-            </section>
+        <!-- Testing & QA Focus -->
+        <section>
+            <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Quality Engineering &amp; Testing</h2>
+            <div class="p-8 rounded-3xl bg-surface-container border border-border-subtle space-y-4">
+                <p class="text-sm text-text-muted leading-relaxed">
+                    To guarantee system resilience under concurrent usage, automated test scripts were written in Python
+                    to validate:
+                </p>
+                <ul class="list-disc list-inside text-sm text-text-muted space-y-2">
+                    <li><strong class="text-foreground">OTP Expiry &amp; Replay Prevention:</strong> Rigorous boundary
+                        testing ensuring single-use token invalidation within 300 seconds.</li>
+                    <li><strong class="text-foreground">SQL Query Sanitization:</strong> Parametric query validation
+                        preventing SQL injection attempts across complaint title and description fields.</li>
+                    <li><strong class="text-foreground">Concurrent Load Verification:</strong> Simulated 100+ concurrent
+                        reporting sessions to confirm SQLite transaction locking stability and response latency under
+                        120ms.</li>
+                </ul>
+                <!-- Card 4: Tech Stack (4 Cols) -->
+                <div
+                    class="md:col-span-12 lg:col-span-4 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                            TECHNOLOGIES EMPLOYED</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Python</span>
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Flask</span>
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">SQLite</span>
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Email
+                                OTP SMTP</span>
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">RBAC</span>
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">HTML5
+                                / CSS3</span>
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Tailwind
+                                CSS</span>
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Kannada
+                                i18n</span>
+                        </div>
+                    </div>
+        </section>
+        <p class="text-xs text-text-muted mt-4 pt-3 border-t border-border-subtle">
+            End-to-end regression verified with simulated grievance sweeps and automated payload sanitization tests.
+        </p>
+        </div>
+        </div>
 
-            <!-- Tech Stack List -->
-            <section>
-                <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Technologies Employed</h2>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Python</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Flask</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">SQLite</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Email OTP SMTP</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">RBAC</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">HTML5 / CSS3</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Tailwind CSS</span>
-                    <span class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Kannada i18n</span>
-                </div>
-            </section>
+        <!-- Tech Stack List -->
+        <section>
+            <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Technologies Employed</h2>
+            <div class="flex flex-wrap gap-2">
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Python</span>
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Flask</span>
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">SQLite</span>
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Email
+                    OTP SMTP</span>
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">RBAC</span>
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">HTML5
+                    / CSS3</span>
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Tailwind
+                    CSS</span>
+                <span
+                    class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Kannada
+                    i18n</span>
+            </div>
+        </section>
         </article>
 
         <!-- Navigation to Next Project -->
         <div class="mt-20 pt-8 border-t border-border-subtle flex justify-between items-center">
-            <a href="../agrochain/index.html" class="text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-2">
-                <span class="material-symbols-outlined text-sm">arrow_back</span> Previous: AgroChain
-            </a>
-            <a href="../smart-recipe-generator/index.html" class="text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
-                Next Case Study: Smart Recipe Generator <span class="material-symbols-outlined text-sm">arrow_forward</span>
-            </a>
-        </div>
+            <a href="../agrochain/index.html"
+                class="text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-2">
+                <!-- Compact Bottom Navigation -->
+                <div class="mt-8 pt-6 border-t border-border-subtle flex flex-wrap justify-between items-center gap-4">
+                    <a href="../agrochain/index.html"
+                        class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm">arrow_back</span> Previous: AgroChain
+                    </a>
+                    <a href="../smart-recipe-generator/index.html"
+                        class="text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
+                        <a href="../smart-recipe-generator/index.html"
+                            class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-1.5">
+                            Next Case Study: Smart Recipe Generator <span
+                                class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                </div>
     </main>
 
     <!-- Footer -->
@@ -320,5 +685,5 @@
         }
     </script>
 </body>
-</html>
 
+</html>
