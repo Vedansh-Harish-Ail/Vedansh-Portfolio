@@ -342,37 +342,59 @@
             align-items: center;
             cursor: pointer;
             user-select: none;
-            padding: 0.2rem 0.35rem;
+            padding: 2px;
             border-radius: 9999px;
-            background: rgba(226, 218, 208, 0.75);
-            border: 1px solid rgba(195, 182, 170, 0.6);
-            transition: all 0.3s ease;
+            background: #e7ded5;
+            border: 1px solid #d5cabe;
+            transition: background 0.3s ease, border-color 0.3s ease;
+            width: 52px;
+            height: 28px;
+            box-sizing: border-box;
+        }
+
+        .theme-switch-pill input {
+            position: absolute !important;
+            opacity: 0 !important;
+            width: 0 !important;
+            height: 0 !important;
+            pointer-events: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            outline: none !important;
+            clip: rect(0, 0, 0, 0) !important;
+            -webkit-appearance: none !important;
+            appearance: none !important;
         }
 
         .dark .theme-switch-pill {
-            background: rgba(45, 34, 28, 0.85);
-            border-color: rgba(90, 70, 58, 0.7);
+            background: #2b2019;
+            border-color: #423228;
         }
 
         .theme-switch-pill .toggle-knob {
-            width: 1.15rem;
-            height: 1.15rem;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 22px;
+            height: 22px;
             border-radius: 9999px;
             background: #ffffff;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 1px 3px rgba(84, 61, 52, 0.25);
             transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s ease;
             transform: translateX(0);
         }
 
         .dark .theme-switch-pill .toggle-knob {
-            background: #e6dacd;
-            transform: translateX(1.1rem);
+            background: #3d2e26;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+            transform: translateX(24px);
         }
 
         /* 3D Claymorphic Floating Code Card */
         .hero-floating-card {
             background: linear-gradient(145deg, #ffffff 0%, #f7f1eb 55%, #ece0d4 100%);
-            box-shadow: 
+            box-shadow:
                 26px 36px 65px rgba(84, 61, 52, 0.16),
                 -12px -12px 35px rgba(255, 255, 255, 0.95),
                 inset 2px 2px 4px rgba(255, 255, 255, 0.9),
@@ -386,7 +408,7 @@
 
         .dark .hero-floating-card {
             background: linear-gradient(145deg, #2b2019 0%, #1f1612 55%, #150f0c 100%);
-            box-shadow: 
+            box-shadow:
                 26px 36px 65px rgba(0, 0, 0, 0.65),
                 -8px -8px 25px rgba(255, 255, 255, 0.03),
                 inset 1px 1px 2px rgba(255, 255, 255, 0.12),
@@ -396,22 +418,25 @@
 
         .hero-floating-card:hover {
             transform: perspective(1000px) rotateY(0deg) rotateX(0deg) rotateZ(0deg) scale(1.04) !important;
-            box-shadow: 
+            box-shadow:
                 30px 42px 75px rgba(84, 61, 52, 0.22),
                 -14px -14px 40px rgba(255, 255, 255, 0.98),
                 inset 2px 2px 4px rgba(255, 255, 255, 0.9);
         }
 
         .dark .hero-floating-card:hover {
-            box-shadow: 
+            box-shadow:
                 30px 42px 75px rgba(0, 0, 0, 0.75),
                 -8px -8px 25px rgba(255, 255, 255, 0.05);
         }
 
         @keyframes heroCardFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: perspective(1000px) rotateY(-8deg) rotateX(7deg) rotateZ(1.5deg) translateY(0px);
             }
+
             50% {
                 transform: perspective(1000px) rotateY(-6deg) rotateX(5deg) rotateZ(0.5deg) translateY(-14px);
             }
@@ -688,7 +713,8 @@
 
     <!-- Smart Floating Navigation Bar -->
     <nav id="main-navbar" class="flex items-center justify-between" aria-label="Primary Navigation">
-        <a href="#hero" class="text-xs md:text-sm font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity uppercase font-sans whitespace-nowrap">
+        <a href="#hero"
+            class="text-xs md:text-sm font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity uppercase font-sans whitespace-nowrap">
             VEDANSH HARISH AIL
         </a>
 
@@ -711,13 +737,23 @@
         <div class="flex items-center gap-3">
             <!-- Theme Toggle Switch -->
             <label class="theme-switch-pill" aria-label="Toggle theme">
-                <input class="theme-toggle-input sr-only" type="checkbox" />
-                <span class="text-amber-500 mr-1 flex items-center justify-center pointer-events-none" title="Light mode">
-                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+                <input class="theme-toggle-input" type="checkbox" />
+                <div class="toggle-knob pointer-events-none" aria-hidden="true"></div>
+                <span
+                    class="relative z-10 w-6 h-6 flex items-center justify-center text-amber-500 dark:text-stone-500 transition-colors pointer-events-none"
+                    title="Light mode">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
                 </span>
-                <span class="toggle-knob pointer-events-none"></span>
-                <span class="text-stone-400 dark:text-stone-300 ml-1 flex items-center justify-center pointer-events-none" title="Dark mode">
-                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                <span
+                    class="relative z-10 w-6 h-6 flex items-center justify-center text-stone-400 dark:text-amber-200 transition-colors pointer-events-none"
+                    title="Dark mode">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
                 </span>
             </label>
 
@@ -734,11 +770,13 @@
     <main id="main-content" class="max-w-screen-2xl mx-auto px-6 md:px-12 pt-8">
 
         <!-- 1. Hero Section -->
-        <section class="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden" id="hero" aria-label="Hero Introduction">
+        <section class="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden" id="hero"
+            aria-label="Hero Introduction">
             <!-- Flowing Ambient Wave Ribbon (SVG) & Dot Grid Graphic -->
             <div class="absolute inset-0 pointer-events-none overflow-hidden -z-10" aria-hidden="true">
                 <!-- Organic Curved Ribbon matching attached image -->
-                <svg class="absolute right-0 top-0 w-full lg:w-[65vw] h-full opacity-70 dark:opacity-20 transition-opacity" viewBox="0 0 1000 850" fill="none" preserveAspectRatio="none">
+                <svg class="absolute right-0 top-0 w-full lg:w-[65vw] h-full opacity-70 dark:opacity-20 transition-opacity"
+                    viewBox="0 0 1000 850" fill="none" preserveAspectRatio="none">
                     <defs>
                         <linearGradient id="heroRibbonGradient" x1="0%" y1="100%" x2="100%" y2="0%">
                             <stop offset="0%" stop-color="#fdfbf7" stop-opacity="0" />
@@ -752,7 +790,8 @@
                             <stop offset="100%" stop-color="#1e1511" stop-opacity="1" />
                         </linearGradient>
                     </defs>
-                    <path d="M 150,850 C 350,750 480,550 620,380 C 740,230 840,120 1000,0 L 1000,850 Z" class="fill-[url(#heroRibbonGradient)] dark:fill-[url(#heroRibbonGradientDark)]" />
+                    <path d="M 150,850 C 350,750 480,550 620,380 C 740,230 840,120 1000,0 L 1000,850 Z"
+                        class="fill-[url(#heroRibbonGradient)] dark:fill-[url(#heroRibbonGradientDark)]" />
                 </svg>
 
                 <!-- Upper Right Subtle Dot Matrix Grid -->
@@ -783,42 +822,99 @@
             <!-- Main Split Layout Container -->
             <div class="max-w-7xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-                    
+
                     <!-- Left Column: Editorial Introduction & CTAs -->
                     <div class="lg:col-span-7 xl:col-span-8 flex flex-col items-start text-left">
                         <!-- Status & Availability Pill -->
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium border border-emerald-600/20 bg-emerald-50/80 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 shadow-sm mb-6">
+                        <div
+                            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium border border-emerald-600/20 bg-emerald-50/80 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 shadow-sm mb-6">
                             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                             <span>Available for opportunities</span>
                         </div>
 
                         <!-- Full Professional Name -->
-                        <h1 class="hero-title font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem] tracking-tight leading-[1.05] text-[#241a15] dark:text-[#f8f5f0] font-normal mb-3">
+                        <h1
+                            class="hero-title font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem] tracking-tight leading-[1.05] text-[#241a15] dark:text-[#f8f5f0] font-normal mb-3">
                             Vedansh Harish Ail
                         </h1>
 
                         <!-- Professional Headline -->
-                        <p class="font-playfair italic font-normal text-xl sm:text-2xl md:text-[1.75rem] text-[#6b5245] dark:text-[#d6c1b3] tracking-wide mb-6">
+                        <p
+                            class="font-playfair italic font-normal text-xl sm:text-2xl md:text-[1.75rem] text-[#6b5245] dark:text-[#d6c1b3] tracking-wide mb-6">
                             Software Engineer | Full Stack Development | Quality Engineering
                         </p>
 
                         <!-- Professional Introduction -->
-                        <p class="hero-description font-body-md text-stone-600 dark:text-stone-400 text-sm md:text-base leading-relaxed max-w-xl mb-8">
-                            MCA graduate with hands-on experience building dependable web applications, scalable backend APIs, and automated test pipelines. Focused on clean architecture, relational database integrity, and high-quality software delivery.
+                        <p
+                            class="hero-description font-body-md text-stone-600 dark:text-stone-400 text-sm md:text-base leading-relaxed max-w-xl mb-8">
+                            MCA graduate and software engineer building dependable web applications, scalable backend
+                            APIs,
+                            and automated test pipelines. Alongside enterprise roles, I actively undertake
+                            <strong>freelance
+                                client projects, custom websites, and digital solutions</strong> via my independent
+                            practice <a href="https://vhalokh.vercel.app" target="_blank" rel="noopener noreferrer"
+                                class="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"><span>vha.lokh</span><span
+                                    class="material-symbols-outlined text-xs">north_east</span></a>.
                         </p>
 
                         <!-- Primary Action Buttons -->
-                        <div class="flex flex-wrap gap-4 hero-buttons items-center mb-10">
+                        <div class="flex flex-wrap gap-3.5 hero-buttons items-center mb-8">
                             <a href="#work"
-                                class="bg-[#48332a] text-[#faf7f2] hover:bg-[#38261e] dark:bg-[#e4d5c7] dark:text-[#2d1d16] px-7 py-3.5 rounded-full font-medium text-sm inline-flex items-center gap-2.5 shadow-md hover:scale-105 transition-all duration-300 group">
-                                <span class="material-symbols-outlined text-base">folder</span>
+                                class="bg-[#48332a] text-[#faf7f2] hover:bg-[#38261e] dark:bg-[#e4d5c7] dark:text-[#2d1d16] px-6 py-3 rounded-full font-medium text-sm inline-flex items-center gap-2 shadow-md hover:scale-105 transition-all duration-300">
                                 <span>View Projects</span>
-                                <span class="material-symbols-outlined text-sm group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+                                <span class="material-symbols-outlined text-sm">arrow_downward</span>
+                            </a>
+                            <a href="#freelance"
+                                class="border border-[#644a40]/40 dark:border-primary/40 bg-surface-container text-foreground px-6 py-3 rounded-full font-medium text-sm hover:bg-stone-100 dark:hover:bg-stone-800 hover:scale-105 transition-all duration-300 inline-flex items-center gap-2 group"
+                                title="Scroll down to Freelance &amp; vha.lokh showcase">
+                                <span class="material-symbols-outlined text-sm text-primary">design_services</span>
+                                <span>Freelance Services</span>
+                                <span
+                                    class="material-symbols-outlined text-sm group-hover:translate-y-0.5 transition-transform">arrow_downward</span>
                             </a>
                             <a href="assets/Resume_Vedansh_Harish_Ail_22.pdf" download="Resume_Vedansh_Harish_Ail.pdf"
-                                class="border border-stone-300 dark:border-stone-700 bg-white/70 dark:bg-stone-800/70 text-stone-800 dark:text-stone-200 hover:bg-white dark:hover:bg-stone-800 px-7 py-3.5 rounded-full font-medium text-sm inline-flex items-center gap-2.5 shadow-sm hover:scale-105 transition-all duration-300">
-                                <span class="material-symbols-outlined text-base">download</span>
+                                class="border border-stone-300 dark:border-stone-700 bg-white/70 dark:bg-stone-800/70 text-stone-800 dark:text-stone-200 hover:bg-white dark:hover:bg-stone-800 px-6 py-3 rounded-full font-medium text-sm inline-flex items-center gap-2 shadow-sm hover:scale-105 transition-all duration-300">
                                 <span>Download Resume</span>
+                                <span class="material-symbols-outlined text-sm">download</span>
+                            </a>
+                            <a href="#direct-contact"
+                                class="border border-stone-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:text-foreground px-6 py-3 rounded-full font-medium text-sm hover:bg-surface-container transition-colors inline-flex items-center gap-2">
+                                <span>Contact Me</span>
+                                <span class="material-symbols-outlined text-sm">mail</span>
+                            </a>
+                        </div>
+
+                        <!-- Quick Professional Links Row -->
+                        <div
+                            class="flex flex-wrap items-center gap-3.5 sm:gap-4 text-xs sm:text-sm text-text-muted mb-8">
+                            <a href="https://github.com/Vedansh-Harish-Ail" target="_blank" rel="noopener noreferrer"
+                                class="hover:text-foreground transition-colors inline-flex items-center gap-1.5"
+                                aria-label="Vedansh Harish Ail GitHub Profile">
+                                <span class="material-symbols-outlined text-base">code</span>
+                                <span>GitHub</span>
+                            </a>
+                            <span>•</span>
+                            <a href="https://linkedin.com/in/vedansh-harish-ail" target="_blank"
+                                rel="noopener noreferrer"
+                                class="hover:text-foreground transition-colors inline-flex items-center gap-1.5"
+                                aria-label="Vedansh Harish Ail LinkedIn Profile">
+                                <span class="material-symbols-outlined text-base">work</span>
+                                <span>LinkedIn</span>
+                            </a>
+                            <span>•</span>
+                            <a href="https://vhalokh.vercel.app" target="_blank" rel="noopener noreferrer"
+                                class="hover:text-foreground text-primary font-semibold transition-colors inline-flex items-center gap-1.5"
+                                aria-label="vha.lokh Freelance Portfolio">
+                                <span class="material-symbols-outlined text-base">public</span>
+                                <span>vha.lokh Portfolio</span>
+                                <span class="material-symbols-outlined text-xs">north_east</span>
+                            </a>
+                            <span>•</span>
+                            <a href="mailto:ailvedansh@gmail.com"
+                                class="hover:text-foreground transition-colors inline-flex items-center gap-1.5"
+                                aria-label="Send email to Vedansh Harish Ail">
+                                <span class="material-symbols-outlined text-base">send</span>
+                                <span>ailvedansh@gmail.com</span>
                             </a>
                         </div>
 
@@ -826,8 +922,11 @@
                         <div class="flex flex-wrap items-center gap-4 text-stone-500 dark:text-stone-400 pt-2">
                             <div class="flex items-center gap-3">
                                 <!-- React -->
-                                <span class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" title="React">
-                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <span
+                                    class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                                    title="React">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                         <ellipse cx="12" cy="12" rx="10" ry="4"></ellipse>
                                         <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"></ellipse>
                                         <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"></ellipse>
@@ -835,32 +934,46 @@
                                     </svg>
                                 </span>
                                 <!-- JavaScript -->
-                                <span class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" title="JavaScript">
+                                <span
+                                    class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                                    title="JavaScript">
                                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M3 3h18v18H3V3zm11.5 13.5c0 1.4 1 2.3 2.5 2.3 1.1 0 1.9-.5 2.4-1.1l-1.3-1c-.3.4-.6.6-1.1.6-.5 0-.9-.3-.9-.8V11h-1.6v5.5zm-5.6-.2c.5.8 1.2 1.3 2.2 1.3 1.1 0 1.8-.6 1.8-1.5 0-1-.6-1.4-1.7-1.9l-.6-.3c-1.4-.6-2.2-1.3-2.2-2.7 0-1.5 1.2-2.6 2.8-2.6 1.2 0 2 .5 2.6 1.4l-1.3 1c-.3-.5-.7-.8-1.3-.8-.7 0-1.2.4-1.2 1 0 .7.5 1 1.4 1.4l.6.3c1.6.7 2.5 1.4 2.5 2.9 0 1.7-1.3 2.8-3.3 2.8-1.5 0-2.6-.7-3.2-1.8l1.4-1.1z"/>
+                                        <path
+                                            d="M3 3h18v18H3V3zm11.5 13.5c0 1.4 1 2.3 2.5 2.3 1.1 0 1.9-.5 2.4-1.1l-1.3-1c-.3.4-.6.6-1.1.6-.5 0-.9-.3-.9-.8V11h-1.6v5.5zm-5.6-.2c.5.8 1.2 1.3 2.2 1.3 1.1 0 1.8-.6 1.8-1.5 0-1-.6-1.4-1.7-1.9l-.6-.3c-1.4-.6-2.2-1.3-2.2-2.7 0-1.5 1.2-2.6 2.8-2.6 1.2 0 2 .5 2.6 1.4l-1.3 1c-.3-.5-.7-.8-1.3-.8-.7 0-1.2.4-1.2 1 0 .7.5 1 1.4 1.4l.6.3c1.6.7 2.5 1.4 2.5 2.9 0 1.7-1.3 2.8-3.3 2.8-1.5 0-2.6-.7-3.2-1.8l1.4-1.1z" />
                                     </svg>
                                 </span>
                                 <!-- Python -->
-                                <span class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" title="Python">
+                                <span
+                                    class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                                    title="Python">
                                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M11.9 2C8.3 2 8.5 3.6 8.5 3.6l.01 1.6h3.5v.5H4.8S2 5.4 2 9.1c0 3.6 2.5 3.5 2.5 3.5h1.5v-2.1c0-2.4 2-2.3 2-2.3h3.4s2.2.03 2.2-2.2V4.2S13.8 2 11.9 2zm-1.8 1.1c.4 0 .7.3.7.7s-.3.7-.7.7-.7-.3-.7-.7.3-.7.7-.7zm1.9 18.9c3.6 0 3.4-1.6 3.4-1.6l-.01-1.6H11.9v-.5h7.2s2.8.3 2.8-3.4c0-3.6-2.5-3.5-2.5-3.5h-1.5v2.1c0 2.4-2 2.3-2 2.3h-3.4s-2.2-.03-2.2 2.2v1.8s-.2 2.2 1.7 2.2zm1.8-1.1c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.7.3.7.7-.3.7-.7.7z"/>
+                                        <path
+                                            d="M11.9 2C8.3 2 8.5 3.6 8.5 3.6l.01 1.6h3.5v.5H4.8S2 5.4 2 9.1c0 3.6 2.5 3.5 2.5 3.5h1.5v-2.1c0-2.4 2-2.3 2-2.3h3.4s2.2.03 2.2-2.2V4.2S13.8 2 11.9 2zm-1.8 1.1c.4 0 .7.3.7.7s-.3.7-.7.7-.7-.3-.7-.7.3-.7.7-.7zm1.9 18.9c3.6 0 3.4-1.6 3.4-1.6l-.01-1.6H11.9v-.5h7.2s2.8.3 2.8-3.4c0-3.6-2.5-3.5-2.5-3.5h-1.5v2.1c0 2.4-2 2.3-2 2.3h-3.4s-2.2-.03-2.2 2.2v1.8s-.2 2.2 1.7 2.2zm1.8-1.1c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.7.3.7.7-.3.7-.7.7z" />
                                     </svg>
                                 </span>
                                 <!-- Java -->
-                                <span class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" title="Java">
+                                <span
+                                    class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                                    title="Java">
                                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M8.8 17.5c2.6.2 5.1-.3 7-.7-.1.4-.4.8-.8 1.2-2.1.4-4.5.5-6.2.2 0-.2 0-.4 0-.7zm-.5 2.4c2.2.2 4.4.2 6.5-.2-.3.4-.7.7-1.3.9-2.1.2-4.1.2-5.7-.1.2-.2.3-.4.5-.6zm10.3-6.5c.8-.7 1.4-1.6 1.4-2.6 0-1.8-1.6-2.8-3.9-2.8h-1.4v1.5h1.4c1.4 0 2.3.5 2.3 1.3 0 .7-.6 1.2-1.3 1.5-.7.3-1.6.4-2.4.4V14c1.5 0 2.9-.2 3.9-.6zM7 14.5c2.9.2 6.4-.1 8.5-.7 0-.5 0-1-.1-1.5-2.2.6-5.4.8-8.4.6v1.6zm8.8-7.7c-1.1.8-2.6 1.4-4.2 1.4-1.4 0-2.6-.5-3.5-1.3.9-.3 2-.4 3.2-.4 1.7 0 3.3.4 4.5.3zM4.5 15.6c3.7.3 8.3 0 10.9-.9.4-1.6.6-3.7.6-5.8H4.5v6.7z"/>
+                                        <path
+                                            d="M8.8 17.5c2.6.2 5.1-.3 7-.7-.1.4-.4.8-.8 1.2-2.1.4-4.5.5-6.2.2 0-.2 0-.4 0-.7zm-.5 2.4c2.2.2 4.4.2 6.5-.2-.3.4-.7.7-1.3.9-2.1.2-4.1.2-5.7-.1.2-.2.3-.4.5-.6zm10.3-6.5c.8-.7 1.4-1.6 1.4-2.6 0-1.8-1.6-2.8-3.9-2.8h-1.4v1.5h1.4c1.4 0 2.3.5 2.3 1.3 0 .7-.6 1.2-1.3 1.5-.7.3-1.6.4-2.4.4V14c1.5 0 2.9-.2 3.9-.6zM7 14.5c2.9.2 6.4-.1 8.5-.7 0-.5 0-1-.1-1.5-2.2.6-5.4.8-8.4.6v1.6zm8.8-7.7c-1.1.8-2.6 1.4-4.2 1.4-1.4 0-2.6-.5-3.5-1.3.9-.3 2-.4 3.2-.4 1.7 0 3.3.4 4.5.3zM4.5 15.6c3.7.3 8.3 0 10.9-.9.4-1.6.6-3.7.6-5.8H4.5v6.7z" />
                                     </svg>
                                 </span>
                                 <!-- GitHub -->
-                                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank" rel="noopener noreferrer" class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" title="GitHub">
+                                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                                    title="GitHub">
                                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                                     </svg>
                                 </a>
                             </div>
                             <span class="h-4 w-px bg-stone-300 dark:bg-stone-700"></span>
-                            <div class="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[#735e53] dark:text-[#c4aea2]">
+                            <div
+                                class="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[#735e53] dark:text-[#c4aea2]">
                                 <span class="text-amber-700 dark:text-amber-400">✦</span>
                                 <span>Building Scalable Solutions</span>
                             </div>
@@ -870,11 +983,15 @@
                     <!-- Right Column: 3D Claymorphic Floating Code Card -->
                     <div class="lg:col-span-5 xl:col-span-4 flex items-center justify-center relative py-6">
                         <!-- Ambient Glass Outer Contour Ring -->
-                        <div class="absolute -inset-4 sm:-inset-6 rounded-[3.5rem] border border-stone-300/60 dark:border-stone-700/50 pointer-events-none -z-10"></div>
-                        
+                        <div
+                            class="absolute -inset-4 sm:-inset-6 rounded-[3.5rem] border border-stone-300/60 dark:border-stone-700/50 pointer-events-none -z-10">
+                        </div>
+
                         <!-- 3D Claymorphic Card -->
-                        <div class="hero-floating-card w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-[2.75rem] flex items-center justify-center cursor-pointer select-none">
-                            <span class="font-mono text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-[#3d2b22] dark:text-[#eee0d3] drop-shadow-sm select-none">&lt;/&gt;</span>
+                        <div
+                            class="hero-floating-card w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-[2.75rem] flex items-center justify-center cursor-pointer select-none">
+                            <span
+                                class="font-mono text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-[#3d2b22] dark:text-[#eee0d3] drop-shadow-sm select-none">&lt;/&gt;</span>
                         </div>
                     </div>
 
@@ -882,11 +999,14 @@
 
                 <!-- Bottom Center Scroll Indicator -->
                 <div class="flex flex-col items-center justify-center pt-12 md:pt-16 pb-2">
-                    <a href="#work" class="group flex flex-col items-center gap-1 text-stone-400 dark:text-stone-500 hover:text-stone-700 dark:hover:text-stone-300 transition-colors" aria-label="Scroll to projects">
+                    <a href="#work"
+                        class="group flex flex-col items-center gap-1 text-stone-400 dark:text-stone-500 hover:text-stone-700 dark:hover:text-stone-300 transition-colors"
+                        aria-label="Scroll to projects">
                         <div class="w-5 h-8 rounded-full border-2 border-current flex items-start justify-center p-1">
                             <div class="w-1 h-1.5 rounded-full bg-current animate-bounce"></div>
                         </div>
-                        <span class="material-symbols-outlined text-xs group-hover:translate-y-0.5 transition-transform">keyboard_arrow_down</span>
+                        <span
+                            class="material-symbols-outlined text-xs group-hover:translate-y-0.5 transition-transform">keyboard_arrow_down</span>
                     </a>
                 </div>
             </div>
