@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>AgroChain — Hybrid Web2/Web3 Agricultural Supply Chain | Vedansh Harish Ail</title>
     <meta name="description"
-        content="Deep dive into AgroChain: A hybrid Web2/Web3 supply chain platform engineered with React, Flask, Solidity smart contracts, and Ethers.js for transparent crop provenance and farmer microfinance." />
+        content="Deep dive into AgroChain: A hybrid Web2/Web3 supply chain platform engineered with Solidity smart contracts, Flask REST API, and React on Ethereum." />
     <meta name="author" content="Vedansh Harish Ail" />
     <link rel="canonical" href="https://vedansh-portfolio-beta.vercel.app/projects/agrochain" />
     <link rel="icon" type="image/png" href="../../assets/favicon.png" />
@@ -15,7 +15,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="AgroChain Case Study — Vedansh Harish Ail" />
     <meta property="og:description"
-        content="A hybrid Web2/Web3 agricultural supply chain platform utilizing Solidity smart contracts, React, and Flask for crop traceability and microfinance." />
+        content="Decentralized agricultural logistics, crop provenance tracking, and escrow microfinance on Ethereum." />
     <meta property="og:url" content="https://vedansh-portfolio-beta.vercel.app/projects/agrochain" />
     <meta property="og:image" content="https://vedansh-portfolio-beta.vercel.app/assets/project6.png" />
     <meta property="og:site_name" content="Vedansh Harish Ail Portfolio" />
@@ -24,11 +24,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="AgroChain Case Study | Vedansh Harish Ail" />
     <meta name="twitter:description"
-        content="Solidity smart contracts, Flask REST API, and React frontend for agricultural crop provenance and decentralized microfinance." />
+        content="Hybrid Web2/Web3 platform for agricultural traceability, smart contract microloans, and transparent commerce." />
     <meta name="twitter:image" content="https://vedansh-portfolio-beta.vercel.app/assets/project6.png" />
 
     <!-- Tailwind & Google Fonts -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
         rel="stylesheet" />
@@ -36,67 +38,62 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
 
-    <script id="tailwind-config">
+    <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "text-muted": "var(--muted-foreground)",
-                        "surface-primary": "var(--background)",
-                        "background": "var(--background)",
-                        "on-surface": "var(--foreground)",
-                        "primary": "var(--primary)",
-                        "on-primary": "var(--primary-foreground)",
-                        "surface-container": "var(--card)",
-                        "surface-container-low": "var(--muted)",
-                        "border-subtle": "var(--border)"
+                        background: "var(--background)",
+                        foreground: "var(--foreground)",
+                        primary: "var(--primary)",
+                        "on-primary": "var(--on-primary)",
+                        "surface-container": "var(--surface-container)",
+                        "surface-container-low": "var(--surface-container-low)",
+                        "border-subtle": "var(--border-subtle)",
+                        "text-muted": "var(--text-muted)",
                     },
-                    borderRadius: { "luxury": "2.5rem" },
                     fontFamily: {
-                        "playfair": ["Playfair Display", "serif"],
-                        "headline": ["Newsreader", "serif"],
-                        "sans": ["Inter", "sans-serif"]
-                    }
-                }
-            }
+                        serif: ['Newsreader', 'Georgia', 'serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                },
+            },
         };
     </script>
 
     <style>
         :root {
-            --card: #fcfcfc;
-            --muted: #efefef;
-            --border: #d8d8d8;
-            --primary: #644a40;
-            --background: #f9f9f9;
-            --foreground: #202020;
-            --muted-foreground: #646464;
-            --primary-foreground: #ffffff;
+            --background: #fdfbf7;
+            --foreground: #2d2621;
+            --primary: #48332a;
+            --on-primary: #fdfbf7;
+            --surface-container: #f5efe6;
+            --surface-container-low: #ebe3d5;
+            --border-subtle: #e6ded1;
+            --text-muted: #796e65;
         }
 
         .dark {
-            --card: #222222;
-            --muted: #2c2c2c;
-            --border: #333333;
-            --primary: #ffe0c2;
-            --background: #111111;
-            --foreground: #eeeeee;
-            --muted-foreground: #b4b4b4;
-            --primary-foreground: #081a1b;
-        }
-
-        .luxury-border {
-            border-radius: 40px;
+            --background: #141210;
+            --foreground: #ede8e1;
+            --primary: #d4a373;
+            --on-primary: #1c1815;
+            --surface-container: #1e1a17;
+            --surface-container-low: #28231f;
+            --border-subtle: #332d27;
+            --text-muted: #a89f91;
         }
 
         body {
             background-color: var(--background);
             color: var(--foreground);
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
         }
     </style>
 
-    <!-- Schema.org JSON-LD -->
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -137,7 +134,7 @@
 </head>
 
 <body class="font-sans selection:bg-stone-300 dark:selection:bg-stone-700">
-    <!-- Navigation -->
+    <!-- Top Navigation -->
     <nav
         class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md border-b border-border-subtle py-4 px-6 md:px-12 flex justify-between items-center max-w-screen-2xl mx-auto">
         <a href="../../index.html"
@@ -159,370 +156,295 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-                    <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-8">
-                        <!-- Top Bar: Breadcrumb & Quick Actions -->
-                        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-                            <nav aria-label="Breadcrumb">
-                                <ol class="flex items-center gap-2 text-xs sm:text-sm text-text-muted">
-                                    <li><a href="../../index.html"
-                                            class="hover:text-foreground transition-colors">Home</a></li>
-                                    <li><span>/</span></li>
-                                    <li><a href="../../index.html#work"
-                                            class="hover:text-foreground transition-colors">Projects</a></li>
-                                    <li><span>/</span></li>
-                                    <li class="text-foreground font-medium" aria-current="page">AgroChain</li>
-                                </ol>
-                            </nav>
-                            <div class="flex items-center gap-3">
-                                <a href="../../index.html#work"
-                                    class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
-                                    <span class="material-symbols-outlined text-sm">grid_view</span> All Projects
-                                </a>
-                                    <a href="../meri-panchayat/index.html"
-                                        class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
-                                        Next Project <span
-                                            class="material-symbols-outlined text-sm">arrow_forward</span>
-                                    </a>
-                            </div>
+    <!-- Main Content: Bento Grid Layout -->
+    <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-8">
+        <!-- Top Bar: Breadcrumb & Quick Actions -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <nav aria-label="Breadcrumb">
+                <ol class="flex items-center gap-2 text-xs sm:text-sm text-text-muted">
+                    <li><a href="../../index.html" class="hover:text-foreground transition-colors">Home</a></li>
+                    <li><span>/</span></li>
+                    <li><a href="../../index.html#work" class="hover:text-foreground transition-colors">Projects</a></li>
+                    <li><span>/</span></li>
+                    <li class="text-foreground font-medium" aria-current="page">AgroChain</li>
+                </ol>
+            </nav>
+            <div class="flex items-center gap-3">
+                <a href="../wedding-invitation/index.html"
+                    class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span> Previous
+                </a>
+                <a href="../../index.html#work"
+                    class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                    <span class="material-symbols-outlined text-sm">grid_view</span> All Projects
+                </a>
+                <a href="../meri-panchayat/index.html"
+                    class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                    Next Project <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
         </div>
 
-                <!-- Upper Bento Deck: Executive Overview & Live Preview -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
-                    <!-- Left Bento: Executive Overview (7 Cols) -->
-                    <div
-                        class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                        <div>
-                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-                                <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— PROJECT
-                                    OVERVIEW</span>
-                                <div class="flex items-center gap-2">
-                                    <span
-                                        class="px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Web3
-                                        &amp; Supply Chain</span>
-                                    <span
-                                        class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Live
-                                        Deployment</span>
-                                </div>
-                            </div>
-                            <h1
-                                class="font-playfair text-3xl sm:text-4xl lg:text-5xl text-foreground font-bold mb-4 leading-tight">
-                                AgroChain: Decentralized Agricultural Supply Chain &amp; Microfinance
-                            </h1>
-                            <p class="text-sm sm:text-base text-text-muted leading-relaxed mb-6">
-                                A hybrid Web2/Web3 platform engineered to eliminate predatory middlemen in agricultural
-                                logistics, empowering farmers with immutable crop batch tracking, transparent buyer
-                                rating mechanisms, and escrow-backed peer-to-peer microloans.
-                            </p>
-                            <div class="flex flex-wrap gap-3 mb-6">
-                                <a href="https://agrochain-i6zh.onrender.com/" target="_blank" rel="noopener noreferrer"
-                                    class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-xs sm:text-sm shadow-sm">
-                                    Open Live Project <span class="material-symbols-outlined text-xs">north_east</span>
-                                </a>
-                                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="border border-border-subtle bg-surface-container-low text-foreground px-6 py-2.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-xs sm:text-sm">
-                                    GitHub Repository <span class="material-symbols-outlined text-xs">code</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Integrated 4-Metric Grid -->
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-border-subtle">
-                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                    ROLE</span>
-                                <span class="font-semibold text-foreground text-xs sm:text-sm">Full Stack &amp;
-                                    Web3</span>
-                            </div>
-                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                    ARCHITECTURE</span>
-                                <span class="font-semibold text-foreground text-xs sm:text-sm">Hybrid Web2/Web3</span>
-                            </div>
-                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">— CORE
-                                    TECH</span>
-                                <span class="font-semibold text-foreground text-xs sm:text-sm">Solidity, Flask,
-                                    React</span>
-                            </div>
-                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">— SMART
-                                    CONTRACT</span>
-                                <span class="font-semibold text-foreground text-xs sm:text-sm">Ethereum / Hardhat</span>
-                            </div>
+        <!-- Upper Bento Deck: Executive Overview & Live Preview -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+            <!-- Left Bento: Executive Overview (7 Cols) -->
+            <div
+                class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                <div>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— PROJECT OVERVIEW</span>
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Web3 &amp; Supply Chain</span>
+                            <span
+                                class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Live Deployment</span>
                         </div>
                     </div>
-
-                        <!-- Right Bento: Live Preview & Showcase (5 Cols) -->
-                        <div
-                            class="lg:col-span-5 p-6 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">—
-                                    INTERFACE PREVIEW</span>
-                                <span
-                                    class="inline-flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
-                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                    <span>Active Dashboard</span>
-                                </span>
-                            </div>
-                            <div
-                                class="rounded-2xl overflow-hidden border border-border-subtle shadow-inner bg-surface-container-low aspect-[16/10] flex items-center justify-center">
-                                <img src="../../assets/project6.png"
-                                    alt="AgroChain decentralized agricultural supply chain dashboard"
-                                    class="w-full h-full object-cover" width="1200" height="570" />
-                            </div>
-                            <div class="pt-3 flex items-center justify-between text-xs text-text-muted">
-                                <span>Verified crop batch provenance &amp; microfinance telemetry</span>
-                                <a href="https://agrochain-i6zh.onrender.com/" target="_blank" rel="noopener noreferrer"
-                                    class="text-primary hover:underline font-medium inline-flex items-center gap-0.5">
-                                    Visit <span class="material-symbols-outlined text-xs">north_east</span>
-                                </a>
-                            </div>
-                        </div>
+                    <h1 class="font-playfair text-3xl sm:text-4xl lg:text-5xl text-foreground font-bold mb-4 leading-tight">
+                        AgroChain: Decentralized Agricultural Supply Chain &amp; Microfinance
+                    </h1>
+                    <p class="text-sm sm:text-base text-text-muted leading-relaxed mb-6">
+                        A hybrid Web2/Web3 platform engineered to eliminate predatory middlemen in agricultural logistics, empowering farmers with immutable crop batch tracking, transparent buyer rating mechanisms, and escrow-backed peer-to-peer microloans.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <a href="https://agrochain-i6zh.onrender.com/" target="_blank" rel="noopener noreferrer"
+                            class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-xs sm:text-sm shadow-sm">
+                            Open Live Project <span class="material-symbols-outlined text-xs">north_east</span>
+                        </a>
+                        <a href="https://github.com/Vedansh-Harish-Ail" target="_blank" rel="noopener noreferrer"
+                            class="border border-border-subtle bg-surface-container-low text-foreground px-5 py-2.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-xs sm:text-sm">
+                            GitHub Repository <span class="material-symbols-outlined text-xs">code</span>
+                        </a>
                     </div>
-
-                                <!-- Lower Bento Deck: Deep Dive Modules -->
-                                <div class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5">
-                                    <!-- Card 1: Problem & Solution (6 Cols) -->
-                                    <div
-                                        class="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                        <div>
-                                            <span
-                                                class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                                PROBLEM &amp; SOLUTION</span>
-                                            <div class="space-y-3.5 text-xs sm:text-sm">
-                                                <div
-                                                    class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                    <strong
-                                                        class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
-                                                        <span
-                                                            class="material-symbols-outlined text-sm text-amber-700 dark:text-amber-400">warning</span>
-                                                        The Problem
-                                                    </strong>
-                                                    <p class="text-text-muted leading-relaxed">
-                                                        Traditional agricultural supply chains are plagued by opaque
-                                                        pricing, fragmented intermediary layers, and zero authentic crop
-                                                        origin verification. Smallholder farmers frequently receive only
-                                                        a fraction of market retail value while bearing the entire
-                                                        production risk.
-                                                    </p>
-                                                </div>
-                                                <div
-                                                    class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                    <strong
-                                                        class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
-                                                        <span
-                                                            class="material-symbols-outlined text-sm text-emerald-600 dark:text-emerald-400">verified</span>
-                                                        The Technical Solution
-                                                    </strong>
-                                                    <p class="text-text-muted leading-relaxed">
-                                                        AgroChain combines high-speed Web2 usability with Web3
-                                                        cryptographically verifiable guarantees: immutable crop batch
-                                                        provenance tracking, transparent buyer rating mechanisms, and
-                                                        escrow-backed peer-to-peer microloans.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
                 </div>
 
-                            <!-- Card 2: Technical Architecture (6 Cols) -->
-                            <div
-                                class="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                <div>
-                                    <span
-                                        class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                        SYSTEM ARCHITECTURE</span>
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                                        <div
-                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60 flex flex-col justify-between">
-                                            <div>
-                                                <h4
-                                                    class="font-bold text-sm mb-2 text-foreground flex items-center gap-1.5">
-                                                    <span
-                                                        class="material-symbols-outlined text-primary text-base">token</span>
-                                                    Smart Contract Layer
-                                                </h4>
-                                                <p class="text-xs text-text-muted leading-relaxed">
-                                                    Written in Solidity and compiled via Hardhat. Manages crop batch
-                                                    minting as verifiable provenance tokens, stores immutable
-                                                    transaction histories, and enforces automated escrow releases.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60 flex flex-col justify-between">
-                                            <div>
-                                                <h4
-                                                    class="font-bold text-sm mb-2 text-foreground flex items-center gap-1.5">
-                                                    <span
-                                                        class="material-symbols-outlined text-primary text-base">api</span>
-                                                    Web2 Application Layer
-                                                </h4>
-                                                <p class="text-xs text-text-muted leading-relaxed">
-                                                    A Python/Flask RESTful backend serving dynamic pricing endpoints and
-                                                    PostgreSQL/SQLite indexing, paired with a React frontend
-                                                    communicating via MetaMask and Ethers.js.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                <!-- 4 Quick Key Metrics Strip -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4 border-t border-border-subtle">
+                    <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                        <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">— ROLE</span>
+                        <span class="font-semibold text-foreground text-xs sm:text-sm">Full Stack &amp; Web3</span>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                        <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">— ARCHITECTURE</span>
+                        <span class="font-semibold text-foreground text-xs sm:text-sm">Hybrid Web2/Web3</span>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                        <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">— CORE TECH</span>
+                        <span class="font-semibold text-foreground text-xs sm:text-sm">Solidity, Flask, React</span>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                        <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">— SMART CONTRACT</span>
+                        <span class="font-semibold text-foreground text-xs sm:text-sm">Ethereum / Hardhat</span>
+                    </div>
+                </div>
             </div>
 
-                            <!-- Card 3: Key Features (8 Cols) -->
-                            <div
-                                class="md:col-span-12 lg:col-span-8 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle shadow-sm">
-                                <span
-                                    class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                    KEY CAPABILITIES</span>
-                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                    <div
-                                        class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                        <div
-                                            class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
-                                            <span class="material-symbols-outlined text-base">qr_code_2</span>
-                                        </div>
-                                        <h4 class="font-bold text-xs sm:text-sm text-foreground mb-1">Provenance
-                                            Traceability</h4>
-                                        <p class="text-xs text-text-muted leading-relaxed">Unique batch identifiers
-                                            allow buyers to verify harvest timestamp, geolocation, and transit
-                                            checkpoints directly on the ledger.</p>
-                                    </div>
-                                            <div
-                                                class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                <div
-                                                    class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
-                                                    <span class="material-symbols-outlined text-base">payments</span>
-                                                </div>
-                                                <h4 class="font-bold text-xs sm:text-sm text-foreground mb-1">P2P
-                                                    Microfinance Escrow</h4>
-                                                <p class="text-xs text-text-muted leading-relaxed">Smart contract escrow
-                                                    protocols release funds upon milestone verification, protecting
-                                                    lenders while offering fair interest rates.</p>
-                                            </div>
-                                                    <div
-                                                        class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                        <div
-                                                            class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
-                                                            <span
-                                                                class="material-symbols-outlined text-base">star_rate</span>
-                                                        </div>
-                                                        <h4 class="font-bold text-xs sm:text-sm text-foreground mb-1">
-                                                            Decentralized Reputation</h4>
-                                                        <p class="text-xs text-text-muted leading-relaxed">On-chain
-                                                            rating mechanisms that prevent malicious rating inflation or
-                                                            fake review tampering through contract validation.</p>
-                                                    </div>
-                                                </div>
-        </div>
-
-                        <!-- Card 4: Tech Stack (4 Cols) -->
-                    <div
-                        class="md:col-span-12 lg:col-span-4 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                        <div>
-                            <span class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                TECHNOLOGIES EMPLOYED</span>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span
-                                    class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Solidity</span>
-                                <span
-                                    class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Ethereum</span>
-                                <span
-                                    class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Hardhat</span>
-                                <span
-                                    class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Ethers.js</span>
-                                <span
-                                    class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">React</span>
-                                <span
-                                    class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Python</span>
-                                <span
-                                    class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Flask</span>
-                                <span
-                                    class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">RESTful
-                                    APIs</span>
-                                <span
-                                    class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Tailwind
-                                    CSS</span>
-                            </div>
-                        </div>
-                        <p class="text-xs text-text-muted mt-4 pt-3 border-t border-border-subtle">
-                            Integration verified with testnet RPC nodes, automated contract sweeps, and UI regression
-                            suites.
-                        </p>
-                    </div>
-
-                    <!-- Card 5: Engineering Challenges & Solutions (12 Cols) -->
-                    <div
-                        class="col-span-12 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle shadow-sm">
-                        <span class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                            ENGINEERING CHALLENGES &amp; RESOLUTIONS</span>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                <h4
-                                    class="font-bold text-foreground text-xs sm:text-sm mb-1.5 flex items-center gap-1.5">
-                                    <span class="material-symbols-outlined text-sm text-primary">speed</span>
-                                    <span>Challenge: Gas Fee Optimization &amp; Latency</span>
-                                </h4>
-                                <p class="text-xs text-text-muted leading-relaxed mb-2.5">
-                                    Writing every granular logistics milestone directly to the Ethereum blockchain
-                                    incurred prohibitive gas fees and slow confirmation latency.
-                                </p>
-                                <div class="p-3 rounded-xl bg-surface-container border border-border-subtle/50 text-xs">
-                                    <strong class="text-primary block font-semibold mb-0.5">Resolution:</strong>
-                                    Implemented a hybrid architecture where real-time tracking telemetry is processed
-                                    through indexed Flask REST endpoints, while critical state changes (batch creation,
-                                    transfer of ownership, loan escrow) are bundled and committed on-chain.
-                                </div>
-                            </div>
-                                <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                    <h4
-                                        class="font-bold text-foreground text-xs sm:text-sm mb-1.5 flex items-center gap-1.5">
-                                        <span
-                                            class="material-symbols-outlined text-sm text-primary">account_balance_wallet</span>
-                                        <span>Challenge: Web3 Onboarding Complexity</span>
-                                    </h4>
-                                    <p class="text-xs text-text-muted leading-relaxed mb-2.5">
-                                        Non-technical rural users were unable to navigate complex cryptographic wallet
-                                        interfaces.
-                                    </p>
-                                    <div
-                                        class="p-3 rounded-xl bg-surface-container border border-border-subtle/50 text-xs">
-                                        <strong class="text-primary block font-semibold mb-0.5">Resolution:</strong>
-                                        Designed an intuitive React dashboard with graceful fallback states and clear
-                                        transactional prompts, enabling seamless interaction with Ethers.js providers.
-                                    </div>
-                                </div>
-                            </div>
-        </div>
-        </div>
-
-                <!-- Compact Bottom Navigation -->
-                <div class="mt-8 pt-6 border-t border-border-subtle flex flex-wrap justify-between items-center gap-4">
-                    <a href="../../index.html#work"
-                        class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
-                        <span class="material-symbols-outlined text-sm">grid_view</span> Back to All Projects
-                    </a>
-                        <a href="../meri-panchayat/index.html"
-                            class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-1.5">
-                            Next Case Study: Meri Panchayat <span
-                                class="material-symbols-outlined text-sm">arrow_forward</span>
-                        </a>
+            <!-- Right Bento: Live Preview & Showcase (5 Cols) -->
+            <div
+                class="lg:col-span-5 p-6 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— INTERFACE PREVIEW</span>
+                    <span
+                        class="inline-flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Active Dashboard</span>
+                    </span>
                 </div>
+                <div
+                    class="rounded-2xl overflow-hidden border border-border-subtle shadow-inner bg-surface-container-low aspect-[16/10] flex items-center justify-center">
+                    <img src="../../assets/project6.png"
+                        alt="AgroChain decentralized agricultural supply chain dashboard"
+                        class="w-full h-full object-cover" width="1200" height="570" />
+                </div>
+                <div class="pt-3 flex items-center justify-between text-xs text-text-muted">
+                    <span>Verified crop batch provenance &amp; microfinance telemetry</span>
+                    <a href="https://agrochain-i6zh.onrender.com/" target="_blank" rel="noopener noreferrer"
+                        class="text-primary hover:underline font-medium inline-flex items-center gap-0.5">
+                        Visit <span class="material-symbols-outlined text-xs">north_east</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lower Bento Deck: Deep Dive Modules -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5">
+            <!-- Card 1: Problem & Solution (6 Cols) -->
+            <div
+                class="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                <div>
+                    <span class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">— PROBLEM &amp; SOLUTION</span>
+                    <div class="space-y-3.5 text-xs sm:text-sm">
+                        <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <strong class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm text-amber-700 dark:text-amber-400">warning</span>
+                                Supply Chain Predation
+                            </strong>
+                            <p class="text-text-muted leading-relaxed">
+                                In traditional agricultural supply chains, farmers lose up to 40% of crop value to predatory commission agents, while lacking verifiable harvest history to secure fair bank credit.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <strong class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm text-emerald-600 dark:text-emerald-400">verified</span>
+                                Immutable Batch Provenance &amp; Escrow
+                            </strong>
+                            <p class="text-text-muted leading-relaxed">
+                                Engineered an immutable batch ledger on Ethereum using Solidity smart contracts for provenance verification, combined with an automated escrow system for P2P microloans.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: System Architecture (6 Cols) -->
+            <div
+                class="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                <div>
+                    <span class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">— SYSTEM ARCHITECTURE</span>
+                    <div class="space-y-3 text-xs sm:text-sm">
+                        <div class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <span class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">Smart Contract Layer</span>
+                            <p class="text-text-muted text-xs leading-relaxed">
+                                Solidity contracts managing batch registration, ownership transfers, and multi-signature escrow disbursement.
+                            </p>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <span class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">Hybrid Web2/Web3 Bridge</span>
+                            <p class="text-text-muted text-xs leading-relaxed">
+                                Flask REST API and Web3.py orchestrate event indexing and off-chain data processing to minimize gas fees.
+                            </p>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <span class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">Decentralized State Sync</span>
+                            <p class="text-text-muted text-xs leading-relaxed">
+                                React frontend integrated with Ethers.js for wallet connection, contract interaction, and real-time state feedback.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Key Capabilities (7 Cols) -->
+            <div
+                class="md:col-span-7 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                <div>
+                    <span class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">— KEY CAPABILITIES</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <span class="material-symbols-outlined text-primary text-xl mb-1.5 block">psychology</span>
+                            <h4 class="font-bold text-foreground text-xs sm:text-sm mb-1">Crop Traceability</h4>
+                            <p class="text-xs text-text-muted leading-relaxed">
+                                Cryptographic batch tracking from seed sowing through transport to final wholesale delivery.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <span class="material-symbols-outlined text-primary text-xl mb-1.5 block">account_balance</span>
+                            <h4 class="font-bold text-foreground text-xs sm:text-sm mb-1">Trustless Microloans</h4>
+                            <p class="text-xs text-text-muted leading-relaxed">
+                                Escrow-backed lending pools enabling direct peer-to-peer financing for seeds and equipment.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <span class="material-symbols-outlined text-primary text-xl mb-1.5 block">verified</span>
+                            <h4 class="font-bold text-foreground text-xs sm:text-sm mb-1">Decentralized Reputation</h4>
+                            <p class="text-xs text-text-muted leading-relaxed">
+                                On-chain buyer and seller review scores that cannot be fabricated, deleted, or censored.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Technologies Employed (5 Cols) -->
+            <div
+                class="md:col-span-5 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                <div>
+                    <span class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">— TECHNOLOGIES EMPLOYED</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Solidity</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Ethereum</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Hardhat</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">React</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Flask</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Web3.py</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Ethers.js</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Tailwind CSS</span>
+                    </div>
+                </div>
+                <p class="text-xs text-text-muted mt-4 pt-3 border-t border-border-subtle">
+                    Integration verified with testnet RPC nodes, automated contract sweeps, and UI regression suites.
+                </p>
+            </div>
+
+            <!-- Card 5: Engineering Challenges & Resolutions (12 Cols) -->
+            <div class="col-span-12 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle shadow-sm">
+                <span class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">— ENGINEERING CHALLENGES &amp; RESOLUTIONS</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                        <h4 class="font-bold text-foreground text-xs sm:text-sm mb-1.5 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm text-primary">speed</span>
+                            <span>Challenge: Gas Fee Optimization &amp; Latency</span>
+                        </h4>
+                        <p class="text-xs text-text-muted leading-relaxed mb-2.5">
+                            Writing every granular logistics milestone directly to the Ethereum blockchain incurred prohibitive gas fees and slow confirmation latency.
+                        </p>
+                        <div class="p-3 rounded-xl bg-surface-container border border-border-subtle/50 text-xs">
+                            <strong class="text-primary block font-semibold mb-0.5">Resolution:</strong>
+                            Implemented a hybrid architecture where real-time tracking telemetry is processed through indexed Flask REST endpoints, while critical state changes (batch creation, transfer of ownership, loan escrow) are bundled and committed on-chain.
+                        </div>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                        <h4 class="font-bold text-foreground text-xs sm:text-sm mb-1.5 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm text-primary">account_balance_wallet</span>
+                            <span>Challenge: Web3 Onboarding Complexity</span>
+                        </h4>
+                        <p class="text-xs text-text-muted leading-relaxed mb-2.5">
+                            Non-technical rural users were unable to navigate complex cryptographic wallet interfaces.
+                        </p>
+                        <div class="p-3 rounded-xl bg-surface-container border border-border-subtle/50 text-xs">
+                            <strong class="text-primary block font-semibold mb-0.5">Resolution:</strong>
+                            Designed an intuitive React dashboard with graceful fallback states and clear transactional prompts, enabling seamless interaction with Ethers.js providers.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compact Bottom Navigation -->
+        <div class="mt-8 pt-6 border-t border-border-subtle flex flex-wrap justify-between items-center gap-4">
+            <a href="../wedding-invitation/index.html"
+                class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm">arrow_back</span> Previous: Wedding Platform
+            </a>
+            <a href="../../index.html#work"
+                class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm">grid_view</span> Back to All Projects
+            </a>
+            <a href="../meri-panchayat/index.html"
+                class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-1.5">
+                Next Case Study: Meri Panchayat <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </a>
+        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="mt-20 border-t border-border-subtle py-8 text-center text-sm text-text-muted">
+    <footer class="border-t border-border-subtle py-8 text-center text-xs text-text-muted">
         <p>&copy; 2026 Vedansh Harish Ail. All rights reserved.</p>
     </footer>
+
     <script>
-        const themeBtn = document.getElementById('theme-toggle-btn');
-        if (themeBtn) {
-            themeBtn.addEventListener('click', () => {
-                const isDark = document.documentElement.classList.toggle('dark');
-                document.documentElement.classList.toggle('light', !isDark);
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.classList.remove('light');
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
             });
         }
     </script>
