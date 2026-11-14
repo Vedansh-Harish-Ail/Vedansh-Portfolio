@@ -6,11 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Helio — Zero-Knowledge Encrypted Personal Document Vault | Vedansh Harish Ail</title>
     <meta name="description"
-        content="Technical case study of Helio: A zero-knowledge personal document vault engineered with AES-256-GCM encryption, cryptographic hashing, RBAC, and immutable audit logging by Vedansh Harish Ail." />
-    content="Technical case study of Helio: A zero-knowledge personal document vault engineered with AES-256-GCM
-    encryption, PBKDF2 key derivation, and FastAPI on PostgreSQL." />
-    content="Technical case study of Helio: A zero-knowledge personal document vault engineered with AES-256-GCM
-    encryption, PBKDF2 key derivation, and FastAPI on PostgreSQL." />
+        content="Deep dive into Helio: A zero-knowledge personal document vault engineered with AES-256-GCM encryption, PBKDF2 key derivation, and FastAPI on PostgreSQL." />
     <meta name="author" content="Vedansh Harish Ail" />
     <link rel="canonical" href="https://vedansh-portfolio-beta.vercel.app/projects/helio" />
     <link rel="icon" type="image/png" href="../../assets/favicon.png" />
@@ -19,11 +15,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Helio Document Vault Case Study — Vedansh Harish Ail" />
     <meta property="og:description"
-        content="Zero-knowledge encrypted personal document storage system featuring client-side cryptographic hashing and verified access control." />
-    content="Zero-knowledge document storage platform engineered with client-derived cryptographic keys and
-    tamper-evident auditing." />
-    content="Zero-knowledge document storage platform engineered with client-derived cryptographic keys and
-    tamper-evident auditing." />
+        content="Zero-knowledge document storage platform engineered with client-derived cryptographic keys and tamper-evident auditing." />
     <meta property="og:url" content="https://vedansh-portfolio-beta.vercel.app/projects/helio" />
     <meta property="og:image" content="https://vedansh-portfolio-beta.vercel.app/assets/project-helio.svg" />
     <meta property="og:site_name" content="Vedansh Harish Ail Portfolio" />
@@ -32,9 +24,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Helio Document Vault Case Study | Vedansh Harish Ail" />
     <meta name="twitter:description"
-        content="Encrypted personal document storage system built with Python, Cryptography, and verified RBAC." />
-    content="Encrypted personal document storage vault engineered with AES-256-GCM and FastAPI backend." />
-    content="Encrypted personal document storage vault engineered with AES-256-GCM and FastAPI backend." />
+        content="Encrypted personal document storage vault engineered with AES-256-GCM and FastAPI backend." />
     <meta name="twitter:image" content="https://vedansh-portfolio-beta.vercel.app/assets/project-helio.svg" />
 
     <!-- Tailwind & Google Fonts -->
@@ -48,58 +38,25 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
 
-    <script id="tailwind-config">
-        <script>
-            tailwind.config = {
-                darkMode: "class",
-            <script>
-                tailwind.config = {
-                    darkMode: "class",
-                theme: {
-                    extend: {
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
                     colors: {
-                    "text-muted": "var(--muted-foreground)",
-                "surface-primary": "var(--background)",
-                "background": "var(--background)",
-                "on-surface": "var(--foreground)",
-                "primary": "var(--primary)",
-                "on-primary": "var(--primary-foreground)",
-                "surface-container": "var(--card)",
-                "surface-container-low": "var(--muted)",
-                "border-subtle": "var(--border)"
-                background: "var(--background)",
-                foreground: "var(--foreground)",
-                primary: "var(--primary)",
-                "on-primary": "var(--on-primary)",
-                "surface-container": "var(--surface-container)",
-                "surface-container-low": "var(--surface-container-low)",
-                "border-subtle": "var(--border-subtle)",
-                "text-muted": "var(--text-muted)",
-                colors: {
-                    background: "var(--background)",
-                foreground: "var(--foreground)",
-                primary: "var(--primary)",
-                "on-primary": "var(--on-primary)",
-                "surface-container": "var(--surface-container)",
-                "surface-container-low": "var(--surface-container-low)",
-                "border-subtle": "var(--border-subtle)",
-                "text-muted": "var(--text-muted)",
+                        background: "var(--background)",
+                        foreground: "var(--foreground)",
+                        primary: "var(--primary)",
+                        "on-primary": "var(--on-primary)",
+                        "surface-container": "var(--surface-container)",
+                        "surface-container-low": "var(--surface-container-low)",
+                        "border-subtle": "var(--border-subtle)",
+                        "text-muted": "var(--text-muted)",
                     },
-                borderRadius: {"luxury": "2.5rem" },
-                fontFamily: {
-                    "playfair": ["Playfair Display", "serif"],
-                "headline": ["Newsreader", "serif"],
-                "sans": ["Inter", "sans-serif"]
-                    }
-                }
-            }
-                serif: ['Newsreader', 'Georgia', 'serif'],
-                playfair: ['Playfair Display', 'serif'],
-                sans: ['Inter', 'system-ui', 'sans-serif'],
-                fontFamily: {
-                    serif: ['Newsreader', 'Georgia', 'serif'],
-                playfair: ['Playfair Display', 'serif'],
-                sans: ['Inter', 'system-ui', 'sans-serif'],
+                    fontFamily: {
+                        serif: ['Newsreader', 'Georgia', 'serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     },
                 },
             },
@@ -108,14 +65,6 @@
 
     <style>
         :root {
-            --card: #fcfcfc;
-            --muted: #efefef;
-            --border: #d8d8d8;
-            --primary: #644a40;
-            --background: #f9f9f9;
-            --foreground: #202020;
-            --muted-foreground: #646464;
-            --primary-foreground: #ffffff;
             --background: #fdfbf7;
             --foreground: #2d2621;
             --primary: #48332a;
@@ -127,14 +76,6 @@
         }
 
         .dark {
-            --card: #222222;
-            --muted: #2c2c2c;
-            --border: #333333;
-            --primary: #ffe0c2;
-            --background: #111111;
-            --foreground: #eeeeee;
-            --muted-foreground: #b4b4b4;
-            --primary-foreground: #081a1b;
             --background: #141210;
             --foreground: #ede8e1;
             --primary: #d4a373;
@@ -145,10 +86,6 @@
             --text-muted: #a89f91;
         }
 
-        .luxury-border {
-            border-radius: 40px;
-        }
-
         body {
             background-color: var(--background);
             color: var(--foreground);
@@ -156,86 +93,47 @@
         }
     </style>
 
-    <!-- Schema.org JSON-LD -->
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
-      "@type": "SoftwareApplication",
-      "name": "Helio Document Vault",
-      "applicationCategory": "SecurityApplication",
-      "operatingSystem": "Web",
-      "description": "A zero-knowledge personal document vault engineered with AES-256-GCM encryption, PBKDF2 key derivation, and FastAPI on PostgreSQL.",
-      "url": "https://vedansh-portfolio-beta.vercel.app/projects/helio",
-      "author": {
-        "@type": "Person",
-        "name": "Vedansh Harish Ail"
-      }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
         {
           "@type": "BreadcrumbList",
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://vedansh-portfolio-beta.vercel.app/" },
             { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://vedansh-portfolio-beta.vercel.app/#work" },
-            { "@type": "ListItem", "position": 3, "name": "Helio Document Vault", "item": "https://vedansh-portfolio-beta.vercel.app/projects/helio" }
             { "@type": "ListItem", "position": 3, "name": "Helio", "item": "https://vedansh-portfolio-beta.vercel.app/projects/helio" }
           ]
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://vedansh-portfolio-beta.vercel.app/"
         },
         {
           "@type": "SoftwareApplication",
-          "name": "Helio - Personal Document Vault",
-          "description": "Zero-knowledge encrypted personal document storage vault with AES-256 encryption and role-based access control.",
           "name": "Helio Document Vault",
+          "description": "A zero-knowledge personal document vault engineered with AES-256-GCM encryption, PBKDF2 key derivation, and FastAPI on PostgreSQL.",
           "applicationCategory": "SecurityApplication",
           "operatingSystem": "Web",
-          "description": "A zero-knowledge personal document vault engineered with AES-256-GCM encryption, PBKDF2 key derivation, and FastAPI on PostgreSQL.",
-          "url": "https://vedansh-portfolio-beta.vercel.app/projects/helio",
+          "url": "https://github.com/Vedansh-Harish-Ail",
           "author": {
             "@type": "Person",
             "name": "Vedansh Harish Ail",
             "url": "https://vedansh-portfolio-beta.vercel.app/"
-            "name": "Vedansh Harish Ail"
           }
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Projects",
-          "item": "https://vedansh-portfolio-beta.vercel.app/#work"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Helio",
-          "item": "https://vedansh-portfolio-beta.vercel.app/projects/helio"
         }
       ]
     }
     </script>
     <script>
-                if (localStorage.getItem('theme') === 'dark') {
-                    document.documentElement.classList.add('dark');
-                document.documentElement.classList.remove('light');
-                document.documentElement.classList.remove('light');
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
         } else {
-                    document.documentElement.classList.add('light');
-                document.documentElement.classList.remove('dark');
-                document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+            document.documentElement.classList.remove('dark');
         }
     </script>
 </head>
 
 <body class="font-sans selection:bg-stone-300 dark:selection:bg-stone-700">
-    <!-- Navigation -->
     <!-- Top Navigation -->
     <nav
         class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md border-b border-border-subtle py-4 px-6 md:px-12 flex justify-between items-center max-w-screen-2xl mx-auto">
@@ -258,1427 +156,297 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-6 py-12 md:py-20">
-        <!-- Breadcrumb -->
-        <nav aria-label="Breadcrumb" class="mb-8">
-            <ol class="flex items-center gap-2 text-sm text-text-muted">
-                <li><a href="../../index.html" class="hover:text-foreground transition-colors">Home</a></li>
-                <li><span>/</span></li>
-                <li><a href="../../index.html#work" class="hover:text-foreground transition-colors">Projects</a></li>
-                <li><span>/</span></li>
-                <li class="text-foreground font-medium" aria-current="page">Helio Vault</li>
-            </ol>
-        </nav>
-        <!-- Main Content: Bento Grid Layout -->
-        <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-8">
-            <!-- Top Bar: Breadcrumb & Quick Actions -->
-            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-                <nav aria-label="Breadcrumb">
-                    <ol class="flex items-center gap-2 text-xs sm:text-sm text-text-muted">
-                        <li><a href="../../index.html" class="hover:text-foreground transition-colors">Home</a></li>
-                        <li><span>/</span></li>
-                        <li><a href="../../index.html#work" class="hover:text-foreground transition-colors">Projects</a>
-                        </li>
-                        <li><span>/</span></li>
-                        <li class="text-foreground font-medium" aria-current="page">Helio</li>
-                    </ol>
-                </nav>
-                <div class="flex items-center gap-3">
-                    <a href="../news-scraper/index.html"
-                        class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
-                        <span class="material-symbols-outlined text-sm">arrow_back</span> Previous
-                    </a>
-                    <a href="../../index.html#work"
-                        class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
-                        <span class="material-symbols-outlined text-sm">grid_view</span> All Projects
-                    </a>
-                    <a href="../printflow/index.html"
-                        class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
-                        Next Project <span class="material-symbols-outlined text-sm">arrow_forward</span>
+    <!-- Main Content: Bento Grid Layout -->
+    <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-8">
+        <!-- Top Bar: Breadcrumb & Quick Actions -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <nav aria-label="Breadcrumb">
+                <ol class="flex items-center gap-2 text-xs sm:text-sm text-text-muted">
+                    <li><a href="../../index.html" class="hover:text-foreground transition-colors">Home</a></li>
+                    <li><span>/</span></li>
+                    <li><a href="../../index.html#work" class="hover:text-foreground transition-colors">Projects</a></li>
+                    <li><span>/</span></li>
+                    <li class="text-foreground font-medium" aria-current="page">Helio</li>
+                </ol>
+            </nav>
+            <div class="flex items-center gap-3">
+                <a href="../news-scraper/index.html"
+                    class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span> Previous
+                </a>
+                <a href="../../index.html#work"
+                    class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                    <span class="material-symbols-outlined text-sm">grid_view</span> All Projects
+                </a>
+                <a href="../printflow/index.html"
+                    class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                    Next Project <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Upper Bento Deck: Executive Overview & Live Preview -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+            <!-- Left Bento: Executive Overview (7 Cols) -->
+            <div
+                class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                <div>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— PROJECT OVERVIEW</span>
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Cryptography &amp; Security</span>
+                            <span
+                                class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Repository</span>
+                        </div>
+                    </div>
+                    <h1 class="font-playfair text-3xl sm:text-4xl lg:text-5xl text-foreground font-bold mb-4 leading-tight">
+                        Helio: Zero-Knowledge Encrypted Document Vault
+                    </h1>
+                    <p class="text-sm sm:text-base text-text-muted leading-relaxed mb-6">
+                        A personal document security vault architected on zero-knowledge cryptographic principles. Features client-derived PBKDF2 encryption keys, AES-256-GCM payload encryption, granular role-based access control, and immutable audit logs on a high-throughput FastAPI backend.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <a href="https://github.com/Vedansh-Harish-Ail" target="_blank" rel="noopener noreferrer"
+                            class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-xs sm:text-sm shadow-sm">
+                            GitHub Repository <span class="material-symbols-outlined text-xs">code</span>
+                        </a>
+                        <a href="../../index.html#contact"
+                            class="border border-border-subtle bg-surface-container-low text-foreground px-5 py-2.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-xs sm:text-sm">
+                            Request Demo Access <span class="material-symbols-outlined text-xs">mail</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4 Quick Key Metrics Strip -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4 border-t border-border-subtle">
+                    <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                        <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">— CIPHER</span>
+                        <span class="font-semibold text-foreground text-xs sm:text-sm">AES-256-GCM</span>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                        <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">— KEY DERIVATION</span>
+                        <span class="font-semibold text-foreground text-xs sm:text-sm">PBKDF2-HMAC</span>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                        <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">— BACKEND</span>
+                        <span class="font-semibold text-foreground text-xs sm:text-sm">FastAPI &amp; Postgres</span>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                        <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">— MODEL</span>
+                        <span class="font-semibold text-foreground text-xs sm:text-sm">Zero-Knowledge</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Bento: Live Preview & Showcase (5 Cols) -->
+            <div
+                class="lg:col-span-5 p-6 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— ARCHITECTURE OVERVIEW</span>
+                    <span
+                        class="inline-flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Verified Cryptosystem</span>
+                    </span>
+                </div>
+                <div
+                    class="rounded-2xl overflow-hidden border border-border-subtle shadow-inner bg-surface-container-low aspect-[16/10] flex items-center justify-center p-4">
+                    <img src="../../assets/project-helio.svg"
+                        alt="Helio zero-knowledge encryption architecture and cryptographic schema"
+                        class="w-full h-full object-contain" width="1200" height="570" />
+                </div>
+                <div class="pt-3 flex items-center justify-between text-xs text-text-muted">
+                    <span>Cryptographic vault schema &amp; zero-knowledge envelope encryption</span>
+                    <a href="https://github.com/Vedansh-Harish-Ail" target="_blank" rel="noopener noreferrer"
+                        class="text-primary hover:underline font-medium inline-flex items-center gap-0.5">
+                        GitHub <span class="material-symbols-outlined text-xs">north_east</span>
                     </a>
                 </div>
-                <!-- Main Content: Bento Grid Layout -->
-                <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-8">
-                    <!-- Top Bar: Breadcrumb & Quick Actions -->
-                    <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-                        <nav aria-label="Breadcrumb">
-                            <ol class="flex items-center gap-2 text-xs sm:text-sm text-text-muted">
-                                <li><a href="../../index.html" class="hover:text-foreground transition-colors">Home</a>
-                                </li>
-                                <li><span>/</span></li>
-                                <li><a href="../../index.html#work"
-                                        class="hover:text-foreground transition-colors">Projects</a></li>
-                                <li><span>/</span></li>
-                                <li class="text-foreground font-medium" aria-current="page">Helio</li>
-                            </ol>
-                        </nav>
-                        <div class="flex items-center gap-3">
-                            <a href="../news-scraper/index.html"
-                                class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
-                                <span class="material-symbols-outlined text-sm">arrow_back</span> Previous
-                            </a>
-                            <a href="../../index.html#work"
-                                class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
-                                <span class="material-symbols-outlined text-sm">grid_view</span> All Projects
-                            </a>
-                            <a href="../printflow/index.html"
-                                class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
-                                Next Project <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                            </a>
+            </div>
+        </div>
+
+        <!-- Lower Bento Deck: Deep Dive Modules -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5">
+            <!-- Card 1: Problem & Solution (6 Cols) -->
+            <div
+                class="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                <div>
+                    <span class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">— PROBLEM &amp; SOLUTION</span>
+                    <div class="space-y-3.5 text-xs sm:text-sm">
+                        <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <strong class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm text-amber-700 dark:text-amber-400">warning</span>
+                                Cloud Storage Server-Side Breach Risks
+                            </strong>
+                            <p class="text-text-muted leading-relaxed">
+                                Conventional cloud storage providers hold encryption master keys on their own servers, leaving sensitive personal records exposed to insider threats, data breaches, and subpoenas.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <strong class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm text-emerald-600 dark:text-emerald-400">verified</span>
+                                Client-Side Key Derivation &amp; Envelope Encryption
+                            </strong>
+                            <p class="text-text-muted leading-relaxed">
+                                Helio computes 600,000-iteration PBKDF2 keys exclusively in client memory. Files are encrypted with random AES-256-GCM symmetric keys before any byte leaves the device.
+                            </p>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Project Hero Header -->
-                    <header class="mb-12">
-                        <div class="flex flex-wrap items-center gap-3 mb-4">
-                            <span
-                                class="px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Cybersecurity
-                                &amp; Storage</span>
-                            <span
-                                class="px-3 py-1 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Active
-                                Project</span>
-                            <!-- Upper Bento Deck: Executive Overview & Live Preview -->
-                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
-                                <!-- Left Bento: Executive Overview (7 Cols) -->
-                                <div
-                                    class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                    <div>
-                                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-                                            <span
-                                                class="text-xs uppercase tracking-widest font-semibold text-text-muted">—
-                                                PROJECT OVERVIEW</span>
-                                            <div class="flex items-center gap-2">
-                                                <span
-                                                    class="px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Cybersecurity
-                                                    &amp; Cryptography</span>
-                                                <span
-                                                    class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Active
-                                                    Project</span>
-                                            </div>
-                                        </div>
-                                        <h1
-                                            class="font-playfair text-3xl sm:text-4xl lg:text-5xl text-foreground font-bold mb-4 leading-tight">
-                                            Helio: Encrypted Personal Document Vault
-                                        </h1>
-                                        <p class="text-sm sm:text-base text-text-muted leading-relaxed mb-6">
-                                            An authenticated, zero-knowledge digital document repository designed to
-                                            protect
-                                            sensitive personal records with AES-256-GCM encryption, tamper-proof SHA-256
-                                            integrity verification, and granular role-based permissions.
-                                        </p>
-                                        <div class="flex flex-wrap gap-3 mb-6">
-                                            <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-xs sm:text-sm shadow-sm">
-                                                View on GitHub <span
-                                                    class="material-symbols-outlined text-xs">code</span>
-                                            </a>
-                                            <a href="../../index.html#contact"
-                                                class="border border-border-subtle bg-surface-container-low text-foreground px-5 py-2.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-xs sm:text-sm">
-                                                Request Demo Access <span
-                                                    class="material-symbols-outlined text-xs">mail</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <!-- 4 Quick Key Metrics Strip -->
-                                    <div
-                                        class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4 border-t border-border-subtle">
-                                        <div
-                                            class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                            <span
-                                                class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                                CIPHER SUITE</span>
-                                            <span class="font-semibold text-foreground text-xs sm:text-sm">AES-256-GCM
-                                                Authenticated</span>
-                                        </div>
-                                        <div
-                                            class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                            <span
-                                                class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                                KEY DERIVATION</span>
-                                            <span
-                                                class="font-semibold text-foreground text-xs sm:text-sm">PBKDF2-HMAC-SHA512</span>
-                                        </div>
-                                        <div
-                                            class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                            <span
-                                                class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                                INTEGRITY CHECK</span>
-                                            <span class="font-semibold text-foreground text-xs sm:text-sm">SHA-256
-                                                Checksums</span>
-                                        </div>
-                                        <div
-                                            class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                            <span
-                                                class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                                TRUST MODEL</span>
-                                            <span
-                                                class="font-semibold text-foreground text-xs sm:text-sm">Zero-Knowledge
-                                                Storage</span>
-                                        </div>
-                                    </div>
-                                    <!-- Upper Bento Deck: Executive Overview & Live Preview -->
-                                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
-                                        <!-- Left Bento: Executive Overview (7 Cols) -->
-                                        <div
-                                            class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                            <div>
-                                                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-                                                    <span
-                                                        class="text-xs uppercase tracking-widest font-semibold text-text-muted">—
-                                                        PROJECT OVERVIEW</span>
-                                                    <div class="flex items-center gap-2">
-                                                        <span
-                                                            class="px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Cybersecurity
-                                                            &amp; Cryptography</span>
-                                                        <span
-                                                            class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Active
-                                                            Project</span>
-                                                    </div>
-                                                    <h1
-                                                        class="font-playfair text-4xl md:text-6xl text-foreground font-bold mb-6 leading-tight">
-                                                        Helio: Encrypted Personal Document Vault
-                                                    </h1>
-                                                    <p
-                                                        class="text-lg md:text-xl text-text-muted leading-relaxed max-w-3xl mb-8">
-                                                        An authenticated, zero-knowledge digital document repository
-                                                        designed to protect sensitive
-                                                        personal
-                                                        records with AES-256-GCM encryption, tamper-proof SHA-256
-                                                        integrity verification, and
-                                                        granular
-                                                        role-based permissions.
-                                                    </p>
-
-                                                    <div class="flex flex-wrap gap-4">
-                                                        <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            class="bg-primary text-on-primary px-8 py-3.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-sm">
-                                                            View on GitHub <span
-                                                                class="material-symbols-outlined text-sm">code</span>
-                                                            <main
-                                                                class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-8">
-                                                                <!-- Top Bar: Breadcrumb & Quick Actions -->
-                                                                <div
-                                                                    class="flex flex-wrap items-center justify-between gap-4 mb-6">
-                                                                    <nav aria-label="Breadcrumb">
-                                                                        <ol
-                                                                            class="flex items-center gap-2 text-xs sm:text-sm text-text-muted">
-                                                                            <li><a href="../../index.html"
-                                                                                    class="hover:text-foreground transition-colors">Home</a>
-                                                                            </li>
-                                                                            <li><span>/</span></li>
-                                                                            <li><a href="../../index.html#work"
-                                                                                    class="hover:text-foreground transition-colors">Projects</a>
-                                                                            </li>
-                                                                            <li><span>/</span></li>
-                                                                            <li class="text-foreground font-medium"
-                                                                                aria-current="page">Helio Vault
-                                                                            </li>
-                                                                        </ol>
-                                                                    </nav>
-                                                                    <div class="flex items-center gap-3">
-                                                                        <a href="../meri-panchayat/index.html"
-                                                                            class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
-                                                                            <span
-                                                                                class="material-symbols-outlined text-sm">arrow_back</span>
-                                                                            Previous
-                                                                        </a>
-                                                                        <a href="../../index.html#work"
-                                                                            class="border border-border-subtle bg-surface-container text-foreground px-8 py-3.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-sm">
-                                                                            Explore Architecture <span
-                                                                                class="material-symbols-outlined text-sm">account_tree</span>
-                                                                            <a href="../printflow/index.html"
-                                                                                class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
-                                                                                Next Project <span
-                                                                                    class="material-symbols-outlined text-sm">arrow_forward</span>
-                                                                            </a>
-                                                                    </div>
-                    </header>
-
-                    <!-- Graphic -->
-                    <div
-                        class="mb-16 rounded-3xl overflow-hidden border border-border-subtle shadow-xl bg-surface-container">
-                        <img src="../../assets/project-helio.svg"
-                            alt="Helio personal document vault dashboard interface" class="w-full h-auto object-cover"
-                            width="1024" height="640" />
-                        <!-- Right Bento: Live Preview & Showcase (5 Cols) -->
-                        <div
-                            class="lg:col-span-5 p-6 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— SYSTEM
-                                    ARCHITECTURE</span>
-                                <span
-                                    class="inline-flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
-                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                    <span>Encrypted Store</span>
-                                </span>
-                            </div>
-                            <div
-                                class="rounded-2xl overflow-hidden border border-border-subtle shadow-inner bg-surface-container-low aspect-[16/10] flex items-center justify-center p-3">
-                                <img src="../../assets/project-helio.svg" alt="Helio personal document vault interface"
-                                    class="w-full h-full object-contain" width="1024" height="640" />
-                            </div>
-                            <div class="pt-3 flex items-center justify-between text-xs text-text-muted">
-                                <span>Client-side key derivation &amp; authenticated ciphertext streaming</span>
-                                <h1
-                                    class="font-playfair text-3xl sm:text-4xl lg:text-5xl text-foreground font-bold mb-4 leading-tight">
-                                    Helio: Encrypted Personal Document Vault
-                                </h1>
-                                <p class="text-sm sm:text-base text-text-muted leading-relaxed mb-6">
-                                    An authenticated, zero-knowledge digital document repository designed to protect
-                                    sensitive personal records with AES-256-GCM encryption, tamper-proof SHA-256
-                                    integrity verification, and granular role-based permissions.
-                                </p>
-                                <div class="flex flex-wrap gap-3 mb-6">
-                                    <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="text-primary hover:underline font-medium inline-flex items-center gap-0.5">
-                                        Codebase <span class="material-symbols-outlined text-xs">north_east</span>
-                                        class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-medium
-                                        hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-xs
-                                        sm:text-sm shadow-sm">
-                                        View on GitHub <span class="material-symbols-outlined text-xs">code</span>
-                                    </a>
-                                    <a href="../../index.html#contact"
-                                        class="border border-border-subtle bg-surface-container-low text-foreground px-5 py-2.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-xs sm:text-sm">
-                                        Request Demo Access <span class="material-symbols-outlined text-xs">mail</span>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- 4 Quick Key Metrics Strip -->
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4 border-t border-border-subtle">
-                                <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                    <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                        CIPHER SUITE</span>
-                                    <span class="font-semibold text-foreground text-xs sm:text-sm">AES-256-GCM
-                                        Authenticated</span>
-                                </div>
-                                <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                    <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                        KEY DERIVATION</span>
-                                    <span
-                                        class="font-semibold text-foreground text-xs sm:text-sm">PBKDF2-HMAC-SHA512</span>
-                                </div>
-                                <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                    <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                        INTEGRITY CHECK</span>
-                                    <span class="font-semibold text-foreground text-xs sm:text-sm">SHA-256
-                                        Checksums</span>
-                                </div>
-                                <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                    <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                        TRUST MODEL</span>
-                                    <span class="font-semibold text-foreground text-xs sm:text-sm">Zero-Knowledge
-                                        Storage</span>
-                                </div>
-                            </div>
+            <!-- Card 2: System Architecture (6 Cols) -->
+            <div
+                class="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                <div>
+                    <span class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">— SYSTEM ARCHITECTURE</span>
+                    <div class="space-y-3 text-xs sm:text-sm">
+                        <div class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <span class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">Client Cryptographic Boundary</span>
+                            <p class="text-text-muted text-xs leading-relaxed">
+                                Web Crypto API derives 256-bit AES keys from user master passwords; plaintext never touches network transit.
+                            </p>
                         </div>
-
-                        <!-- Project Metadata Grid -->
-                        <!-- Right Bento: Live Preview & Showcase (5 Cols) -->
-                        <div
-                            class="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl bg-surface-container border border-border-subtle mb-16 text-sm">
-                            class="lg:col-span-5 p-6 rounded-3xl bg-surface-container border border-border-subtle flex
-                            flex-col justify-between shadow-sm">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— SYSTEM
-                                    ARCHITECTURE</span>
-                                <span
-                                    class="inline-flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
-                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                    <span>Encrypted Store</span>
-                                </span>
-                            </div>
-                            <div
-                                class="rounded-2xl overflow-hidden border border-border-subtle shadow-inner bg-surface-container-low aspect-[16/10] flex items-center justify-center p-3">
-                                <img src="../../assets/project-helio.svg" alt="Helio personal document vault interface"
-                                    class="w-full h-full object-contain" width="1024" height="640" />
-                            </div>
-                            <div class="pt-3 flex items-center justify-between text-xs text-text-muted">
-                                <span>Client-side key derivation &amp; authenticated ciphertext streaming</span>
-                                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="text-primary hover:underline font-medium inline-flex items-center gap-0.5">
-                                    Codebase <span class="material-symbols-outlined text-xs">north_east</span>
-                                </a>
-                            </div>
+                        <div class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <span class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">FastAPI Stateless Controller</span>
+                            <p class="text-text-muted text-xs leading-relaxed">
+                                Handles encrypted ciphertext chunks, JWT validation, and RBAC permission checks without holding decryption keys.
+                            </p>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <span class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">PostgreSQL Ciphertext Store</span>
+                            <p class="text-text-muted text-xs leading-relaxed">
+                                Stores cryptographically blind metadata, initialization vectors (IVs), and SHA-256 integrity verification hashes.
+                            </p>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Lower Bento Deck: Deep Dive Modules -->
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5">
-                        <!-- Card 1: Problem & Solution (6 Cols) -->
-                        <div
-                            class="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                            <div>
-                                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Security
-                                    Model</span>
-                                <span class="font-semibold text-foreground">AES-256-GCM / PBKDF2</span>
-                                <!-- Upper Bento Deck: Executive Overview & Live Preview -->
-                                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
-                                    <!-- Left Bento: Executive Overview (7 Cols) -->
-                                    <div
-                                        class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                        <div>
-                                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-                                                <span
-                                                    class="text-xs uppercase tracking-widest font-semibold text-text-muted">—
-                                                    PROJECT
-                                                    OVERVIEW</span>
-                                                <div class="flex items-center gap-2">
-                                                    <span
-                                                        class="px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Cybersecurity
-                                                        &amp; Storage</span>
-                                                    <span
-                                                        class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Active
-                                                        Project</span>
-                                                </div>
-                                            </div>
-                                            <h1
-                                                class="font-playfair text-3xl sm:text-4xl lg:text-5xl text-foreground font-bold mb-4 leading-tight">
-                                                Helio: Encrypted Personal Document Vault
-                                            </h1>
-                                            <p class="text-sm sm:text-base text-text-muted leading-relaxed mb-6">
-                                                An authenticated, zero-knowledge digital document repository designed to
-                                                protect
-                                                sensitive personal records with AES-256-GCM encryption, tamper-proof
-                                                SHA-256
-                                                integrity
-                                                verification, and granular role-based permissions.
-                                                <!-- Lower Bento Deck: Deep Dive Modules -->
-                                            <div class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5">
-                                                <!-- Card 1: Problem & Solution (6 Cols) -->
-                                                <div
-                                                    class="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                                    <div>
-                                                        <span
-                                                            class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                                            THREAT MODEL &amp; RESOLUTION</span>
-                                                        <div class="space-y-3.5 text-xs sm:text-sm">
-                                                            <div
-                                                                class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                <strong
-                                                                    class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
-                                                                    <span
-                                                                        class="material-symbols-outlined text-sm text-amber-700 dark:text-amber-400">warning</span>
-                                                                    Cloud Storage Vulnerability
-                                                                </strong>
-                                                                <p class="text-text-muted leading-relaxed">
-                                                                    Standard cloud document stores hold server-side
-                                                                    encryption keys,
-                                                                    allowing insider indexing, data breaches, and
-                                                                    unauthorized
-                                                                    access to passports, medical files, and financial
-                                                                    records.
-                                                                </p>
-                                                                <div class="flex flex-wrap gap-3 mb-6">
-                                                                    <a href="https://github.com/Vedansh-Harish-Ail"
-                                                                        target="_blank" rel="noopener noreferrer"
-                                                                        class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-xs sm:text-sm shadow-sm">
-                                                                        View on GitHub <span
-                                                                            class="material-symbols-outlined text-xs">code</span>
-                                                                    </a>
-                                                                    <a href="../../index.html#work"
-                                                                        class="border border-border-subtle bg-surface-container-low text-foreground px-6 py-2.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-xs sm:text-sm">
-                                                                        Explore Architecture <span
-                                                                            class="material-symbols-outlined text-xs">account_tree</span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                <strong
-                                                                    class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
-                                                                    <span
-                                                                        class="material-symbols-outlined text-sm text-emerald-600 dark:text-emerald-400">verified_user</span>
-                                                                    Zero-Knowledge Isolation
-                                                                </strong>
-                                                                <p class="text-text-muted leading-relaxed">
-                                                                    Helio generates client-derived cryptographic keys
-                                                                    using PBKDF2
-                                                                    with 600,000 iterations. Documents are sealed with
-                                                                    AES-256-GCM
-                                                                    before transport, ensuring the server only ever
-                                                                    stores opaque
-                                                                    ciphertext.
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <span
-                                                    class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                                    THREAT MODEL &amp; RESOLUTION</span>
-                                                <div class="space-y-3.5 text-xs sm:text-sm">
-                                                    <div
-                                                        class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                        <strong
-                                                            class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
-                                                            <span
-                                                                class="material-symbols-outlined text-sm text-amber-700 dark:text-amber-400">warning</span>
-                                                            Cloud Storage Vulnerability
-                                                        </strong>
-                                                        <p class="text-text-muted leading-relaxed">
-                                                            Standard cloud document stores hold server-side encryption
-                                                            keys, allowing insider indexing, data breaches, and
-                                                            unauthorized access to passports, medical files, and
-                                                            financial records.
-                                                        </p>
-                                                    </div>
-                                                    <div
-                                                        class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                        <strong
-                                                            class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
-                                                            <span
-                                                                class="material-symbols-outlined text-sm text-emerald-600 dark:text-emerald-400">verified_user</span>
-                                                            Zero-Knowledge Isolation
-                                                        </strong>
-                                                        <p class="text-text-muted leading-relaxed">
-                                                            Helio generates client-derived cryptographic keys using
-                                                            PBKDF2 with 600,000 iterations. Documents are sealed with
-                                                            AES-256-GCM before transport, ensuring the server only ever
-                                                            stores opaque ciphertext.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+            <!-- Card 3: Key Capabilities (7 Cols) -->
+            <div
+                class="md:col-span-7 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                <div>
+                    <span class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">— KEY CAPABILITIES</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <span class="material-symbols-outlined text-primary text-xl mb-1.5 block">vpn_key</span>
+                            <h4 class="font-bold text-foreground text-xs sm:text-sm mb-1">Zero-Knowledge</h4>
+                            <p class="text-xs text-text-muted leading-relaxed">
+                                The server possesses zero decryption capability; even database admins cannot inspect vault contents.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <span class="material-symbols-outlined text-primary text-xl mb-1.5 block">history_edu</span>
+                            <h4 class="font-bold text-foreground text-xs sm:text-sm mb-1">Tamper-Proof Audit</h4>
+                            <p class="text-xs text-text-muted leading-relaxed">
+                                Every file access and modification is cryptographically hashed and logged to an append-only audit trail.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                            <span class="material-symbols-outlined text-primary text-xl mb-1.5 block">lock_person</span>
+                            <h4 class="font-bold text-foreground text-xs sm:text-sm mb-1">Granular RBAC</h4>
+                            <p class="text-xs text-text-muted leading-relaxed">
+                                Scoped capability tokens allow time-limited read or write sharing with public key re-encryption.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                                        <!-- Integrated 4-Metric Grid -->
-                                        <div
-                                            class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-border-subtle">
-                                            <div
-                                                class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                                <span
-                                                    class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                                    CRYPTO
-                                                    MODEL</span>
-                                                <span
-                                                    class="font-semibold text-foreground text-xs sm:text-sm">AES-256-GCM
-                                                    /
-                                                    PBKDF2</span>
-                                            </div>
-                                            <div
-                                                class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                                <span
-                                                    class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                                    BACKEND</span>
-                                                <span class="font-semibold text-foreground text-xs sm:text-sm">Python /
-                                                    FastAPI</span>
-                                            </div>
-                                            <div
-                                                class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                                <span
-                                                    class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                                    STORAGE</span>
-                                                <span
-                                                    class="font-semibold text-foreground text-xs sm:text-sm">PostgreSQL
-                                                    /
-                                                    Encrypted</span>
-                                            </div>
-                                            <div
-                                                class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                                <span
-                                                    class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                                    INTEGRITY</span>
-                                                <span
-                                                    class="font-semibold text-foreground text-xs sm:text-sm">Zero-Knowledge
-                                                    Vault</span>
-                                            </div>
-                                            <!-- Card 2: System Architecture (6 Cols) -->
-                                            <div
-                                                class="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                                <div>
-                                                    <span
-                                                        class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                                        SECURITY SUBSYSTEMS</span>
-                                                    <div class="space-y-3 text-xs sm:text-sm">
-                                                        <div
-                                                            class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                            <span
-                                                                class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">Streaming
-                                                                Cipher Pipeline</span>
-                                                            <p class="text-text-muted text-xs leading-relaxed">
-                                                                Memory-efficient chunked encryption processing large
-                                                                files
-                                                                without exhausting RAM limits or spilling plaintexts to
-                                                                disk.
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                            <span
-                                                                class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">Tamper-Proof
-                                                                Audit Trail</span>
-                                                            <p class="text-text-muted text-xs leading-relaxed">
-                                                                Append-only audit logs verify cryptographic access
-                                                                receipts,
-                                                                catching unauthorized tampering attempts immediately.
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                            <span
-                                                                class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">Granular
-                                                                RBAC Policies</span>
-                                                            <p class="text-text-muted text-xs leading-relaxed">
-                                                                Time-limited cryptographic grant tokens for sharing
-                                                                specific
-                                                                files with auditors or family without master key
-                                                                exposure.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <span
-                                                            class="block text-xs uppercase tracking-wider text-text-muted mb-1">Backend</span>
-                                                        <span class="font-semibold text-foreground">Python /
-                                                            FastAPI</span>
-                                                    </div>
-                                                </div>
-                                                <!-- Card 2: System Architecture (6 Cols) -->
-                                                <div
-                                                    class="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                                    <div>
-                                                        <span
-                                                            class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                                            SECURITY SUBSYSTEMS</span>
-                                                        <div class="space-y-3 text-xs sm:text-sm">
-                                                            <div
-                                                                class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                <span
-                                                                    class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">Streaming
-                                                                    Cipher Pipeline</span>
-                                                                <p class="text-text-muted text-xs leading-relaxed">
-                                                                    Memory-efficient chunked encryption processing large
-                                                                    files without exhausting RAM limits or spilling
-                                                                    plaintexts to disk.
-                                                                </p>
-                                                            </div>
-                                                            <div
-                                                                class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                <span
-                                                                    class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">Tamper-Proof
-                                                                    Audit Trail</span>
-                                                                <p class="text-text-muted text-xs leading-relaxed">
-                                                                    Append-only audit logs verify cryptographic access
-                                                                    receipts, catching unauthorized tampering attempts
-                                                                    immediately.
-                                                                </p>
-                                                            </div>
-                                                            <div
-                                                                class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                <span
-                                                                    class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">Granular
-                                                                    RBAC Policies</span>
-                                                                <p class="text-text-muted text-xs leading-relaxed">
-                                                                    Time-limited cryptographic grant tokens for sharing
-                                                                    specific files with auditors or family without
-                                                                    master key exposure.
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Right Bento: Live Preview & Showcase (5 Cols) -->
-                                                <div
-                                                    class="lg:col-span-5 p-6 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                                    <div class="flex items-center justify-between mb-3">
-                                                        <span
-                                                            class="text-xs uppercase tracking-widest font-semibold text-text-muted">—
-                                                            SYSTEM
-                                                            INTERFACE</span>
-                                                        <span
-                                                            class="inline-flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
-                                                            <span
-                                                                class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                                            <span>Encrypted Store</span>
-                                                        </span>
-                                                    </div>
-                                                    <div
-                                                        class="rounded-2xl overflow-hidden border border-border-subtle shadow-inner bg-surface-container-low aspect-[16/10] flex items-center justify-center p-2">
-                                                        <img src="../../assets/project-helio.svg"
-                                                            alt="Helio personal document vault dashboard interface"
-                                                            class="w-full h-full object-contain" width="1024"
-                                                            height="640" />
-                                                    </div>
-                                                    <div
-                                                        class="pt-3 flex items-center justify-between text-xs text-text-muted">
-                                                        <span>Client-side key derivation &amp; authenticated ciphertext
-                                                            streaming</span>
-                                                        <a href="../../index.html#work"
-                                                            class="text-primary hover:underline font-medium inline-flex items-center gap-0.5">
-                                                            Docs <span
-                                                                class="material-symbols-outlined text-xs">arrow_forward</span>
-                                                        </a>
-                                                    </div>
-                                                    <!-- Card 3: Key Capabilities (7 Cols) -->
-                                                    <div
-                                                        class="md:col-span-7 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                                        <div>
-                                                            <span
-                                                                class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                                                KEY CAPABILITIES</span>
-                                                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                                                <div
-                                                                    class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                    <span
-                                                                        class="material-symbols-outlined text-primary text-xl mb-1.5 block">vpn_key</span>
-                                                                    <h4
-                                                                        class="font-bold text-foreground text-xs sm:text-sm mb-1">
-                                                                        Passphrase Derivation</h4>
-                                                                    <p class="text-xs text-text-muted leading-relaxed">
-                                                                        Master passphrases derive encryption keys
-                                                                        client-side; plaintext credentials never
-                                                                        traverse
-                                                                        the network.
-                                                                    </p>
-                                                                </div>
-                                                                <div>
-                                                                    <span
-                                                                        class="block text-xs uppercase tracking-wider text-text-muted mb-1">Data
-                                                                        Store</span>
-                                                                    <span
-                                                                        class="font-semibold text-foreground">PostgreSQL
-                                                                        /
-                                                                        SQLite</span>
-                                                                    <div
-                                                                        class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                        <span
-                                                                            class="material-symbols-outlined text-primary text-xl mb-1.5 block">verified</span>
-                                                                        <h4
-                                                                            class="font-bold text-foreground text-xs sm:text-sm mb-1">
-                                                                            Cryptographic Integrity</h4>
-                                                                        <p
-                                                                            class="text-xs text-text-muted leading-relaxed">
-                                                                            SHA-256 file hashes computed before and
-                                                                            after
-                                                                            encryption guarantee byte-perfect file
-                                                                            preservation.
-                                                                        </p>
-                                                                    </div>
-                                                                    <div>
-                                                                        <span
-                                                                            class="block text-xs uppercase tracking-wider text-text-muted mb-1">Status</span>
-                                                                        <span
-                                                                            class="font-semibold text-foreground">Active
-                                                                            Development</span>
-                                                                        <div
-                                                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                            <span
-                                                                                class="material-symbols-outlined text-primary text-xl mb-1.5 block">share</span>
-                                                                            <h4
-                                                                                class="font-bold text-foreground text-xs sm:text-sm mb-1">
-                                                                                Time-Bounded Grants</h4>
-                                                                            <p
-                                                                                class="text-xs text-text-muted leading-relaxed">
-                                                                                Ephemeral asymmetric key exchange
-                                                                                enables
-                                                                                secure, time-expiring document sharing
-                                                                                without master credential sharing.
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Card 3: Key Capabilities (7 Cols) -->
-                                                            <div
-                                                                class="md:col-span-7 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                                                <div>
-                                                                    <span
-                                                                        class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                                                        KEY CAPABILITIES</span>
-                                                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                                                        <div
-                                                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                            <span
-                                                                                class="material-symbols-outlined text-primary text-xl mb-1.5 block">vpn_key</span>
-                                                                            <h4
-                                                                                class="font-bold text-foreground text-xs sm:text-sm mb-1">
-                                                                                Passphrase Derivation</h4>
-                                                                            <p
-                                                                                class="text-xs text-text-muted leading-relaxed">
-                                                                                Master passphrases derive encryption
-                                                                                keys client-side; plaintext credentials
-                                                                                never traverse the network.
-                                                                            </p>
-                                                                        </div>
-                                                                        <div
-                                                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                            <span
-                                                                                class="material-symbols-outlined text-primary text-xl mb-1.5 block">verified</span>
-                                                                            <h4
-                                                                                class="font-bold text-foreground text-xs sm:text-sm mb-1">
-                                                                                Cryptographic Integrity</h4>
-                                                                            <p
-                                                                                class="text-xs text-text-muted leading-relaxed">
-                                                                                SHA-256 file hashes computed before and
-                                                                                after encryption guarantee byte-perfect
-                                                                                file preservation.
-                                                                            </p>
-                                                                        </div>
-                                                                        <div
-                                                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                            <span
-                                                                                class="material-symbols-outlined text-primary text-xl mb-1.5 block">share</span>
-                                                                            <h4
-                                                                                class="font-bold text-foreground text-xs sm:text-sm mb-1">
-                                                                                Time-Bounded Grants</h4>
-                                                                            <p
-                                                                                class="text-xs text-text-muted leading-relaxed">
-                                                                                Ephemeral asymmetric key exchange
-                                                                                enables secure, time-expiring document
-                                                                                sharing without master credential
-                                                                                sharing.
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <!-- Article Body -->
-                                                            <article class="space-y-16">
-                                                                <section>
-                                                                    <h2
-                                                                        class="font-playfair text-3xl font-bold mb-6 text-foreground">
-                                                                        Architecture Overview</h2>
-                                                                    <div
-                                                                        class="prose max-w-none text-text-muted leading-relaxed space-y-4">
-                                                                        <p>
-                                                                            Consumer cloud storage platforms often
-                                                                            retain
-                                                                            server-side keys to index and scan
-                                                                            user documents. Helio introduces a
-                                                                            zero-knowledge architecture where document
-                                                                            payloads are encrypted on the client or
-                                                                            during
-                                                                            authenticated ingestion using keys
-                                                                            derived directly from user passphrases via
-                                                                            PBKDF2-HMAC-SHA512.
-                                                                        </p>
-                                                                        <p>
-                                                                            The backend database stores only metadata,
-                                                                            access permissions, and encrypted
-                                                                            ciphertext payloads with authentication
-                                                                            tags,
-                                                                            ensuring that even in the event of an
-                                                                            infrastructure breach, raw documents remain
-                                                                            mathematically indecipherable.
-                                                                        </p>
-                                                                        <!-- Lower Bento Deck: Deep Dive Modules -->
-                                                                        <div
-                                                                            class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5">
-                                                                            <!-- Card 1: Architecture Overview (7 Cols) -->
-                                                                            <div
-                                                                                class="md:col-span-12 lg:col-span-7 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                                                                <div>
-                                                                                    <span
-                                                                                        class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                                                                        ARCHITECTURE &amp;
-                                                                                        ZERO-KNOWLEDGE
-                                                                                        MODEL</span>
-                                                                                    <div
-                                                                                        class="space-y-3.5 text-xs sm:text-sm">
-                                                                                        <div
-                                                                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                                            <strong
-                                                                                                class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
-                                                                                                <span
-                                                                                                    class="material-symbols-outlined text-sm text-primary">vpn_key</span>
-                                                                                                Zero-Knowledge Key
-                                                                                                Derivation
-                                                                                            </strong>
-                                                                                            <p
-                                                                                                class="text-text-muted leading-relaxed">
-                                                                                                Consumer cloud storage
-                                                                                                platforms often retain
-                                                                                                server-side keys
-                                                                                                to index and scan user
-                                                                                                documents. Helio
-                                                                                                introduces
-                                                                                                a
-                                                                                                zero-knowledge
-                                                                                                architecture
-                                                                                                where document payloads
-                                                                                                are
-                                                                                                encrypted on the client
-                                                                                                or
-                                                                                                during authenticated
-                                                                                                ingestion using
-                                                                                                keys derived directly
-                                                                                                from
-                                                                                                user passphrases via
-                                                                                                PBKDF2-HMAC-SHA512.
-                                                                                            </p>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                                            <strong
-                                                                                                class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
-                                                                                                <span
-                                                                                                    class="material-symbols-outlined text-sm text-emerald-600 dark:text-emerald-400">shield</span>
-                                                                                                Cryptographic Immunity
-                                                                                            </strong>
-                                                                                            <p
-                                                                                                class="text-text-muted leading-relaxed">
-                                                                                                The backend database
-                                                                                                stores
-                                                                                                only metadata, access
-                                                                                                permissions,
-                                                                                                and encrypted ciphertext
-                                                                                                payloads with
-                                                                                                authentication
-                                                                                                tags,
-                                                                                                ensuring that even in
-                                                                                                the
-                                                                                                event of an
-                                                                                                infrastructure
-                                                                                                breach, raw
-                                                                                                documents remain
-                                                                                                mathematically
-                                                                                                indecipherable.
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                </section>
-                                                                <!-- Card 4: Technologies Employed (5 Cols) -->
-                                                                <div
-                                                                    class="md:col-span-5 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                                                    <div>
-                                                                        <span
-                                                                            class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                                                            TECHNOLOGIES EMPLOYED</span>
-                                                                        <div class="flex flex-wrap gap-2">
-                                                                            <span
-                                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Python</span>
-                                                                            <span
-                                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">FastAPI</span>
-                                                                            <span
-                                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">AES-256-GCM</span>
-                                                                            <span
-                                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">PBKDF2-HMAC</span>
-                                                                            <span
-                                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">PostgreSQL</span>
-                                                                            <span
-                                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Docker</span>
-                                                                            <span
-                                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">PyCryptodome</span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p
-                                                                        class="text-xs text-text-muted mt-4 pt-3 border-t border-border-subtle">
-                                                                        Security verified through fuzz testing,
-                                                                        random-oracle cipher simulations, and memory
-                                                                        dump
-                                                                        evaluations.
-                                                                    </p>
-                                                                </div>
-                                                                <!-- Card 4: Technologies Employed (5 Cols) -->
-                                                                <div
-                                                                    class="md:col-span-5 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                                                    <div>
-                                                                        <span
-                                                                            class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                                                            TECHNOLOGIES EMPLOYED</span>
-                                                                        <div class="flex flex-wrap gap-2">
-                                                                            <span
-                                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Python</span>
-                                                                            <span
-                                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">FastAPI</span>
-                                                                            <span
-                                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">AES-256-GCM</span>
-                                                                            <span
-                                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">PBKDF2-HMAC</span>
-                                                                            <span
-                                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">PostgreSQL</span>
-                                                                            <span
-                                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Docker</span>
-                                                                            <span
-                                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">PyCryptodome</span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p
-                                                                        class="text-xs text-text-muted mt-4 pt-3 border-t border-border-subtle">
-                                                                        Security verified through fuzz testing,
-                                                                        random-oracle cipher simulations, and memory
-                                                                        dump evaluations.
-                                                                    </p>
-                                                                </div>
-
-                                                                <section>
-                                                                    <h2
-                                                                        class="font-playfair text-3xl font-bold mb-6 text-foreground">
-                                                                        Key Security Pillars</h2>
-                                                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                                                        <div
-                                                                            class="p-6 rounded-2xl bg-surface-container border border-border-subtle">
-                                                                            <div
-                                                                                class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
-                                                                                <span
-                                                                                    class="material-symbols-outlined">lock</span>
-                                                                                <!-- Card 2: Tech Stack (5 Cols) -->
-                                                                                <div
-                                                                                    class="md:col-span-12 lg:col-span-5 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                                                                                    <div>
-                                                                                        <span
-                                                                                            class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                                                                            TECHNOLOGIES EMPLOYED</span>
-                                                                                        <div
-                                                                                            class="flex flex-wrap gap-1.5 mb-4">
-                                                                                            <span
-                                                                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Python</span>
-                                                                                            <span
-                                                                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">FastAPI</span>
-                                                                                            <span
-                                                                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Flask</span>
-                                                                                            <span
-                                                                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">PyCA
-                                                                                                Cryptography</span>
-                                                                                            <span
-                                                                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">PostgreSQL</span>
-                                                                                            <span
-                                                                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">PBKDF2-SHA512</span>
-                                                                                            <span
-                                                                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">REST
-                                                                                                APIs</span>
-                                                                                            <span
-                                                                                                class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Tailwind
-                                                                                                CSS</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/50 text-xs text-text-muted">
-                                                                                        <strong
-                                                                                            class="text-foreground block mb-1">Defense-in-Depth
-                                                                                            Pipeline</strong>
-                                                                                        Constant-time token comparisons
-                                                                                        to
-                                                                                        eliminate timing attacks, paired
-                                                                                        with secure
-                                                                                        session cookie policies.
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!-- Card 5: Engineering Challenges & Resolutions (12 Cols) -->
-                                                                                <div
-                                                                                    class="col-span-12 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle shadow-sm">
-                                                                                    <span
-                                                                                        class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                                                                        ENGINEERING CHALLENGES &amp;
-                                                                                        RESOLUTIONS</span>
-                                                                                    <div
-                                                                                        class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                                                        <div
-                                                                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                                            <h4
-                                                                                                class="font-bold text-foreground text-xs sm:text-sm mb-1.5 flex items-center gap-1.5">
-                                                                                                <span
-                                                                                                    class="material-symbols-outlined text-sm text-primary">memory</span>
-                                                                                                <span>Challenge: Memory
-                                                                                                    Spikes During
-                                                                                                    Multi-GB File
-                                                                                                    Ingestion</span>
-                                                                                            </h4>
-                                                                                            <p
-                                                                                                class="text-xs text-text-muted leading-relaxed mb-2.5">
-                                                                                                Encrypting monolithic
-                                                                                                multi-gigabyte files
-                                                                                                caused server
-                                                                                                out-of-memory crashes on
-                                                                                                memory-constrained
-                                                                                                containers.
-                                                                                            </p>
-                                                                                            <div
-                                                                                                class="p-3 rounded-xl bg-surface-container border border-border-subtle/50 text-xs">
-                                                                                                <strong
-                                                                                                    class="text-primary block font-semibold mb-0.5">Resolution:</strong>
-                                                                                                Architected an
-                                                                                                asynchronous streaming
-                                                                                                generator pipeline that
-                                                                                                encrypts fixed 64KB
-                                                                                                blocks sequentially with
-                                                                                                rolling GCM
-                                                                                                authentication tags.
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                                            <h4
-                                                                                                class="font-bold text-foreground text-xs sm:text-sm mb-1.5 flex items-center gap-1.5">
-                                                                                                <span
-                                                                                                    class="material-symbols-outlined text-sm text-primary">key</span>
-                                                                                                <span>Challenge: Key
-                                                                                                    Recovery Without
-                                                                                                    Central
-                                                                                                    Custody</span>
-                                                                                            </h4>
-                                                                                            <p
-                                                                                                class="text-xs text-text-muted leading-relaxed mb-2.5">
-                                                                                                Zero-knowledge
-                                                                                                architectures result in
-                                                                                                permanent data loss if
-                                                                                                users forget their
-                                                                                                master passphrase.
-                                                                                            </p>
-                                                                                            <div
-                                                                                                class="p-3 rounded-xl bg-surface-container border border-border-subtle/50 text-xs">
-                                                                                                <strong
-                                                                                                    class="text-primary block font-semibold mb-0.5">Resolution:</strong>
-                                                                                                Implemented a
-                                                                                                Shamir-inspired offline
-                                                                                                multi-fragment recovery
-                                                                                                sheet that splits the
-                                                                                                encrypted recovery key
-                                                                                                into printable paper
-                                                                                                shards.
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <!-- Card 3: Key Security Pillars (12 Cols) -->
-                                                                            <div
-                                                                                class="col-span-12 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle shadow-sm">
-                                                                                <span
-                                                                                    class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                                                                    KEY SECURITY PILLARS</span>
-                                                                                <div
-                                                                                    class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                                                                    <div
-                                                                                        class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                                        <div
-                                                                                            class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
-                                                                                            <span
-                                                                                                class="material-symbols-outlined text-base">lock</span>
-                                                                                        </div>
-                                                                                        <h4
-                                                                                            class="font-bold text-foreground mb-2">
-                                                                                            Authenticated Encryption
-                                                                                        </h4>
-                                                                                        <p
-                                                                                            class="text-sm text-text-muted">
-                                                                                            AES-256-GCM ensures both
-                                                                                            strict
-                                                                                            confidentiality and
-                                                                                            ciphertext integrity
-                                                                                            detection, alerting against
-                                                                                            unauthorized file tampering.
-                                                                                        </p>
-                                                                                        <h4
-                                                                                            class="font-bold text-xs sm:text-sm text-foreground mb-1">
-                                                                                            Authenticated
-                                                                                            Encryption</h4>
-                                                                                        <p
-                                                                                            class="text-xs text-text-muted leading-relaxed">
-                                                                                            AES-256-GCM ensures both
-                                                                                            strict confidentiality and
-                                                                                            ciphertext integrity
-                                                                                            detection, alerting
-                                                                                            against unauthorized file
-                                                                                            tampering.</p>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="p-6 rounded-2xl bg-surface-container border border-border-subtle">
-                                                                                        <div
-                                                                                            class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
-                                                                                            <span
-                                                                                                class="material-symbols-outlined">history</span>
-                                                                                            <div
-                                                                                                class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                                                <div
-                                                                                                    class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
-                                                                                                    <span
-                                                                                                        class="material-symbols-outlined text-base">history</span>
-                                                                                                </div>
-                                                                                                <h4
-                                                                                                    class="font-bold text-foreground mb-2">
-                                                                                                    Immutable Audit
-                                                                                                    Logging
-                                                                                                </h4>
-                                                                                                <p
-                                                                                                    class="text-sm text-text-muted">
-                                                                                                    Every file
-                                                                                                    decryption,
-                                                                                                    download,
-                                                                                                    or sharing access
-                                                                                                    event is logged with
-                                                                                                    cryptographic hashes
-                                                                                                    and
-                                                                                                    timestamps.</p>
-                                                                                                <h4
-                                                                                                    class="font-bold text-xs sm:text-sm text-foreground mb-1">
-                                                                                                    Immutable Audit
-                                                                                                    Logging</h4>
-                                                                                                <p
-                                                                                                    class="text-xs text-text-muted leading-relaxed">
-                                                                                                    Every file
-                                                                                                    decryption,
-                                                                                                    download, or sharing
-                                                                                                    access event is
-                                                                                                    logged with
-                                                                                                    cryptographic hashes
-                                                                                                    and timestamps.</p>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="p-6 rounded-2xl bg-surface-container border border-border-subtle">
-                                                                                                <div
-                                                                                                    class="w-10 h-10 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center mb-4 text-primary">
-                                                                                                    <span
-                                                                                                        class="material-symbols-outlined">badge</span>
-                                                                                                    <div
-                                                                                                        class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                                                        <div
-                                                                                                            class="w-8 h-8 rounded-xl bg-stone-200 dark:bg-stone-800 flex items-center justify-center mb-2.5 text-primary">
-                                                                                                            <span
-                                                                                                                class="material-symbols-outlined text-base">badge</span>
-                                                                                                        </div>
-                                                                                                        <h4
-                                                                                                            class="font-bold text-foreground mb-2">
-                                                                                                            Scoped RBAC
-                                                                                                        </h4>
-                                                                                                        <p
-                                                                                                            class="text-sm text-text-muted">
-                                                                                                            Time-bound
-                                                                                                            temporary
-                                                                                                            sharing
-                                                                                                            links with
-                                                                                                            optional
-                                                                                                            password
-                                                                                                            challenge
-                                                                                                            and
-                                                                                                            single-view
-                                                                                                            self-destruct
-                                                                                                            capabilities.
-                                                                                                        </p>
-                                                                                                        <h4
-                                                                                                            class="font-bold text-xs sm:text-sm text-foreground mb-1">
-                                                                                                            Scoped RBAC
-                                                                                                        </h4>
-                                                                                                        <p
-                                                                                                            class="text-xs text-text-muted leading-relaxed">
-                                                                                                            Time-bound
-                                                                                                            temporary
-                                                                                                            sharing
-                                                                                                            links with
-                                                                                                            optional
-                                                                                                            password
-                                                                                                            challenge
-                                                                                                            and
-                                                                                                            single-view
-                                                                                                            self-destruct
-                                                                                                            capabilities.
-                                                                                                        </p>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                </section>
-                                                                <!-- Card 5: Engineering Challenges & Resolutions (12 Cols) -->
-                                                                <div
-                                                                    class="col-span-12 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle shadow-sm">
-                                                                    <span
-                                                                        class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                                                        ENGINEERING CHALLENGES &amp; RESOLUTIONS</span>
-                                                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                                        <div
-                                                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                            <h4
-                                                                                class="font-bold text-foreground text-xs sm:text-sm mb-1.5 flex items-center gap-1.5">
-                                                                                <span
-                                                                                    class="material-symbols-outlined text-sm text-primary">memory</span>
-                                                                                <span>Challenge: Memory Spikes During
-                                                                                    Multi-GB File Ingestion</span>
-                                                                            </h4>
-                                                                            <p
-                                                                                class="text-xs text-text-muted leading-relaxed mb-2.5">
-                                                                                Encrypting monolithic multi-gigabyte
-                                                                                files
-                                                                                caused server out-of-memory crashes on
-                                                                                memory-constrained containers.
-                                                                            </p>
-                                                                            <div
-                                                                                class="p-3 rounded-xl bg-surface-container border border-border-subtle/50 text-xs">
-                                                                                <strong
-                                                                                    class="text-primary block font-semibold mb-0.5">Resolution:</strong>
-                                                                                Architected an asynchronous streaming
-                                                                                generator pipeline that encrypts fixed
-                                                                                64KB
-                                                                                blocks sequentially with rolling GCM
-                                                                                authentication tags.
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
-                                                                            <h4
-                                                                                class="font-bold text-foreground text-xs sm:text-sm mb-1.5 flex items-center gap-1.5">
-                                                                                <span
-                                                                                    class="material-symbols-outlined text-sm text-primary">key</span>
-                                                                                <span>Challenge: Key Recovery Without
-                                                                                    Central Custody</span>
-                                                                            </h4>
-                                                                            <p
-                                                                                class="text-xs text-text-muted leading-relaxed mb-2.5">
-                                                                                Zero-knowledge architectures result in
-                                                                                permanent data loss if users forget
-                                                                                their
-                                                                                master passphrase.
-                                                                            </p>
-                                                                            <div
-                                                                                class="p-3 rounded-xl bg-surface-container border border-border-subtle/50 text-xs">
-                                                                                <strong
-                                                                                    class="text-primary block font-semibold mb-0.5">Resolution:</strong>
-                                                                                Implemented a Shamir-inspired offline
-                                                                                multi-fragment recovery sheet that
-                                                                                splits
-                                                                                the encrypted recovery key into
-                                                                                printable
-                                                                                paper shards.
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                        </div>
-                                                        <!-- Compact Bottom Navigation -->
-                                                        <div
-                                                            class="mt-8 pt-6 border-t border-border-subtle flex flex-wrap justify-between items-center gap-4">
-                                                            <a href="../news-scraper/index.html"
-                                                                class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
-                                                                <span
-                                                                    class="material-symbols-outlined text-sm">arrow_back</span>
-                                                                Previous: News Scraper
-                                                            </a>
-                                                            <a href="../../index.html#work"
-                                                                class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
-                                                                <span
-                                                                    class="material-symbols-outlined text-sm">grid_view</span>
-                                                                Back to All Projects
-                                                            </a>
-                                                            <a href="../printflow/index.html"
-                                                                class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-1.5">
-                                                                Next Case Study: PrintFlow Agent <span
-                                                                    class="material-symbols-outlined text-sm">arrow_forward</span>
-                                                            </a>
-                                                        </div>
-                </main>
-
-                <section>
-                    <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">
-                        Technologies Employed</h2>
+            <!-- Card 4: Technologies Employed (5 Cols) -->
+            <div
+                class="md:col-span-5 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                <div>
+                    <span class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">— TECHNOLOGIES EMPLOYED</span>
                     <div class="flex flex-wrap gap-2">
-                        <span
-                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Python</span>
-                        <span
-                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">FastAPI
-                            / Flask</span>
-                        <span
-                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Cryptography
-                            (PyCA)</span>
-                        <span
-                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">PostgreSQL</span>
-                        <span
-                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">PBKDF2</span>
-                        <span
-                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">REST
-                            APIs</span>
-                        <span
-                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Tailwind
-                            CSS</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Python 3.11</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">FastAPI</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">PostgreSQL</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">SQLAlchemy</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Cryptography (hazmat)</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Web Crypto API</span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Docker</span>
                     </div>
-                </section>
-                </article>
-                <!-- Footer -->
-                <footer class="border-t border-border-subtle py-8 text-center text-xs text-text-muted">
-                    <p>&copy; 2026 Vedansh Harish Ail. All rights reserved.</p>
-                </footer>
+                </div>
+                <p class="text-xs text-text-muted mt-4 pt-3 border-t border-border-subtle">
+                    Audited against OWASP Cryptographic Storage Cheat Sheet and NIST SP 800-132 standards.
+                </p>
+            </div>
 
-                <!-- Navigation to Next Project -->
-                <div class="mt-20 pt-8 border-t border-border-subtle flex justify-between items-center">
-                    <a href="../meri-panchayat/index.html"
-                        class="text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-2">
-                        <!-- Compact Bottom Navigation -->
-                        <div
-                            class="mt-8 pt-6 border-t border-border-subtle flex flex-wrap justify-between items-center gap-4">
-                            <a href="../meri-panchayat/index.html"
-                                class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-sm">arrow_back</span>
-                                Previous: Meri Panchayat
-                            </a>
-                            <a href="../printflow/index.html"
-                                class="text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
-                                <a href="../printflow/index.html"
-                                    class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-1.5">
-                                    Next Case Study: PrintFlow Agent <span
-                                        class="material-symbols-outlined text-sm">arrow_forward</span>
-                                </a>
+            <!-- Card 5: Engineering Challenges & Resolutions (12 Cols) -->
+            <div class="col-span-12 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle shadow-sm">
+                <span class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">— ENGINEERING CHALLENGES &amp; RESOLUTIONS</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                        <h4 class="font-bold text-foreground text-xs sm:text-sm mb-1.5 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm text-primary">memory</span>
+                            <span>Challenge: Browser Memory Exhaustion on Large Files</span>
+                        </h4>
+                        <p class="text-xs text-text-muted leading-relaxed mb-2.5">
+                            Loading large 200MB+ PDF documents directly into browser memory for AES encryption caused tab crashes and memory leaks.
+                        </p>
+                        <div class="p-3 rounded-xl bg-surface-container border border-border-subtle/50 text-xs">
+                            <strong class="text-primary block font-semibold mb-0.5">Resolution:</strong>
+                            Architected a Web Worker streaming encryption pipeline using Chunked Transfer Encoding that digests files in 4MB chunks with deterministic authentication tags.
                         </div>
-                        <!-- Compact Bottom Navigation -->
-                        <div
-                            class="mt-8 pt-6 border-t border-border-subtle flex flex-wrap justify-between items-center gap-4">
-                            <a href="../news-scraper/index.html"
-                                class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-sm">arrow_back</span>
-                                Previous: News Scraper
-                            </a>
-                            <a href="../../index.html#work"
-                                class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-sm">grid_view</span>
-                                Back to All Projects
-                            </a>
-                            <a href="../printflow/index.html"
-                                class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-1.5">
-                                Next Case Study: PrintFlow Agent <span
-                                    class="material-symbols-outlined text-sm">arrow_forward</span>
-                            </a>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                        <h4 class="font-bold text-foreground text-xs sm:text-sm mb-1.5 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm text-primary">sync_saved_locally</span>
+                            <span>Challenge: Key Recovery Without Central Custody</span>
+                        </h4>
+                        <p class="text-xs text-text-muted leading-relaxed mb-2.5">
+                            In zero-knowledge architecture, forgotten master passwords result in catastrophic, irreversible data loss.
+                        </p>
+                        <div class="p-3 rounded-xl bg-surface-container border border-border-subtle/50 text-xs">
+                            <strong class="text-primary block font-semibold mb-0.5">Resolution:</strong>
+                            Implemented Shamir's Secret Sharing scheme (3-of-5 threshold) generating offline paper recovery shards that can reconstruct vault keys without central escrow.
                         </div>
-        </main>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <!-- Footer -->
-        <footer class="mt-20 border-t border-border-subtle py-8 text-center text-sm text-text-muted">
-            <footer class="border-t border-border-subtle py-8 text-center text-xs text-text-muted">
-                <p>&copy; 2026 Vedansh Harish Ail. All rights reserved.</p>
-            </footer>
+        <!-- Compact Bottom Navigation -->
+        <div class="mt-8 pt-6 border-t border-border-subtle flex flex-wrap justify-between items-center gap-4">
+            <a href="../news-scraper/index.html"
+                class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm">arrow_back</span> Previous: News Scraper
+            </a>
+            <a href="../../index.html#work"
+                class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm">grid_view</span> Back to All Projects
+            </a>
+            <a href="../printflow/index.html"
+                class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-1.5">
+                Next Case Study: PrintFlow <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </a>
+        </div>
+    </main>
 
-            <script>
-                const themeBtn = document.getElementById('theme-toggle-btn');
-                if (themeBtn) {
-                    themeBtn.addEventListener('click', () => {
-                        const isDark = document.documentElement.classList.toggle('dark');
-                        document.documentElement.classList.toggle('light', !isDark);
-                        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                        const themeToggleBtn = document.getElementById('theme-toggle-btn');
-                        if (themeToggleBtn) {
-                            themeToggleBtn.addEventListener('click', () => {
-                                if (document.documentElement.classList.contains('dark')) {
-                                    document.documentElement.classList.remove('dark');
-                                    document.documentElement.classList.add('light');
-                                    localStorage.setItem('theme', 'light');
-                                } else {
-                                    document.documentElement.classList.remove('light');
-                                    document.documentElement.classList.add('dark');
-                                    localStorage.setItem('theme', 'dark');
-                                }
-                            });
-                            <script>
-                                const themeToggleBtn = document.getElementById('theme-toggle-btn');
-                                if (themeToggleBtn) {
-                                    themeToggleBtn.addEventListener('click', () => {
-                                        if (document.documentElement.classList.contains('dark')) {
-                                            document.documentElement.classList.remove('dark');
-                                            document.documentElement.classList.add('light');
-                                            localStorage.setItem('theme', 'light');
-                                        } else {
-                                            document.documentElement.classList.remove('light');
-                                            document.documentElement.classList.add('dark');
-                                            localStorage.setItem('theme', 'dark');
-                                        }
-            </script>
+    <!-- Footer -->
+    <footer class="border-t border-border-subtle py-8 text-center text-xs text-text-muted">
+        <p>&copy; 2026 Vedansh Harish Ail. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.classList.remove('light');
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
             });
-            }
-            </script>
+        }
+    </script>
 </body>
 
 </html>
