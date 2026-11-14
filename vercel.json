@@ -1,6 +1,48 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/agrochain",
+      "destination": "/projects/agrochain",
+      "permanent": true
+    },
+    {
+      "source": "/meri-panchayat",
+      "destination": "/projects/meri-panchayat",
+      "permanent": true
+    },
+    {
+      "source": "/helio",
+      "destination": "/projects/helio",
+      "permanent": true
+    },
+    {
+      "source": "/printflow",
+      "destination": "/projects/printflow",
+      "permanent": true
+    },
+    {
+      "source": "/smart-recipe-generator",
+      "destination": "/projects/smart-recipe-generator",
+      "permanent": true
+    },
+    {
+      "source": "/resume-builder",
+      "destination": "/projects/resume-builder",
+      "permanent": true
+    },
+    {
+      "source": "/wedding-invitation",
+      "destination": "/projects/wedding-invitation",
+      "permanent": true
+    },
+    {
+      "source": "/news-scraper",
+      "destination": "/projects/news-scraper",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

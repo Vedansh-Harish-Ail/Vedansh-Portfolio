@@ -7,6 +7,8 @@
     <title>News Scraper — Real-Time Multi-Source News Aggregator | Vedansh Harish Ail</title>
     <meta name="description"
         content="Technical case study of News Scraper: An automated real-time headline aggregation and curation platform engineered with Python, BeautifulSoup, and Flask by Vedansh Harish Ail." />
+    content="Technical case study of News Scraper: An automated real-time headline extraction and classification
+    pipeline built with Python, BeautifulSoup, and Flask on Render." />
     <meta name="author" content="Vedansh Harish Ail" />
     <link rel="canonical" href="https://vedansh-portfolio-beta.vercel.app/projects/news-scraper" />
     <link rel="icon" type="image/png" href="../../assets/favicon.png" />
@@ -16,6 +18,7 @@
     <meta property="og:title" content="News Scraper Case Study — Vedansh Harish Ail" />
     <meta property="og:description"
         content="A dynamic web application that aggregates and categorizes the latest news articles using automated scraping techniques." />
+    content="Automated multi-source headline extraction and categorization pipeline with memory TTL caching." />
     <meta property="og:url" content="https://vedansh-portfolio-beta.vercel.app/projects/news-scraper" />
     <meta property="og:image" content="https://vedansh-portfolio-beta.vercel.app/assets/project5.png" />
     <meta property="og:site_name" content="Vedansh Harish Ail Portfolio" />
@@ -24,10 +27,14 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="News Scraper Case Study | Vedansh Harish Ail" />
     <meta name="twitter:description" content="Python, BeautifulSoup, and Flask real-time news aggregation pipeline." />
+    <meta name="twitter:description"
+        content="Python and BeautifulSoup news aggregator pipeline delivering real-time headline categorization." />
     <meta name="twitter:image" content="https://vedansh-portfolio-beta.vercel.app/assets/project5.png" />
 
     <!-- Tailwind & Google Fonts -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
         rel="stylesheet" />
@@ -36,29 +43,44 @@
         rel="stylesheet" />
 
     <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
+        <script>
+            tailwind.config = {
+                darkMode: "class",
             theme: {
                 extend: {
-                    colors: {
-                        "text-muted": "var(--muted-foreground)",
-                        "surface-primary": "var(--background)",
-                        "background": "var(--background)",
-                        "on-surface": "var(--foreground)",
-                        "primary": "var(--primary)",
-                        "on-primary": "var(--primary-foreground)",
-                        "surface-container": "var(--card)",
-                        "surface-container-low": "var(--muted)",
-                        "border-subtle": "var(--border)"
+                colors: {
+                "text-muted": "var(--muted-foreground)",
+            "surface-primary": "var(--background)",
+            "background": "var(--background)",
+            "on-surface": "var(--foreground)",
+            "primary": "var(--primary)",
+            "on-primary": "var(--primary-foreground)",
+            "surface-container": "var(--card)",
+            "surface-container-low": "var(--muted)",
+            "border-subtle": "var(--border)"
+            background: "var(--background)",
+            foreground: "var(--foreground)",
+            primary: "var(--primary)",
+            "on-primary": "var(--on-primary)",
+            "surface-container": "var(--surface-container)",
+            "surface-container-low": "var(--surface-container-low)",
+            "border-subtle": "var(--border-subtle)",
+            "text-muted": "var(--text-muted)",
                     },
-                    borderRadius: { "luxury": "2.5rem" },
-                    fontFamily: {
-                        "playfair": ["Playfair Display", "serif"],
-                        "headline": ["Newsreader", "serif"],
-                        "sans": ["Inter", "sans-serif"]
+            borderRadius: {"luxury": "2.5rem" },
+            fontFamily: {
+                "playfair": ["Playfair Display", "serif"],
+            "headline": ["Newsreader", "serif"],
+            "sans": ["Inter", "sans-serif"]
                     }
                 }
             }
+            serif: ['Newsreader', 'Georgia', 'serif'],
+            playfair: ['Playfair Display', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                },
+            },
         };
     </script>
 
@@ -72,6 +94,14 @@
             --foreground: #202020;
             --muted-foreground: #646464;
             --primary-foreground: #ffffff;
+            --background: #fdfbf7;
+            --foreground: #2d2621;
+            --primary: #48332a;
+            --on-primary: #fdfbf7;
+            --surface-container: #f5efe6;
+            --surface-container-low: #ebe3d5;
+            --border-subtle: #e6ded1;
+            --text-muted: #796e65;
         }
 
         .dark {
@@ -83,6 +113,14 @@
             --foreground: #eeeeee;
             --muted-foreground: #b4b4b4;
             --primary-foreground: #081a1b;
+            --background: #141210;
+            --foreground: #ede8e1;
+            --primary: #d4a373;
+            --on-primary: #1c1815;
+            --surface-container: #1e1a17;
+            --surface-container-low: #28231f;
+            --border-subtle: #332d27;
+            --text-muted: #a89f91;
         }
 
         .luxury-border {
@@ -92,14 +130,33 @@
         body {
             background-color: var(--background);
             color: var(--foreground);
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
         }
     </style>
 
     <!-- Schema.org JSON-LD -->
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
+      "@type": "SoftwareApplication",
+      "name": "News Scraper",
+      "applicationCategory": "NewsApplication",
+      "operatingSystem": "Web",
+      "description": "An automated real-time headline extraction and classification pipeline built with Python, BeautifulSoup, and Flask on Render.",
+      "url": "https://vedansh-portfolio-beta.vercel.app/projects/news-scraper",
+      "author": {
+        "@type": "Person",
+        "name": "Vedansh Harish Ail"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
           "@type": "BreadcrumbList",
           "itemListElement": [
@@ -107,6 +164,10 @@
             { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://vedansh-portfolio-beta.vercel.app/#work" },
             { "@type": "ListItem", "position": 3, "name": "News Scraper", "item": "https://vedansh-portfolio-beta.vercel.app/projects/news-scraper" }
           ]
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://vedansh-portfolio-beta.vercel.app/"
         },
         {
           "@type": "SoftwareApplication",
@@ -120,6 +181,16 @@
             "name": "Vedansh Harish Ail",
             "url": "https://vedansh-portfolio-beta.vercel.app/"
           }
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://vedansh-portfolio-beta.vercel.app/#work"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "News Scraper",
+          "item": "https://vedansh-portfolio-beta.vercel.app/projects/news-scraper"
         }
       ]
     }
@@ -127,15 +198,16 @@
     <script>
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.classList.add('dark');
-            document.documentElement.classList.remove('light');
+        document.documentElement.classList.remove('light');
         } else {
             document.documentElement.classList.add('light');
-            document.documentElement.classList.remove('dark');
+        document.documentElement.classList.remove('dark');
         }
     </script>
 </head>
 
 <body class="font-sans selection:bg-stone-300 dark:selection:bg-stone-700">
+    <!-- Top Navigation -->
     <nav
         class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md border-b border-border-subtle py-4 px-6 md:px-12 flex justify-between items-center max-w-screen-2xl mx-auto">
         <a href="../../index.html"
@@ -167,195 +239,229 @@
                 <li class="text-foreground font-medium" aria-current="page">News Scraper</li>
             </ol>
         </nav>
-
-        <header class="mb-12">
-            <div class="flex flex-wrap items-center gap-3 mb-4">
-                <span
-                    class="px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Data
-                    Pipeline &amp; Web Scraping</span>
-                <span
-                    class="px-3 py-1 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Live
-                    Deployment</span>
+        <!-- Main Content: Bento Grid Layout -->
+        <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-8">
+            <!-- Top Bar: Breadcrumb & Quick Actions -->
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                <nav aria-label="Breadcrumb">
+                    <ol class="flex items-center gap-2 text-xs sm:text-sm text-text-muted">
+                        <li><a href="../../index.html" class="hover:text-foreground transition-colors">Home</a></li>
+                        <li><span>/</span></li>
+                        <li><a href="../../index.html#work" class="hover:text-foreground transition-colors">Projects</a>
+                        </li>
+                        <li><span>/</span></li>
+                        <li class="text-foreground font-medium" aria-current="page">News Scraper</li>
+                    </ol>
+                </nav>
+                <div class="flex items-center gap-3">
+                    <a href="../resume-builder/index.html"
+                        class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                        <span class="material-symbols-outlined text-sm">arrow_back</span> Previous
+                    </a>
+                    <a href="../../index.html#work"
+                        class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                        <span class="material-symbols-outlined text-sm">grid_view</span> All Projects
+                    </a>
+                    <a href="../helio/index.html"
+                        class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                        Next Project <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
             </div>
-            <h1 class="font-playfair text-4xl md:text-6xl text-foreground font-bold mb-6 leading-tight">
-                Automated News Scraper &amp; Headline Aggregator
-            </h1>
-            <p class="text-lg md:text-xl text-text-muted leading-relaxed max-w-3xl mb-8">
-                An automated web curation engine that extracts, classifies, and summarizes real-time headlines across
-                multiple publications into a distraction-free reader dashboard using Python, BeautifulSoup, and Flask.
-            </p>
 
-            <div class="flex flex-wrap gap-4">
-                <a href="https://news-scraper-q3y3.onrender.com" target="_blank" rel="noopener noreferrer"
-                    class="bg-primary text-on-primary px-8 py-3.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-sm">
-                    Open Live Deployment <span class="material-symbols-outlined text-sm">north_east</span>
-                    <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-8">
-                        <!-- Top Bar: Breadcrumb & Quick Actions -->
-                        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-                            <nav aria-label="Breadcrumb">
-                                <ol class="flex items-center gap-2 text-xs sm:text-sm text-text-muted">
-                                    <li><a href="../../index.html"
-                                            class="hover:text-foreground transition-colors">Home</a></li>
-                                    <li><span>/</span></li>
-                                    <li><a href="../../index.html#work"
-                                            class="hover:text-foreground transition-colors">Projects</a></li>
-                                    <li><span>/</span></li>
-                                    <li class="text-foreground font-medium" aria-current="page">News Scraper</li>
-                                </ol>
-                            </nav>
-                            <div class="flex items-center gap-3">
-                                <a href="../resume-builder/index.html"
-                                    class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
-                                    <span class="material-symbols-outlined text-sm">arrow_back</span> Previous
-                                </a>
-                                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="border border-border-subtle bg-surface-container text-foreground px-8 py-3.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-sm">
-                                    GitHub Repository <span class="material-symbols-outlined text-sm">code</span>
-                                    <a href="../agrochain/index.html"
-                                        class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
-                                        First Project <span
-                                            class="material-symbols-outlined text-sm">arrow_forward</span>
+            <header class="mb-12">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <span
+                        class="px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Data
+                        Pipeline &amp; Web Scraping</span>
+                    <span
+                        class="px-3 py-1 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Live
+                        Deployment</span>
+                    <!-- Upper Bento Deck: Executive Overview & Live Preview -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+                        <!-- Left Bento: Executive Overview (7 Cols) -->
+                        <div
+                            class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                            <div>
+                                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                    <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">—
+                                        PROJECT OVERVIEW</span>
+                                    <div class="flex items-center gap-2">
+                                        <span
+                                            class="px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Data
+                                            Pipeline &amp; Web Scraping</span>
+                                        <span
+                                            class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Live
+                                            Deployment</span>
+                                    </div>
+                                </div>
+                                <h1
+                                    class="font-playfair text-3xl sm:text-4xl lg:text-5xl text-foreground font-bold mb-4 leading-tight">
+                                    Automated News Scraper &amp; Headline Aggregator
+                                </h1>
+                                <p class="text-sm sm:text-base text-text-muted leading-relaxed mb-6">
+                                    An automated web curation engine that extracts, classifies, and summarizes real-time
+                                    headlines across multiple publications into a distraction-free reader dashboard
+                                    using Python, BeautifulSoup, and Flask.
+                                </p>
+                                <div class="flex flex-wrap gap-3 mb-6">
+                                    <a href="https://news-scraper-q3y3.onrender.com" target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-xs sm:text-sm shadow-sm">
+                                        Open Live Deployment <span
+                                            class="material-symbols-outlined text-xs">north_east</span>
                                     </a>
-                            </div>
-        </header>
-
-        <div class="mb-16 rounded-3xl overflow-hidden border border-border-subtle shadow-xl bg-surface-container">
-            <img src="../../assets/project5.png" alt="News Scraper dashboard interface screenshot"
-                class="w-full h-auto object-cover" width="1024" height="808" />
-        </div>
-
-        <div
-            class="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl bg-surface-container border border-border-subtle mb-16 text-sm">
-            <div>
-                <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Scraper Engine</span>
-                <span class="font-semibold text-foreground">BeautifulSoup &amp; Requests</span>
-                <!-- Upper Bento Deck: Executive Overview & Live Preview -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
-                    <!-- Left Bento: Executive Overview (7 Cols) -->
-                    <div
-                        class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                        <div>
-                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-                                <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— PROJECT
-                                    OVERVIEW</span>
-                                <div class="flex items-center gap-2">
-                                    <span
-                                        class="px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Data
-                                        Pipeline &amp; Web Scraping</span>
-                                    <span
-                                        class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Live
-                                        Deployment</span>
+                                    <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="border border-border-subtle bg-surface-container-low text-foreground px-5 py-2.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-xs sm:text-sm">
+                                        GitHub Repository <span class="material-symbols-outlined text-xs">code</span>
+                                    </a>
                                 </div>
                             </div>
-                            <h1
-                                class="font-playfair text-3xl sm:text-4xl lg:text-5xl text-foreground font-bold mb-4 leading-tight">
-                                Automated News Scraper &amp; Headline Aggregator
-                            </h1>
-                            <p class="text-sm sm:text-base text-text-muted leading-relaxed mb-6">
-                                An automated web curation engine that extracts, classifies, and summarizes real-time
-                                headlines across multiple publications into a distraction-free reader dashboard using
-                                Python, BeautifulSoup, and Flask.
-                            </p>
-                            <div class="flex flex-wrap gap-3 mb-6">
-                                <a href="https://news-scraper-q3y3.onrender.com" target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-xs sm:text-sm shadow-sm">
-                                    Open Live Deployment <span
-                                        class="material-symbols-outlined text-xs">north_east</span>
-                                </a>
-                                <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="border border-border-subtle bg-surface-container-low text-foreground px-6 py-2.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-xs sm:text-sm">
-                                    GitHub Repository <span class="material-symbols-outlined text-xs">code</span>
-                                </a>
-                            </div>
-                        </div>
 
-                        <!-- Integrated 4-Metric Grid -->
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-border-subtle">
-                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                    SCRAPER ENGINE</span>
-                                <span class="font-semibold text-foreground text-xs sm:text-sm">BeautifulSoup &amp;
-                                    Requests</span>
-                            </div>
-                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                    BACKEND</span>
-                                <span class="font-semibold text-foreground text-xs sm:text-sm">Python / Flask</span>
-                            </div>
-                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">— CACHE
-                                    LAYER</span>
-                                <span class="font-semibold text-foreground text-xs sm:text-sm">In-Memory TTL
-                                    Cache</span>
-                            </div>
-                            <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
-                                <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
-                                    HOSTING</span>
-                                <span class="font-semibold text-foreground text-xs sm:text-sm">Render Cloud</span>
+                            <!-- 4 Quick Key Metrics Strip -->
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4 border-t border-border-subtle">
+                                <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                    <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                        SCRAPER ENGINE</span>
+                                    <span class="font-semibold text-foreground text-xs sm:text-sm">BeautifulSoup &amp;
+                                        Requests</span>
+                                </div>
+                                <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                    <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                        BACKEND</span>
+                                    <span class="font-semibold text-foreground text-xs sm:text-sm">Python / Flask</span>
+                                </div>
+                                <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                    <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                        CACHE LAYER</span>
+                                    <span class="font-semibold text-foreground text-xs sm:text-sm">In-Memory TTL
+                                        Caching</span>
+                                </div>
+                                <div class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                    <span class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                        HOSTING</span>
+                                    <span class="font-semibold text-foreground text-xs sm:text-sm">Render Cloud</span>
+                                </div>
                             </div>
                         </div>
+                        <h1 class="font-playfair text-4xl md:text-6xl text-foreground font-bold mb-6 leading-tight">
+                            Automated News Scraper &amp; Headline Aggregator
+                        </h1>
+                        <p class="text-lg md:text-xl text-text-muted leading-relaxed max-w-3xl mb-8">
+                            An automated web curation engine that extracts, classifies, and summarizes real-time
+                            headlines across
+                            multiple publications into a distraction-free reader dashboard using Python, BeautifulSoup,
+                            and Flask.
+                        </p>
+
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://news-scraper-q3y3.onrender.com" target="_blank" rel="noopener noreferrer"
+                                class="bg-primary text-on-primary px-8 py-3.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-sm">
+                                Open Live Deployment <span class="material-symbols-outlined text-sm">north_east</span>
+                                <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-8">
+                                    <!-- Top Bar: Breadcrumb & Quick Actions -->
+                                    <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                                        <nav aria-label="Breadcrumb">
+                                            <ol class="flex items-center gap-2 text-xs sm:text-sm text-text-muted">
+                                                <li><a href="../../index.html"
+                                                        class="hover:text-foreground transition-colors">Home</a></li>
+                                                <li><span>/</span></li>
+                                                <li><a href="../../index.html#work"
+                                                        class="hover:text-foreground transition-colors">Projects</a>
+                                                </li>
+                                                <li><span>/</span></li>
+                                                <li class="text-foreground font-medium" aria-current="page">News Scraper
+                                                </li>
+                                            </ol>
+                                        </nav>
+                                        <div class="flex items-center gap-3">
+                                            <a href="../resume-builder/index.html"
+                                                class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                                                <span class="material-symbols-outlined text-sm">arrow_back</span>
+                                                Previous
+                                            </a>
+                                            <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="border border-border-subtle bg-surface-container text-foreground px-8 py-3.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-sm">
+                                                GitHub Repository <span
+                                                    class="material-symbols-outlined text-sm">code</span>
+                                                <a href="../agrochain/index.html"
+                                                    class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border-subtle bg-surface-container hover:bg-stone-100 dark:hover:bg-stone-800">
+                                                    First Project <span
+                                                        class="material-symbols-outlined text-sm">arrow_forward</span>
+                                                </a>
+                                        </div>
+            </header>
+
+            <div class="mb-16 rounded-3xl overflow-hidden border border-border-subtle shadow-xl bg-surface-container">
+                <img src="../../assets/project5.png" alt="News Scraper dashboard interface screenshot"
+                    class="w-full h-auto object-cover" width="1024" height="808" />
+                <!-- Right Bento: Live Preview & Showcase (5 Cols) -->
+                <div
+                    class="lg:col-span-5 p-6 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">— DASHBOARD
+                            INTERFACE</span>
+                        <span
+                            class="inline-flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span>Live Scraper</span>
+                        </span>
                     </div>
-                    <div>
-                        <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Backend</span>
-                        <span class="font-semibold text-foreground">Python / Flask</span>
+                    <div
+                        class="rounded-2xl overflow-hidden border border-border-subtle shadow-inner bg-surface-container-low aspect-[16/10] flex items-center justify-center">
+                        <img src="../../assets/project5.png" alt="News Scraper dashboard interface screenshot"
+                            class="w-full h-full object-cover" width="1024" height="808" />
+                    </div>
+                    <div class="pt-3 flex items-center justify-between text-xs text-text-muted">
+                        <span>Automated RSS/HTML sanitization &amp; category sorting</span>
+                        <a href="https://news-scraper-q3y3.onrender.com" target="_blank" rel="noopener noreferrer"
+                            class="text-primary hover:underline font-medium inline-flex items-center gap-0.5">
+                            Read <span class="material-symbols-outlined text-xs">north_east</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-                        <!-- Right Bento: Live Preview & Showcase (5 Cols) -->
+            <div
+                class="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl bg-surface-container border border-border-subtle mb-16 text-sm">
+                <div>
+                    <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Scraper Engine</span>
+                    <span class="font-semibold text-foreground">BeautifulSoup &amp; Requests</span>
+                    <!-- Upper Bento Deck: Executive Overview & Live Preview -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+                        <!-- Left Bento: Executive Overview (7 Cols) -->
                         <div
-                            class="lg:col-span-5 p-6 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">—
-                                    DASHBOARD INTERFACE</span>
-                                <span
-                                    class="inline-flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
-                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                    <span>Live Scraper</span>
-                                </span>
-                            </div>
-                            <div
-                                class="rounded-2xl overflow-hidden border border-border-subtle shadow-inner bg-surface-container-low aspect-[16/10] flex items-center justify-center">
-                                <img src="../../assets/project5.png" alt="News Scraper dashboard interface screenshot"
-                                    class="w-full h-full object-cover" width="1024" height="808" />
-                            </div>
-                            <div class="pt-3 flex items-center justify-between text-xs text-text-muted">
-                                <span>Automated RSS/HTML sanitization &amp; category sorting</span>
-                                <a href="https://news-scraper-q3y3.onrender.com" target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="text-primary hover:underline font-medium inline-flex items-center gap-0.5">
-                                    Read <span class="material-symbols-outlined text-xs">north_east</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Cache Layer</span>
-                            <span class="font-semibold text-foreground">In-Memory TTL Caching</span>
-                        </div>
-                        <div>
-                            <span class="block text-xs uppercase tracking-wider text-text-muted mb-1">Hosting</span>
-                            <span class="font-semibold text-foreground">Render Cloud</span>
-                        </div>
-                    </div>
-
-                    <article class="space-y-16">
-                        <section>
-                            <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Pipeline Architecture</h2>
-                            <div class="prose max-w-none text-text-muted leading-relaxed space-y-4">
-                                <p>
-                                    Modern news websites are heavily cluttered with intrusive ads, paywalls, and heavy
-                                    tracking scripts that degrade reading speeds.
-                                </p>
-                                <p>
-                                    News Scraper runs automated background parsing routines that sanitize HTML markup,
-                                    strip tracking parameters, extract editorial summaries, and categorize stories by
-                                    topic (Technology, World, Business, Science) with zero bloat.
-                                </p>
-                                <!-- Lower Bento Deck: Deep Dive Modules -->
+                            class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                            <div>
+                                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                    <span class="text-xs uppercase tracking-widest font-semibold text-text-muted">—
+                                        PROJECT
+                                        OVERVIEW</span>
+                                    <div class="flex items-center gap-2">
+                                        <span
+                                            class="px-3 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-stone-200 dark:bg-stone-800 text-foreground">Data
+                                            Pipeline &amp; Web Scraping</span>
+                                        <span
+                                            class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-border-subtle text-text-muted">Live
+                                            Deployment</span>
+                                    </div>
+                                </div>
+                                <h1
+                                    class="font-playfair text-3xl sm:text-4xl lg:text-5xl text-foreground font-bold mb-4 leading-tight">
+                                    Automated News Scraper &amp; Headline Aggregator
+                                </h1>
+                                <p class="text-sm sm:text-base text-text-muted leading-relaxed mb-6">
+                                    An automated web curation engine that extracts, classifies, and summarizes real-time
+                                    headlines across multiple publications into a distraction-free reader dashboard
+                                    using
+                                    Python, BeautifulSoup, and Flask.
+                                    <!-- Lower Bento Deck: Deep Dive Modules -->
                                 <div class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5">
-                                    <!-- Card 1: Problem & Pipeline Architecture (7 Cols) -->
+                                    <!-- Card 1: Problem & Solution (6 Cols) -->
                                     <div
-                                        class="md:col-span-12 lg:col-span-7 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                                        class="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
                                         <div>
                                             <span
                                                 class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
@@ -374,119 +480,534 @@
                                                         paywalls, and heavy tracking scripts that degrade reader
                                                         experiences and consume excessive device memory.
                                                     </p>
+                                                    <div class="flex flex-wrap gap-3 mb-6">
+                                                        <a href="https://news-scraper-q3y3.onrender.com" target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2 text-xs sm:text-sm shadow-sm">
+                                                            Open Live Deployment <span
+                                                                class="material-symbols-outlined text-xs">north_east</span>
+                                                        </a>
+                                                        <a href="https://github.com/Vedansh-Harish-Ail" target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            class="border border-border-subtle bg-surface-container-low text-foreground px-6 py-2.5 rounded-full font-medium hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors inline-flex items-center gap-2 text-xs sm:text-sm">
+                                                            GitHub Repository <span
+                                                                class="material-symbols-outlined text-xs">code</span>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                                 <div
                                                     class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
                                                     <strong
                                                         class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
                                                         <span
-                                                            class="material-symbols-outlined text-sm text-emerald-600 dark:text-emerald-400">cleaning_services</span>
-                                                        Automated Curation Engine
+                                                            class="material-symbols-outlined text-sm text-emerald-600 dark:text-emerald-400">filter_alt</span>
+                                                        Automated Extraction &amp; Categorization
                                                     </strong>
                                                     <p class="text-text-muted leading-relaxed">
-                                                        Automated background parsing routines sanitize HTML markup,
-                                                        strip tracking parameters, extract editorial summaries, and
-                                                        categorize stories by topic (Technology, World, Business,
-                                                        Science) with zero bloat.
+                                                        News Scraper runs automated background parsing routines that
+                                                        sanitize HTML markup, strip tracking parameters, extract
+                                                        editorial summaries, and categorize stories by topic with zero
+                                                        bloat.
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
-                        </section>
-                </div>
+                                    </div>
 
-                <section>
-                    <h2 class="font-playfair text-3xl font-bold mb-6 text-foreground">Technologies Employed</h2>
-                    <div class="flex flex-wrap gap-2">
-                        <span
-                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Python</span>
-                        <span
-                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">BeautifulSoup
-                            4</span>
-                        <span
-                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Requests</span>
-                        <span
-                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Flask</span>
-                        <span
-                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">HTML5
-                            / CSS3</span>
-                        <span
-                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Data
-                            Sanitization</span>
-                        <!-- Card 2: Tech Stack (5 Cols) -->
-                        <div
-                            class="md:col-span-12 lg:col-span-5 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
-                            <div>
-                                <span
-                                    class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
-                                    TECHNOLOGIES EMPLOYED</span>
-                                <div class="flex flex-wrap gap-1.5 mb-4">
-                                    <span
-                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Python</span>
-                                    <span
-                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">BeautifulSoup
-                                        4</span>
-                                    <span
-                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Requests</span>
-                                    <span
-                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Flask</span>
-                                    <span
-                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">HTML5
-                                        / CSS3</span>
-                                    <span
-                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Data
-                                        Sanitization</span>
-                                    <span
-                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">TTL
-                                        Caching</span>
-                                    <span
-                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Tailwind
-                                        CSS</span>
-                                </div>
-                            </div>
-                </section>
-                </article>
-                <div
-                    class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/50 text-xs text-text-muted">
-                    <strong class="text-foreground block mb-1">In-Memory TTL Caching</strong>
-                    Eliminates redundant outbound network requests, reducing source publication load while delivering
-                    sub-50ms query responses.
-                </div>
-            </div>
-        </div>
+                                    <!-- Integrated 4-Metric Grid -->
+                                    <div
+                                        class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-border-subtle">
+                                        <div
+                                            class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                            <span
+                                                class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                                SCRAPER ENGINE</span>
+                                            <span class="font-semibold text-foreground text-xs sm:text-sm">BeautifulSoup
+                                                &amp;
+                                                Requests</span>
+                                        </div>
+                                        <div
+                                            class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                            <span
+                                                class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                                BACKEND</span>
+                                            <span class="font-semibold text-foreground text-xs sm:text-sm">Python /
+                                                Flask</span>
+                                        </div>
+                                        <div
+                                            class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                            <span
+                                                class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                                CACHE
+                                                LAYER</span>
+                                            <span class="font-semibold text-foreground text-xs sm:text-sm">In-Memory TTL
+                                                Cache</span>
+                                        </div>
+                                        <div
+                                            class="p-3 rounded-2xl bg-surface-container-low border border-border-subtle/50">
+                                            <span
+                                                class="block text-[11px] uppercase tracking-wider text-text-muted mb-0.5">—
+                                                HOSTING</span>
+                                            <span class="font-semibold text-foreground text-xs sm:text-sm">Render
+                                                Cloud</span>
+                                        </div>
+                                        <!-- Card 2: System Architecture (6 Cols) -->
+                                        <div
+                                            class="md:col-span-6 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                                            <div>
+                                                <span
+                                                    class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                                                    SYSTEM ARCHITECTURE</span>
+                                                <div class="space-y-3 text-xs sm:text-sm">
+                                                    <div
+                                                        class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                        <span
+                                                            class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">Concurrent
+                                                            Scraping Engine</span>
+                                                        <p class="text-text-muted text-xs leading-relaxed">
+                                                            Asynchronous request dispatching across publication feeds
+                                                            using custom HTTP headers and rotating User-Agents.
+                                                        </p>
+                                                    </div>
+                                                    <div
+                                                        class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                        <span
+                                                            class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">In-Memory
+                                                            TTL Caching</span>
+                                                        <p class="text-text-muted text-xs leading-relaxed">
+                                                            15-minute sliding TTL cache prevents redundant network
+                                                            scrapes, preserving target server bandwidth and ensuring
+                                                            sub-20ms dashboard queries.
+                                                        </p>
+                                                    </div>
+                                                    <div
+                                                        class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                        <span
+                                                            class="font-semibold text-foreground block mb-0.5 text-xs sm:text-sm">Content
+                                                            Extraction &amp; Classification</span>
+                                                        <p class="text-text-muted text-xs leading-relaxed">
+                                                            BeautifulSoup DOM traversal isolates headline text,
+                                                            publication timestamps, and source attributes with automated
+                                                            fallback selectors.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <span
+                                                        class="block text-xs uppercase tracking-wider text-text-muted mb-1">Backend</span>
+                                                    <span class="font-semibold text-foreground">Python / Flask</span>
+                                                </div>
+                                            </div>
 
-        <div class="mt-20 pt-8 border-t border-border-subtle flex justify-between items-center">
-            <a href="../resume-builder/index.html"
-                class="text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-2">
-                <!-- Compact Bottom Navigation -->
-                <div class="mt-8 pt-6 border-t border-border-subtle flex flex-wrap justify-between items-center gap-4">
-                    <a href="../resume-builder/index.html"
-                        class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
-                        <span class="material-symbols-outlined text-sm">arrow_back</span> Previous: Resume Builder
-                    </a>
-                    <a href="../agrochain/index.html"
-                        class="text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
-                        <a href="../agrochain/index.html"
-                            class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-1.5">
-                            First Project: AgroChain <span
-                                class="material-symbols-outlined text-sm">arrow_forward</span>
-                        </a>
-                </div>
-    </main>
+                                            <!-- Right Bento: Live Preview & Showcase (5 Cols) -->
+                                            <div
+                                                class="lg:col-span-5 p-6 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                                                <div class="flex items-center justify-between mb-3">
+                                                    <span
+                                                        class="text-xs uppercase tracking-widest font-semibold text-text-muted">—
+                                                        DASHBOARD INTERFACE</span>
+                                                    <span
+                                                        class="inline-flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 font-medium">
+                                                        <span
+                                                            class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                                        <span>Live Scraper</span>
+                                                    </span>
+                                                </div>
+                                                <div
+                                                    class="rounded-2xl overflow-hidden border border-border-subtle shadow-inner bg-surface-container-low aspect-[16/10] flex items-center justify-center">
+                                                    <img src="../../assets/project5.png"
+                                                        alt="News Scraper dashboard interface screenshot"
+                                                        class="w-full h-full object-cover" width="1024" height="808" />
+                                                </div>
+                                                <div
+                                                    class="pt-3 flex items-center justify-between text-xs text-text-muted">
+                                                    <span>Automated RSS/HTML sanitization &amp; category sorting</span>
+                                                    <a href="https://news-scraper-q3y3.onrender.com" target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        class="text-primary hover:underline font-medium inline-flex items-center gap-0.5">
+                                                        Read <span
+                                                            class="material-symbols-outlined text-xs">north_east</span>
+                                                    </a>
+                                                </div>
+                                                <!-- Card 3: Key Capabilities (7 Cols) -->
+                                                <div
+                                                    class="md:col-span-7 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                                                    <div>
+                                                        <span
+                                                            class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                                                            KEY CAPABILITIES</span>
+                                                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                                            <div
+                                                                class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                                <span
+                                                                    class="material-symbols-outlined text-primary text-xl mb-1.5 block">hub</span>
+                                                                <h4
+                                                                    class="font-bold text-foreground text-xs sm:text-sm mb-1">
+                                                                    Multi-Source Aggregation</h4>
+                                                                <p class="text-xs text-text-muted leading-relaxed">
+                                                                    Simultaneously harvests news from multiple RSS feeds
+                                                                    and HTML publication indices into a single unified
+                                                                    stream.
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <span
+                                                                    class="block text-xs uppercase tracking-wider text-text-muted mb-1">Cache
+                                                                    Layer</span>
+                                                                <span class="font-semibold text-foreground">In-Memory
+                                                                    TTL Caching</span>
+                                                                <div
+                                                                    class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                                    <span
+                                                                        class="material-symbols-outlined text-primary text-xl mb-1.5 block">clean_hands</span>
+                                                                    <h4
+                                                                        class="font-bold text-foreground text-xs sm:text-sm mb-1">
+                                                                        Payload Sanitization</h4>
+                                                                    <p class="text-xs text-text-muted leading-relaxed">
+                                                                        Strips intrusive tracking scripts, affiliate
+                                                                        query parameters, and clutter to deliver pure
+                                                                        distraction-free text.
+                                                                    </p>
+                                                                </div>
+                                                                <div>
+                                                                    <span
+                                                                        class="block text-xs uppercase tracking-wider text-text-muted mb-1">Hosting</span>
+                                                                    <span class="font-semibold text-foreground">Render
+                                                                        Cloud</span>
+                                                                    <div
+                                                                        class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                                        <span
+                                                                            class="material-symbols-outlined text-primary text-xl mb-1.5 block">auto_awesome</span>
+                                                                        <h4
+                                                                            class="font-bold text-foreground text-xs sm:text-sm mb-1">
+                                                                            Topic Classification</h4>
+                                                                        <p
+                                                                            class="text-xs text-text-muted leading-relaxed">
+                                                                            Keyword matching taxonomy automatically
+                                                                            groups incoming dispatches under Technology,
+                                                                            Business, and Science.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
 
-    <footer class="mt-20 border-t border-border-subtle py-8 text-center text-sm text-text-muted">
-        <p>&copy; 2026 Vedansh Harish Ail. All rights reserved.</p>
-    </footer>
-    <script>
+                                                                <article class="space-y-16">
+                                                                    <section>
+                                                                        <h2
+                                                                            class="font-playfair text-3xl font-bold mb-6 text-foreground">
+                                                                            Pipeline Architecture</h2>
+                                                                        <div
+                                                                            class="prose max-w-none text-text-muted leading-relaxed space-y-4">
+                                                                            <p>
+                                                                                Modern news websites are heavily
+                                                                                cluttered with intrusive ads, paywalls,
+                                                                                and heavy
+                                                                                tracking scripts that degrade reading
+                                                                                speeds.
+                                                                            </p>
+                                                                            <p>
+                                                                                News Scraper runs automated background
+                                                                                parsing routines that sanitize HTML
+                                                                                markup,
+                                                                                strip tracking parameters, extract
+                                                                                editorial summaries, and categorize
+                                                                                stories by
+                                                                                topic (Technology, World, Business,
+                                                                                Science) with zero bloat.
+                                                                            </p>
+                                                                            <!-- Lower Bento Deck: Deep Dive Modules -->
+                                                                            <div
+                                                                                class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5">
+                                                                                <!-- Card 1: Problem & Pipeline Architecture (7 Cols) -->
+                                                                                <div
+                                                                                    class="md:col-span-12 lg:col-span-7 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                                                                                    <div>
+                                                                                        <span
+                                                                                            class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                                                                                            PIPELINE ARCHITECTURE &amp;
+                                                                                            SANITIZATION</span>
+                                                                                        <div
+                                                                                            class="space-y-3.5 text-xs sm:text-sm">
+                                                                                            <div
+                                                                                                class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                                                                <strong
+                                                                                                    class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
+                                                                                                    <span
+                                                                                                        class="material-symbols-outlined text-sm text-amber-700 dark:text-amber-400">block</span>
+                                                                                                    The Ad-Cluttered Web
+                                                                                                </strong>
+                                                                                                <p
+                                                                                                    class="text-text-muted leading-relaxed">
+                                                                                                    Modern news websites
+                                                                                                    are heavily
+                                                                                                    cluttered with
+                                                                                                    intrusive ads,
+                                                                                                    paywalls, and heavy
+                                                                                                    tracking scripts
+                                                                                                    that degrade reader
+                                                                                                    experiences and
+                                                                                                    consume excessive
+                                                                                                    device memory.
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <div
+                                                                                                class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                                                                <strong
+                                                                                                    class="text-foreground block mb-1 text-sm font-semibold flex items-center gap-1.5">
+                                                                                                    <span
+                                                                                                        class="material-symbols-outlined text-sm text-emerald-600 dark:text-emerald-400">cleaning_services</span>
+                                                                                                    Automated Curation
+                                                                                                    Engine
+                                                                                                </strong>
+                                                                                                <p
+                                                                                                    class="text-text-muted leading-relaxed">
+                                                                                                    Automated background
+                                                                                                    parsing routines
+                                                                                                    sanitize HTML
+                                                                                                    markup,
+                                                                                                    strip tracking
+                                                                                                    parameters, extract
+                                                                                                    editorial summaries,
+                                                                                                    and
+                                                                                                    categorize stories
+                                                                                                    by topic
+                                                                                                    (Technology, World,
+                                                                                                    Business,
+                                                                                                    Science) with zero
+                                                                                                    bloat.
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                    </section>
+                                                            </div>
+                                                        </div>
+
+                                                        <section>
+                                                            <h2
+                                                                class="font-playfair text-3xl font-bold mb-6 text-foreground">
+                                                                Technologies Employed</h2>
+                                                            <!-- Card 4: Technologies Employed (5 Cols) -->
+                                                            <div
+                                                                class="md:col-span-5 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                                                                <div>
+                                                                    <span
+                                                                        class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                                                                        TECHNOLOGIES EMPLOYED</span>
+                                                                    <div class="flex flex-wrap gap-2">
+                                                                        <span
+                                                                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Python</span>
+                                                                        <span
+                                                                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">BeautifulSoup
+                                                                            4</span>
+                                                                        <span
+                                                                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Requests</span>
+                                                                        <span
+                                                                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Flask</span>
+                                                                        <span
+                                                                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">HTML5
+                                                                            / CSS3</span>
+                                                                        <span
+                                                                            class="px-4 py-2 rounded-full text-xs font-semibold bg-surface-container border border-border-subtle">Data
+                                                                            Sanitization</span>
+                                                                        <!-- Card 2: Tech Stack (5 Cols) -->
+                                                                        <div
+                                                                            class="md:col-span-12 lg:col-span-5 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle flex flex-col justify-between shadow-sm">
+                                                                            <div>
+                                                                                <span
+                                                                                    class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                                                                                    TECHNOLOGIES EMPLOYED</span>
+                                                                                <div
+                                                                                    class="flex flex-wrap gap-1.5 mb-4">
+                                                                                    <span
+                                                                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Python</span>
+                                                                                    <span
+                                                                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">BeautifulSoup
+                                                                                        4</span>
+                                                                                    <span
+                                                                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Requests</span>
+                                                                                    <span
+                                                                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Flask</span>
+                                                                                    <span
+                                                                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">HTML5
+                                                                                        / CSS3</span>
+                                                                                    <span
+                                                                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Data
+                                                                                        Sanitization</span>
+                                                                                    <span
+                                                                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">TTL
+                                                                                        Caching</span>
+                                                                                    <span
+                                                                                        class="px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-low border border-border-subtle text-foreground">Tailwind
+                                                                                        CSS</span>
+                                                                                </div>
+                                                                            </div>
+                                                        </section>
+                                                        </article>
+                                                        <div
+                                                            class="p-3.5 rounded-2xl bg-surface-container-low border border-border-subtle/50 text-xs text-text-muted">
+                                                            <strong class="text-foreground block mb-1">In-Memory TTL
+                                                                Caching</strong>
+                                                            Eliminates redundant outbound network requests, reducing
+                                                            source publication load while delivering
+                                                            sub-50ms query responses.
+                                                            <span
+                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Python
+                                                                3</span>
+                                                            <span
+                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Flask</span>
+                                                            <span
+                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">BeautifulSoup4</span>
+                                                            <span
+                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Requests</span>
+                                                            <span
+                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">In-Memory
+                                                                Cache</span>
+                                                            <span
+                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">HTML5
+                                                                / CSS3</span>
+                                                            <span
+                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Tailwind
+                                                                CSS</span>
+                                                            <span
+                                                                class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container-low border border-border-subtle text-foreground">Render
+                                                                Cloud</span>
+                                                        </div>
+                                                    </div>
+                                                    <p
+                                                        class="text-xs text-text-muted mt-4 pt-3 border-t border-border-subtle">
+                                                        Deployed as a continuous web service with resilient error
+                                                        recovery against remote connection timeouts.
+                                                    </p>
+                                                </div>
+
+                                                <!-- Card 5: Engineering Challenges & Resolutions (12 Cols) -->
+                                                <div
+                                                    class="col-span-12 p-6 sm:p-7 rounded-3xl bg-surface-container border border-border-subtle shadow-sm">
+                                                    <span
+                                                        class="text-xs uppercase tracking-widest font-semibold text-text-muted mb-3 block">—
+                                                        ENGINEERING CHALLENGES &amp; RESOLUTIONS</span>
+                                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                        <div
+                                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                            <h4
+                                                                class="font-bold text-foreground text-xs sm:text-sm mb-1.5 flex items-center gap-1.5">
+                                                                <span
+                                                                    class="material-symbols-outlined text-sm text-primary">warning</span>
+                                                                <span>Challenge: Fragile Remote DOM Structure
+                                                                    Changes</span>
+                                                            </h4>
+                                                            <p class="text-xs text-text-muted leading-relaxed mb-2.5">
+                                                                Publication redesigns frequently break rigid CSS path
+                                                                selectors, resulting in silent scraping failures.
+                                                            </p>
+                                                            <div
+                                                                class="p-3 rounded-xl bg-surface-container border border-border-subtle/50 text-xs">
+                                                                <strong
+                                                                    class="text-primary block font-semibold mb-0.5">Resolution:</strong>
+                                                                Engineered heuristic fallback extractors combining
+                                                                meta-tag parsing (`og:title`, `twitter:description`)
+                                                                with regex keyword matching when structural selectors
+                                                                fail.
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="p-4 rounded-2xl bg-surface-container-low border border-border-subtle/60">
+                                                            <h4
+                                                                class="font-bold text-foreground text-xs sm:text-sm mb-1.5 flex items-center gap-1.5">
+                                                                <span
+                                                                    class="material-symbols-outlined text-sm text-primary">speed</span>
+                                                                <span>Challenge: Upstream Latency &amp; Rate
+                                                                    Limiting</span>
+                                                            </h4>
+                                                            <p class="text-xs text-text-muted leading-relaxed mb-2.5">
+                                                                Slow external news servers caused client request
+                                                                timeouts when loading the dashboard synchronously.
+                                                            </p>
+                                                            <div
+                                                                class="p-3 rounded-xl bg-surface-container border border-border-subtle/50 text-xs">
+                                                                <strong
+                                                                    class="text-primary block font-semibold mb-0.5">Resolution:</strong>
+                                                                Implemented time-to-live (TTL) memory caching with
+                                                                background refresh workers so users always receive
+                                                                instant responses from cache.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="mt-20 pt-8 border-t border-border-subtle flex justify-between items-center">
+                                                <!-- Compact Bottom Navigation -->
+                                                <div
+                                                    class="mt-8 pt-6 border-t border-border-subtle flex flex-wrap justify-between items-center gap-4">
+                                                    <a href="../resume-builder/index.html"
+                                                        class="text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-2">
+                                                        <!-- Compact Bottom Navigation -->
+                                                        <div
+                                                            class="mt-8 pt-6 border-t border-border-subtle flex flex-wrap justify-between items-center gap-4">
+                                                            <a href="../resume-builder/index.html"
+                                                                class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
+                                                                <span
+                                                                    class="material-symbols-outlined text-sm">arrow_back</span>
+                                                                Previous: Resume Builder
+                                                            </a>
+                                                            <a href="../agrochain/index.html"
+                                                                class="text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-2">
+                                                                <a href="../agrochain/index.html"
+                                                                    class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-1.5">
+                                                                    First Project: AgroChain <span
+                                                                        class="material-symbols-outlined text-sm">arrow_forward</span>
+                                                                </a>
+                                                        </div>
+                                                        class="text-xs sm:text-sm font-medium text-text-muted
+                                                        hover:text-foreground transition-colors flex items-center
+                                                        gap-1.5">
+                                                        <span
+                                                            class="material-symbols-outlined text-sm">arrow_back</span>
+                                                        Previous: Resume Builder
+                                                    </a>
+                                                    <a href="../../index.html#work"
+                                                        class="text-xs sm:text-sm font-medium text-text-muted hover:text-foreground transition-colors flex items-center gap-1.5">
+                                                        <span class="material-symbols-outlined text-sm">grid_view</span>
+                                                        Back to All Projects
+                                                    </a>
+                                                    <a href="../helio/index.html"
+                                                        class="text-xs sm:text-sm font-semibold text-primary hover:opacity-80 transition-opacity flex items-center gap-1.5">
+                                                        Next Case Study: Helio <span
+                                                            class="material-symbols-outlined text-sm">arrow_forward</span>
+                                                    </a>
+                                                </div>
+        </main>
+
+        <footer class="mt-20 border-t border-border-subtle py-8 text-center text-sm text-text-muted">
+            <!-- Footer -->
+            <footer class="border-t border-border-subtle py-8 text-center text-xs text-text-muted">
+                <p>&copy; 2026 Vedansh Harish Ail. All rights reserved.</p>
+            </footer>
+
+            <script>
         const themeBtn = document.getElementById('theme-toggle-btn');
         if (themeBtn) {
             themeBtn.addEventListener('click', () => {
                 const isDark = document.documentElement.classList.toggle('dark');
                 document.documentElement.classList.toggle('light', !isDark);
                 localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            });
-        }
-    </script>
+                const themeToggleBtn = document.getElementById('theme-toggle-btn');
+                if (themeToggleBtn) {
+                    themeToggleBtn.addEventListener('click', () => {
+                        if (document.documentElement.classList.contains('dark')) {
+                            document.documentElement.classList.remove('dark');
+                            document.documentElement.classList.add('light');
+                            localStorage.setItem('theme', 'light');
+                        } else {
+                            document.documentElement.classList.remove('light');
+                            document.documentElement.classList.add('dark');
+                            localStorage.setItem('theme', 'dark');
+                        }
+                    });
+                }
+            </script>
 </body>
 
 </html>
